@@ -5,7 +5,7 @@ console line 0 password: admin
 vty line 0-4 password: admin  
 
 ## Router 1
-```
+```Markdown
 Current configuration : 1061 bytes
 !
 version 15.1
@@ -109,7 +109,7 @@ end
 ```
 
 ## Router 2
-```
+```Markdown
 Current configuration : 1025 bytes
 !
 version 15.1
@@ -208,7 +208,7 @@ end
 ```
 
 # Router 3
-```
+```Markdown
 Current configuration : 1004 bytes
 !
 version 15.1
