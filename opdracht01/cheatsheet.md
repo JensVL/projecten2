@@ -1,7 +1,33 @@
 # Cheat sheet: IOS Commands
+## General useful commands
+1. Secure console line
+```
+Router(config)# line console <0-9>
+Router(config-line)# password <password>
+Router(config-line)# login
+Router(config-line)# logging synchronous
+```
+
+
+2. Secure vty interface
+```
+Router(config)# line vty <0-15>
+Router(config-line)# password <password>
+Router(config-line)# login
+Router(config-line)# logging synchronous
+```
+
+3. Encrypt passwords
+```
+Router(config)# service password-encryption
+```
+
+4. Save running config
+```
+Router(config)# copy running-config startup-config
+```
 
 ## Configure IPv6 static and default routes
-
 ### Enable IPv6 routing
 ```
 Router(config)# ipv6 unicast-routing
@@ -42,6 +68,18 @@ Router(config)# show ip[v6] route
 ```
 
 
-## Basic configuration switch
 
-> TODO
+
+## Basic configuration switch
+### Change MOTD banner
+```
+Router(config)# banner motd #Here goes your message#
+```
+### Configure VLAN
+```
+Router(config)# interface vlan1
+Router(config-if)# ip address <IP address> <subnet mask>
+Router(config-if)# interface vlan1
+Router(config-if)# no shutdown
+```
+
