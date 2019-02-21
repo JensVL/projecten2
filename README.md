@@ -26,8 +26,8 @@
 
 (voeg hier links toe naar de tools die jullie gebruiken voor tijdregistratie onderlinge afspraken, communicatie (vb. Slack), ...)
 
-* Tijdregistratie: <http://toggl.com/...>
 * Trello: <https://trello.com/b/IWmaVq2C/p2sb1819g10>
+* Plus for Trello <https://chrome.google.com/webstore/detail/plus-for-trello-time-trac/gjjpophepkbhejnglcmkdnncmaanojkf?hl=nl>
 * Discord: <https://discordapp.com/>
 * Messenger: <https://www.messenger.com/>
 
