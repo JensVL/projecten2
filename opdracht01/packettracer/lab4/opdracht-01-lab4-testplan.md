@@ -53,7 +53,7 @@ S    192.168.2.0/24 [1/0] via 192.168.1.1
 |---|---|---|---|---|---|
 | GigabitEthernet0/0 | 192.168.2.1 | YES | manual | up | up |
 | GigabitEthernet0/1 | unassigned  | YES | unset |administratively down | down |
-| Serial0/0/0 | 172.16.2.1 | YES | unset | administratively down | down |
+| Serial0/0/0 | unassigned | YES | unset | administratively down | down |
 | Serial0/0/1 | 192.168.1.1 | YES | unset | up | up |
 | Vlan1 | unassigned | YES | unset | administratively down | down |
 
@@ -78,7 +78,7 @@ Subnet Mask........................: 255.255.255.0
 Default Gateway.................: 172.16.3.1  
 
 ### PC 2
-1. Click on PC1.
+1. Click on PC2.
 2. Go to Destop > Command Prompt.
 3. Type `ipconfig`.
 4. The following output is expected:  
@@ -89,7 +89,7 @@ Subnet Mask........................: 255.255.255.0
 Default Gateway.................: 172.16.1.1  
 
 ### PC 3
-1. Click on PC1.
+1. Click on PC2.
 2. Go to Destop > Command Prompt.
 3. Type `ipconfig`.
 4. The following output is expected:  
@@ -109,6 +109,9 @@ Default Gateway.................: 192.168.2.1
 (optional if step 4 was successful)
 5. Enter the password 'admin' (without quotes).
 6. If you see the following prompt, the connection was successful.
+```
+TODO: add prompt
+```
 
 ### PC 2 to Router 2
 1. Click on PC2.
@@ -118,6 +121,9 @@ Default Gateway.................: 192.168.2.1
 (optional if step 4 was successful)
 5. Enter the password 'admin' (without quotes).
 6. If you see the following prompt, the connection was successful.
+```
+TODO: add prompt
+```
 
 ### PC 3 to Router 3
 1. Click on PC3.
@@ -127,7 +133,9 @@ Default Gateway.................: 192.168.2.1
 (optional if step 4 was successful)
 5. Enter the password 'admin' (without quotes).
 6. If you see the following prompt, the connection was successful.
-
+```
+TODO: add prompt
+```
 
 ## Encrypted passwords
 ### Router 1
