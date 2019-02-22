@@ -24,16 +24,16 @@
 
 1. Opdracht-01-lab1
     - Verantwoordelijke: Olivier De Vriese, Yordi De Rijcke
-    - Tester: studenty
+    - Tester: Yordi De Rijcke
 2. Opdracht-01-lab2
     - Verantwoordelijke: Olivier De Vriese, Yordi De Rijcke
-    - Tester: studenty
+    - Tester: Olivier De Vriese
 3. Opdracht-01-lab3
     - Verantwoordelijke: Olivier De Vriese, Yordi De Rijcke
-    - Tester: studenty
+    - Tester: Yordi De Rijcke
 4. Opdracht-01-lab4
     - Verantwoordelijke: Nathan Cammerman, Matthias Van De Velde
-    - Tester: studenty
+    - Tester: Olivier De Vriese
 5. Opdracht-01-Packet Tracer exercises
     - Verantwoordelijke: Nathan Cammerman, Matthias Van De Velde
     - Tester: studenty
