@@ -56,6 +56,21 @@ Router(config)# route 0.0.0.0 0.0.0.0 <destination IP address>
 Router(config)# ipv6 route ::/0 <destination IP address>
 ```
 
+### Add summary route
+If you have 2 or more networks close together you can add a summary route instead of one or more static routes to reduce the size of the routing table.
+1. Transform the networks into binary.
+2. Find a common part from left to right among all the networks.
+3. The left part with all the bits from the right part set to zero will become the network.
+4. The left part with all its bits set to one will become the subnet mask.  
+
+Example:  
+172.16.1.0 ------ **10101100.00010000.000000**01.00000000  
+172.16.2.0 ------ **10101100.00010000.000000**10.00000000  
+172.16.3.0 ------ **10101100.00010000.000000**11.00000000
+
+Network: 172.16.0.0 ------ 10101100.00010000.000000**00.00000000**  
+Subnet mask: 255.255.252.0 ------ **11111111.11111111.111111**00.00000000  
+
 ### Verify static route configurations
 1. PC configuration
 ```Markdown
