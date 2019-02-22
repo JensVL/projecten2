@@ -967,6 +967,7 @@ Router# show ip interface brief
 
 
 ### Manual reload config
+No records found
 
 ### Manual factory reset
 1. Configure the router with these settings
