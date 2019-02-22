@@ -1,5 +1,5 @@
 # Testplan: Opdracht 1
-*Author: Nathan Cammerman, Matthias Van De Velde*
+*Authors: Nathan Cammerman, Matthias Van De Velde*
 
 ## Basic router configuration
 ### Router 1
