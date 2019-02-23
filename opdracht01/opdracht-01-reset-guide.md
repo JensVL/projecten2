@@ -20,15 +20,15 @@ To reset your router to its factory-default configuration using router commands:
 4.	On your laptop, start the terminal emulator program and use it to access your router’s command line interface (CLI).
 5.	In the router CLI, enter the commands in boldface to erase the existing configuration on your router and reload the factory-default configuration on the router: 
 
-router> enable
-router# write erase
-Erasing the nvram filesystem will remove all configuration files! Continue? [confirm] <Press Enter key>
-router# reload
-Proceed with reload? [confirm] <Press Enter key>
--OR-
-Would you like to enter the initial configuration dialog? [yes|no] no <Press Enter key>
-–OR–
-Do you want to save the configuration of the AP? [yes|no] no <Press Enter key>
+router> enable  
+router# write erase  
+Erasing the nvram filesystem will remove all configuration files! Continue? [confirm] <Press Enter key>    
+router# reload  
+Proceed with reload? [confirm] <Press Enter key>  
+-OR-  
+Would you like to enter the initial configuration dialog? [yes|no] no <Press Enter key>  
+–OR–  
+Do you want to save the configuration of the AP? [yes|no] no <Press Enter key>  
 
 6.	Wait until the reload or erase finishes and a CLI prompt or completion message appears.
 7.	Close the terminal emulator window on your laptop.
@@ -93,78 +93,81 @@ You should now have successfully reset the switch manually.
 
 ## Reset a Cisco 2960 Switch To Factory Default Settings
 
-Step 1.
-Connect up your console cable and power on the switch, whilst holding down the “mode” button:
+Step 1. Connect up your console cable and power on the switch, whilst holding down the “mode” button:
  
  
 This interrupts the boot process before the Flash file system can initialize, and after a short while (continue holding the “mode” button) you will see the following prompt:
 
-Using driver version 1 for media type 1
-Base ethernet MAC Address: 4c:30:2d:81:ef:80
-Xmodem file system is available.
-The password-recovery mechanism is enabled.
-The system has been interrupted prior to initializing the
-flash filesystem. The following commands will initialize
-the flash filesystem, and finish loading the operating
-system software:
-flash_init
- boot
-switch:
-Step 2.
-Initialize the flash file system with the command: flash_init
+Using driver version 1 for media type 1  
+Base ethernet MAC Address: 4c:30:2d:81:ef:80  
+Xmodem file system is available.  
+The password-recovery mechanism is enabled.  
+The system has been interrupted prior to initializing the  
+flash filesystem. The following commands will initialize  
+the flash filesystem, and finish loading the operating  
+system software:  
+flash_init  
+ boot  
+switch:  
+
+Step 2. Initialize the flash file system with the command: flash_init
  
 switch: flash_init
-Initializing Flash...
-mifs[2]: 10 files, 1 directories
-mifs[2]: Total bytes : 1806336
-mifs[2]: Bytes used : 612352
-mifs[2]: Bytes available : 1193984
-mifs[2]: mifs fsck took 1 seconds.
-mifs[3]: 0 files, 1 directories
-mifs[3]: Total bytes : 3870720
-mifs[3]: Bytes used : 1024
-mifs[3]: Bytes available : 3869696
-mifs[3]: mifs fsck took 0 seconds.
-mifs[4]: 5 files, 1 directories
-mifs[4]: Total bytes : 258048
-mifs[4]: Bytes used : 9216
-mifs[4]: Bytes available : 248832
-mifs[4]: mifs fsck took 0 seconds.
-mifs[5]: 5 files, 1 directories
-mifs[5]: Total bytes : 258048
-mifs[5]: Bytes used : 9216
-mifs[5]: Bytes available : 248832
-mifs[5]: mifs fsck took 1 seconds.
- -- MORE --
-mifs[6]: 566 files, 19 directories
-mifs[6]: Total bytes : 57931776
-mifs[6]: Bytes used : 28429312
-mifs[6]: Bytes available : 29502464
-mifs[6]: mifs fsck took 21 seconds.
-...done Initializing Flash.
-Step 3.
-Delete the config.text file from the flash directory:
-switch: del flash:config.text
-Are you sure you want to delete "flash:config.text" (y/n)?y
-File "flash:config.text" deleted
-Step 4.
-Delete the vlan.dat file from the flash directory:
-switch: del flash:vlan.dat
-Are you sure you want to delete "vlan.dat" (y/n)?y
-File "flash:vlan.dat" deleted
+Initializing Flash...  
+mifs[2]: 10 files, 1 directories  
+mifs[2]: Total bytes : 1806336  
+mifs[2]: Bytes used : 612352  
+mifs[2]: Bytes available : 1193984  
+mifs[2]: mifs fsck took 1 seconds.  
+mifs[3]: 0 files, 1 directories  
+mifs[3]: Total bytes : 3870720  
+mifs[3]: Bytes used : 1024  
+mifs[3]: Bytes available : 3869696  
+mifs[3]: mifs fsck took 0 seconds.  
+mifs[4]: 5 files, 1 directories  
+mifs[4]: Total bytes : 258048  
+mifs[4]: Bytes used : 9216  
+mifs[4]: Bytes available : 248832  
+mifs[4]: mifs fsck took 0 seconds.  
+mifs[5]: 5 files, 1 directories  
+mifs[5]: Total bytes : 258048  
+mifs[5]: Bytes used : 9216  
+mifs[5]: Bytes available : 248832  
+mifs[5]: mifs fsck took 1 seconds.  
+ -- MORE --  
+mifs[6]: 566 files, 19 directories  
+mifs[6]: Total bytes : 57931776  
+mifs[6]: Bytes used : 28429312  
+mifs[6]: Bytes available : 29502464  
+mifs[6]: mifs fsck took 21 seconds.  
+...done Initializing Flash.  
 
-Step 5.
-Reboot the switch and you’re done:
-switch: boot
-Loading "flash:c2960s-universalk9-mz.122-58.SE2.bin"...
---- System Configuration Dialog ---
+Step 3. Delete the config.text file from the flash directory:
+
+switch: del flash:config.text  
+Are you sure you want to delete "flash:config.text" (y/n)?y  
+File "flash:config.text" deleted  
+
+Step 4. Delete the vlan.dat file from the flash directory:
+
+switch: del flash:vlan.dat  
+Are you sure you want to delete "vlan.dat" (y/n)?y  
+File "flash:vlan.dat" deleted 
+
+Step 5. Reboot the switch and you’re done:
+
+switch: boot  
+Loading "flash:c2960s-universalk9-mz.122-58.SE2.bin"...  
+--- System Configuration Dialog ---  
 Enable secret warning
+
 ----------------------------------
 In order to access the device manager, an enable secret is required
 If you enter the initial configuration dialog, you will be prompted for the enable secret
 If you choose not to enter the intial configuration dialog, or if you exit setup without setting the enable secret,
 please set an enable secret using the following CLI in configuration mode-
 enable secret 0 <cleartext password>
+
 ----------------------------------
 Would you like to enter the initial configuration dialog? [yes/no]:
 % Please answer 'yes' or 'no'.

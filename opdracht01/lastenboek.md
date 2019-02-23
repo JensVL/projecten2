@@ -45,7 +45,7 @@
 | :---       | ---:    | ---:         |
 | Yordi De Rijcke   |         |              |
 | Olivier De Vriese   |         |              |
-| Nathan Cammerman   |         |              |
+| Nathan Cammerman   |     13    |              |
 | Matthias Van De Velde   |    13     |              |
 | **totaal** |         |              |
 

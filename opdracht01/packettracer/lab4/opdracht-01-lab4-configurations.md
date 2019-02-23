@@ -1,4 +1,4 @@
-#Routee Configurations
+#Router Configurations
 password: admin  
 admin password: admin  
 console line 0 password: admin  
