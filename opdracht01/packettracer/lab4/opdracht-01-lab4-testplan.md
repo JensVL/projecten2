@@ -89,7 +89,7 @@ Subnet Mask........................: 255.255.255.0
 Default Gateway.................: 172.16.1.1  
 
 ### PC 3
-1. Click on PC2.
+1. Click on PC3.
 2. Go to Destop > Command Prompt.
 3. Type `ipconfig`.
 4. The following output is expected:  
