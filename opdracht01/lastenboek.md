@@ -36,7 +36,7 @@
     - Tester: Olivier De Vriese
 5. Opdracht-01-Packet Tracer exercises
     - Verantwoordelijke: Nathan Cammerman, Matthias Van De Velde
-    - Tester: studenty
+    - Tester: Nathan Cammerman, Matthias Van De Velde
 
 
 ## Tijdbesteding
@@ -46,7 +46,7 @@
 | Yordi De Rijcke   |         |              |
 | Olivier De Vriese   |         |              |
 | Nathan Cammerman   |         |              |
-| Matthias Van De Velde   |         |              |
+| Matthias Van De Velde   |    13     |              |
 | **totaal** |         |              |
 
 (na oplevering van de taak een schermafbeelding toevoegen van rapport tijdbesteding voor deze taak)
