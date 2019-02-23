@@ -6,15 +6,15 @@
 1. Type `ipconfig` in CMD:
 2. The expected IPv4 results are:
 IP Address......................: 192.168.1.3
-   Subnet Mask.....................: 255.255.255.0
-   Default Gateway.................: 192.168.1.1
+Subnet Mask.....................: 255.255.255.0
+Default Gateway.................: 192.168.1.1
 
 ### PC-B
 1. Type `ipconfig` in CMD:
 2. The expected IPv4 results are:
-   IP Address......................: 192.168.0.3
-   Subnet Mask.....................: 255.255.255.0
-   Default Gateway.................: 192.168.0.1
+IP Address......................: 192.168.0.3
+Subnet Mask.....................: 255.255.255.0
+Default Gateway.................: 192.168.0.1
    
 ## Basic router configuration
 ### R1
