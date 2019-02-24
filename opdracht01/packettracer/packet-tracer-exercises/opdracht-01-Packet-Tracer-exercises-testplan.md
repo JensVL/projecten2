@@ -3,6 +3,8 @@
 *Authors: Nathan Cammerman, Matthias Van De Velde*
 
 ## Configuring IPv6 Static and Default Routes
+Open *2.2.4.4 Packet Tracer - Configuring IPv6 Static and Default Routes(solution).pka*
+
 ### Routes in R1
 1. Go to privileged exec mode (enable) and type `show ipv6 route`
 2. The following lines should at least occur in the output:
@@ -27,8 +29,7 @@ S   2001:DB8:1:3::/64 [1/0] via 2001:DB8:1:A002::2, Serial0/0/1
 S   ::/0 [1/0] via 2001:DB8:1:A002::1
 ```
 
-## Interfaces
-### R1
+### R1 Interfaces
 ```Markdown
 GigabitEthernet0/0         [up/up]
     FE80::1
@@ -44,7 +45,7 @@ Vlan1                      [administratively down/down]
     unassigned
 ```
 
-### R2
+### R2 Interfaces
 GigabitEthernet0/0         [up/up]
     FE80::2
     2001:DB8:1:2::1
@@ -59,7 +60,7 @@ Serial0/0/1                [up/up]
 Vlan1                      [administratively down/down]
     unassigned
 
-### R3
+### R3 Interfaces
 ```Markdown
 GigabitEthernet0/0         [up/up]
     FE80::3
@@ -75,7 +76,7 @@ Vlan1                      [administratively down/down]
     unassigned
 ```
 
-## Network connectivity
+### Network connectivity
 1. Click on PC1
 2. Go to Destop > Command Prompt
 3. Use `ping` to try and reach all the IP-addresses listed below. 
@@ -91,7 +92,10 @@ Vlan1                      [administratively down/down]
 4. Repeat this for PC 2 and 3
 5. If one or more fail, report this
 
+ 
 ## Basic Switch Configuration
+Open *opdracht-01-Packettracer - basisconfiguratie Switch (solution).pka*
+
 ### Console connection
 1. Connect Student-1(RS 232) to Class-A(console) using a console cable 
 2. Click on Student-1
