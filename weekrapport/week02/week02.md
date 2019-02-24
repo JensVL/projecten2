@@ -19,8 +19,8 @@
 * Configured IPv6 static and default routes
 * Accessed and Configured switch with basic settings through console connection
 * Built + configured simple network(2 PC’s + 2 switches)
-* built + configured simple network(2 PC’s + switch + router)
-* configured basic static route network(3 PC’s + 3 switches + 3 routers)
+* Built + configured simple network(2 PC’s + switch + router)
+* Configured basic static route network(3 PC’s + 3 switches + 3 routers)
 * Packet Tracer setups
 * Detailed report of test setups
 * Checklist: How to reset a Cisco router and switch with remaining settings
@@ -41,22 +41,27 @@
 [Afbeelding individueel rapport tijdregistratie]
 
 ### Nathan Cammerman
+ 
+* Configured IPv6 static and default routes
+* Accessed and Configured switch with basic settings through console connection
+* Packet Tracer setups
+* Detailed report of test setups
+* Checklist: How to reset a Cisco router and switch with remaining settings
+* Configured basic static route network(3 PC’s + 3 switches + 3 routers)
 
-* 
-Configured IPv6 static and default routes
-Accessed and Configured switch with basic settings through console connection
-Packet Tracer setups
-Detailed report of test setups
-Checklist: How to reset a Cisco router and switch with remaining settings
-
-
-![Time-registration-week02-nathanCammerman](week02-NathanCammerman.PNG)
+![Time-registration-week02-Nathan-Cammerman](week02-NathanCammerman.PNG)
 
 ### Matthias Van De Velde
 
-* ...
+* Configured IPv6 static and default routes
+* Accessed and Configured switch with basic settings through console connection
+* Packet Tracer setups
+* Detailed report of test setups
+* Cheat sheet with basic IOS commands
+* Configured basic static route network(3 PC’s + 3 switches + 3 routers)
+* Checklist: How to reset a Cisco router and switch with remaining settings  
 
-![Time-registration-week02-matthias](week02-matthias.JPG)  
+![Time-registration-week02-Matthias-VanDeVelde](week02-MatthiasVanDeVelde.JPG)  
 
 ## Wat plan je volgende week te doen?
 
@@ -65,11 +70,14 @@ Checklist: How to reset a Cisco router and switch with remaining settings
 ### Olivier De Vriese
 ### Nathan Cammerman
 ### Matthias Van De Velde
+* Verdeling opdracht 2
+
 
 ## Waar hebben jullie nog problemen mee?
 
-* Algemeen: 1. Taken beter en duidelijker verdelen in deeltaken.
-            2. De geschatte uren beter inschatten in ons trello bord.
+* Algemeen: 
+    1. Taken beter en duidelijker verdelen in deeltaken.
+    2. De geschatte uren beter inschatten in ons trello bord.
 * Nathan Cammerman: Layout beter verzorgen.
 
 ## Feedback technisch luik
