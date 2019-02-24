@@ -40,9 +40,6 @@
 6. Reset guide Cisco router/switch
     - Verantwoordelijke: Nathan Cammerman, Matthias Van De Velde
     - Tester: Nathan Cammerman, Matthias Van De Velde
-7. Cheat sheet
-    - Verantwoordelijke: Olivier De Vriese, Yordi De Rijcke, Nathan Cammerman, Matthias Van De Velde
-    - Tester: Olivier De Vriese, Yordi De Rijcke, Nathan Cammerman, Matthias Van De Velde
     
 ## Tijdbesteding
 
