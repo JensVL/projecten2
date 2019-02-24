@@ -1,18 +1,38 @@
 # Testrapport Opdracht 1: Packet Tracer exercises
 
-Uitgevoerd op: DATUM  
+Uitgevoerd op: 24/02/2019  
 Github commit:  00f89464954c4580042a3834c7f4ad16d00c3076  
 
 ## Configuring IPv6 Static and Default Routes
 Uitvoerder(s) test: Nathan Cammerman  
 
 ### Routes in R1
+The test results match the provided output.
+
 ### Routes in R2
+The test results match the provided output.
+
 ### Routes in R3
+The test results match the provided output.
+
 ### R1 Interfaces
+The command to get this prompt wasn't specified.
+The command: show ipv6 interface brief.
+The test results match the provided output after using this command.
+
 ### R2 Interfaces
+The command to get this prompt wasn't specified.
+The command: show ipv6 interface brief.
+The test results match the provided output after using this command.
+
 ### R3 Interfaces
+The command to get this prompt wasn't specified.
+The command: show ipv6 interface brief.
+The test results match the provided output after using this command.
+
 ### Network connectivity
+The ping command could reach all ip addresses listed.
+
 
 
 ## Basic Switch Configuration
