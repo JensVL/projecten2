@@ -7,9 +7,20 @@ Github commit:  e28752fe82393257e91b8e8c8af947ff6d4f6f5f
 Uitvoerder(s) test: Matthias Van De Velde  
 
 ### Reload config
+> Step 6, what password should be used?  
+
+The output matches the provided output  
+
 ### Factory reset
+> You can use the settings from the previous test.  
+
+The output matches the provided output  
+
 ### Manual reload config
+> TODO in classroom  
+
 ### Manual factory reset
+> TODO in classroom  
 
 ## Router
 Uitvoerder(s) test: Nathan Cammerman  
