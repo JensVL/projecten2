@@ -27,6 +27,16 @@ Router(config)# service password-encryption
 Router(config)# copy running-config startup-config
 ```
 
+5. Disable DNS lookups
+```
+Router(config)# no ip domain-lookup
+```
+
+6. Description
+```
+Router(config-if)# description the description that describes this interface
+```
+
 ## Configure IPv6 static and default routes
 ### Enable IPv6 routing
 ```Markdown
@@ -91,13 +101,19 @@ Router(config)# show ip[v6] route
 ## Basic configuration switch
 ### Change MOTD banner
 ```
-Router(config)# banner motd #Here goes your message#
+Switch(config)# banner motd #Here goes your message#
 ```
 ### Configure VLAN
 ```
-Router(config)# interface vlan1
-Router(config-if)# ip address <IP address> <subnet mask>
-Router(config-if)# interface vlan1
-Router(config-if)# no shutdown
+Switch(config)# interface vlan1
+Switch(config-if)# ip address <IP address> <subnet mask>
+Switch(config-if)# interface vlan1
+Switch(config-if)# no shutdown
 ```
-
+### Erasing Vlans and reloading
+```
+Switch# show flash //optional
+Switch# delete vlan.dat
+Switch# erase startup-config
+Switch# reload
+```
