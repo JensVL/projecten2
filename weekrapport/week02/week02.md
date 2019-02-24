@@ -1,7 +1,7 @@
 # Voortgangsrapport week nn
 
 * Groep: 10
-* Datum voortgangsgesprek:
+* Datum voortgangsgesprek: 18/02/2019
 
 | Student  | Aanw. | Opmerking |
 | :---     | :---  | :---      |
@@ -16,8 +16,15 @@
 
 [Afbeelding huidige toestand Kanban-bord(en) invoegen]
 
-* ...
-* ...
+* Configured IPv6 static and default routes
+* Accessed and Configured switch with basic settings through console connection
+* Built + configured simple network(2 PC’s + 2 switches)
+* built + configured simple network(2 PC’s + switch + router)
+* configured basic static route network(3 PC’s + 3 switches + 3 routers)
+* Packet Tracer setups
+* Detailed report of test setups
+* Checklist: How to reset a Cisco router and switch with remaining settings
+* Cheat sheet with basic IOS commands
 
 [Afbeelding teamoverzicht tijdregistratie onderverdeeld per deelopdracht]
 
@@ -35,9 +42,15 @@
 
 ### Nathan Cammerman
 
-* ...
+* 
+Configured IPv6 static and default routes
+Accessed and Configured switch with basic settings through console connection
+Packet Tracer setups
+Detailed report of test setups
+Checklist: How to reset a Cisco router and switch with remaining settings
 
-[Afbeelding individueel rapport tijdregistratie]
+
+![Time-registration-week02-nathanCammerman](week02-NathanCammerman.PNG)
 
 ### Matthias Van De Velde
 
@@ -55,8 +68,9 @@
 
 ## Waar hebben jullie nog problemen mee?
 
-* ...
-* ...
+* Algemeen: 1. Taken beter en duidelijker verdelen in deeltaken.
+            2. De geschatte uren beter inschatten in ons trello bord.
+* Nathan Cammerman: Layout beter verzorgen.
 
 ## Feedback technisch luik
 
