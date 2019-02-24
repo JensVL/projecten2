@@ -1,3 +1,5 @@
+# Reset guide - Cisco router/switch
+
 ## Reset Router Using Reset Button
 
 To reset your router to its factory-default configuration using the Reset button:

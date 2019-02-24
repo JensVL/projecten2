@@ -1,4 +1,6 @@
-# Reset guide: Cisco router/switch
+# Testplan: Reset guide - Cisco router/switch
+
+*Authors: Nathan Cammerman, Matthias Van De Velde*
 
 ## Switch
 ### Reload config
