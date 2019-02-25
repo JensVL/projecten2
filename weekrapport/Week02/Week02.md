@@ -70,15 +70,14 @@
 
 ### Matthias Van De Velde
 
-
-## Waar hebben jullie nog problemen mee?
-
 * Configured IPv6 static and default routes
 * Accessed and Configured switch with basic settings through console connection
 * Packet Tracer setups
 * Cheat sheet with basic IOS commands
 * Configured basic static route network(3 PC’s + 3 switches + 3 routers)
 * Checklist: How to reset a Cisco router and switch with remaining settings 
+
+## Waar hebben jullie nog problemen mee?
 
 ## Feedback technisch luik
 
