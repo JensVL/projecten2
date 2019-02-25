@@ -997,8 +997,6 @@ Router# show ip interface brief
 |---|---|---|---|---|---|
 | GigabitEthernet0/0 | unassigned | YES | unset | administratively down | down |
 | GigabitEthernet0/1 | unassigned  | YES | unset |administratively down | down |
-| Serial0/0/0 | unassigned | YES | unset | administratively down | down |
-| Serial0/0/1 | unassigned | YES | unset | administratively down | down |
 | Vlan1 | unassigned | YES | unset | administratively down | down |
 
 
@@ -1039,6 +1037,4 @@ Router# show ip interface brief
 |---|---|---|---|---|---|
 | GigabitEthernet0/0 | unassigned | YES | unset | administratively down | down |
 | GigabitEthernet0/1 | unassigned  | YES | unset |administratively down | down |
-| Serial0/0/0 | unassigned | YES | unset | administratively down | down |
-| Serial0/0/1 | unassigned | YES | unset | administratively down | down |
 | Vlan1 | unassigned | YES | unset | administratively down | down |
