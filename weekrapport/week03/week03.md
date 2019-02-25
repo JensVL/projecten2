@@ -90,7 +90,7 @@
 ## Feedback technisch luik
 
 ### Algemeen
-
+Gecontroleerde labo's 1 - 2 - 3 zijn OK, vergeet basiszaken niet, zoals copy runnning startup. Binnen een virtuele omgeving niet zo belangrijk, maar in real omgevingen wel.
 ### Yordi De Rijcke
 ### Olivier De Vriese
 ### Nathan Cammerman
