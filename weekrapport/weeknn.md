@@ -1,14 +1,14 @@
 # Voortgangsrapport week nn
 
-* Groep:
+* Groep: 10
 * Datum voortgangsgesprek:
 
 | Student  | Aanw. | Opmerking |
 | :---     | :---  | :---      |
-| student1 |       |           |
-| student2 |       |           |
-| student3 |       |           |
-| student4 |       |           |
+| Yordi De Rijcke |       |           |
+| Olivier De Vriese |       |           |
+| Nathan Cammerman |       |           |
+| Matthias Van De Velde |       |           |
 
 ## Wat heb je deze week gerealiseerd?
 
@@ -21,25 +21,25 @@
 
 [Afbeelding teamoverzicht tijdregistratie onderverdeeld per deelopdracht]
 
-### Student 1
+### Yordi De Rijcke
 
 * ...
 
 [Afbeelding individueel rapport tijdregistratie]
 
-### Student 2
+### Olivier De Vriese
 
 * ...
 
 [Afbeelding individueel rapport tijdregistratie]
 
-### Student 3
+### Nathan Cammerman
 
 * ...
 
 [Afbeelding individueel rapport tijdregistratie]
 
-### Student 4
+### Matthias Van De Velde
 
 * ...
 
@@ -48,10 +48,10 @@
 ## Wat plan je volgende week te doen?
 
 ### Algemeen
-### Student 1
-### Student 2
-### Student 3
-### Student 4
+### Yordi De Rijcke
+### Olivier De Vriese
+### Nathan Cammerman
+### Matthias Van De Velde
 
 ## Waar hebben jullie nog problemen mee?
 
@@ -62,17 +62,17 @@
 
 ### Algemeen
 
-### Student 1
-### Student 2
-### Student 3
-### Student 4
+### Yordi De Rijcke
+### Olivier De Vriese
+### Nathan Cammerman
+### Matthias Van De Velde
 
 ## Feedback analyseluik
 
 ### Algemeen
 
-### Student 1
-### Student 2
-### Student 3
-### Student 4
+### Yordi De Rijcke
+### Olivier De Vriese
+### Nathan Cammerman
+### Matthias Van De Velde
 

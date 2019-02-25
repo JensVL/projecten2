@@ -4,14 +4,14 @@
 
 Zorg er voor dat elk teamlid een account heeft op:
 
-- [ ] Github (projectbrochure, bijlage)
+- [x] Github (projectbrochure, bijlage)
 - [ ] Toggl (zie projectbrochure, bijlage)
 
 ## In [README.md](README.md):
 
-- [ ] Vul namen van teamleden en links naar jullie Github account in
-- [ ] Vul namen begeleiders in
-- [ ] Vul deze tools aan in de README (*volledige* link naar jullie "projectruimte"), zodat de begeleider dit snel kan terugvinden.
+- [x] Vul namen van teamleden en links naar jullie Github account in
+- [x] Vul namen begeleiders in
+- [x] Vul deze tools aan in de README (*volledige* link naar jullie "projectruimte"), zodat de begeleider dit snel kan terugvinden.
 - [ ] Wat zijn de missie en de kernwaarden van jullie team? (bv. grijp terug op resulaten worldcafé). Schrijf daar een kort statement over.
 
 ## Sjabloon voortgangsrapport
