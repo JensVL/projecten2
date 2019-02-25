@@ -30,13 +30,20 @@
 
 ### Yordi De Rijcke
 
-* ...
+* Labo1: Development + testing
+* Labo2: Development
+* Labo3: Development + testing
+* Trello configuratie
 
 [Afbeelding individueel rapport tijdregistratie]
 
 ### Olivier De Vriese
 
-* ...
+* Labo1: Development
+* Labo2: Development + testing
+* Labo3: Development
+* Labo4: Testing
+* Cheatsheet aangevuld
 
 [Afbeelding individueel rapport tijdregistratie]
 
