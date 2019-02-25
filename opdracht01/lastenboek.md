@@ -46,7 +46,7 @@
 | Student    | Geschat | Gerealiseerd |
 | :---       | ---:    | ---:         |
 | Yordi De Rijcke   |     6    |      5.5       |
-| Olivier De Vriese   |         |              |
+| Olivier De Vriese   |    6.5     |     5.5         |
 | Nathan Cammerman   |     13    |              |
 | Matthias Van De Velde   |    13     |              |
 | **totaal** |         |              |
