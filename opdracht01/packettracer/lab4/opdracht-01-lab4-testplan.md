@@ -110,7 +110,7 @@ Default Gateway.................: 192.168.2.1
 5. Enter the password 'admin' (without quotes).
 6. If you see the following prompt, the connection was successful.
 ```
-TODO: add prompt
+R1> 
 ```
 
 ### PC 2 to Router 2
@@ -122,7 +122,7 @@ TODO: add prompt
 5. Enter the password 'admin' (without quotes).
 6. If you see the following prompt, the connection was successful.
 ```
-TODO: add prompt
+R2> 
 ```
 
 ### PC 3 to Router 3
@@ -134,7 +134,7 @@ TODO: add prompt
 5. Enter the password 'admin' (without quotes).
 6. If you see the following prompt, the connection was successful.
 ```
-TODO: add prompt
+R3> 
 ```
 
 ## Encrypted passwords
