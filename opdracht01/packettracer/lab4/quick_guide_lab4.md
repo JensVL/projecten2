@@ -190,7 +190,7 @@ ip route 0.0.0.0 0.0.0.0 172.16.2.2
 ```
 configure terminal  
 ip route 192.168.2.0 255.255.255.0 192.168.1.1  
-ip route 172.16.3.0 255.255.255.0 Serial0/0/0
+ip route 172.16.3.0 255.255.255.0 Serial0/1/0
 ```
 
 #### Router3
