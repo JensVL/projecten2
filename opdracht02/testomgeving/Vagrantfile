@@ -93,6 +93,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       custom_synced_folders(node.vm, host)
       forwarded_ports(node.vm, host)
 
+      if host['os'] == "windows"
+          
+      end
+
       # Add VM to a VirtualBox group
       node.vm.provider :virtualbox do |vb|
         vb.memory = host['memory'] if host.key? 'memory'
@@ -104,7 +108,18 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       end
 
       # Run configuration script for the VM
-      node.vm.provision 'shell', path: 'provisioning/' + host['name'] + '.sh'
+      if host['os'] == "windows"
+        config.vm.guest = :windows
+        config.vm.communicator = "winrm"
+        config.winrm.username = host['winrm-user'] #"Administrator"
+        config.winrm.password = host['winrm-pw'] #"Admin2019"  
+
+
+
+        node.vm.provision 'shell', path: 'provisioning/' + host['name'] + '.ps1'
+      else
+        node.vm.provision 'shell', path: 'provisioning/' + host['name'] + '.sh'
+      end
     end
   end
 end

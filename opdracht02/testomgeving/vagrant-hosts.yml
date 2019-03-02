@@ -5,7 +5,7 @@
 # have a `name:`.  Other optional settings that can be specified:
 #
 # * `box`: choose another base box instead of the default one specified in
-#          Vagrantfile. A box name in the form `USER/BOX` (e.g.
+#           Vagrantfile. A box name in the form `USER/BOX` (e.g.
 #          `bertvv/centos72`) is fetched from Atlas.
 # * `box_url`: Download the box from the specified URL instead of from Atlas.
 # * `ip`: by default, an IP will be assigned by DHCP. If you want a fixed
@@ -30,6 +30,9 @@
 # [1] http://docs.vagrantup.com/v2/synced-folders/basic_usage.html
 ---
 
-- name: srv001
-  ip: 192.168.56.31
-
+- name: yeetWisa1
+  box: yeet
+  ip: 192.168.248.10
+  os: windows
+  winrm-user: Administrator
+  winrm-pw: Admin2019
