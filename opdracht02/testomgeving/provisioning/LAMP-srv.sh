@@ -1,6 +1,6 @@
-#! /usr/bin/bash
+#! /bin/bash
 #
-# Provisioning script for srv001
+# Provisioning script for LAMP-srv
 
 #------------------------------------------------------------------------------
 # Bash settings
@@ -18,7 +18,7 @@ set -o pipefail
 #------------------------------------------------------------------------------
 
 # Location of provisioning scripts and files
-export readonly PROVISIONING_SCRIPTS="/vagrant/provisioning/"
+export readonly PROVISIONING_SCRIPTS="/vagrant/provisioning"
 # Location of files to be copied to this server
 export readonly PROVISIONING_FILES="${PROVISIONING_SCRIPTS}/files/${HOSTNAME}"
 
@@ -39,3 +39,33 @@ info "Starting server specific provisioning tasks on ${HOSTNAME}"
 
 # TODO: insert code here, e.g. install Apache, add users (see the provided
 # functions in utils.sh), etc.
+
+# Update mirrors for intstall
+sudo dnf update -y
+
+# Install apache, mariaDB, php
+sudo dnf install -y httpd mariadb-server php
+
+# Enable firewall & disable ports for apache
+sudo systemctl enable firewalld
+sudo systemctl start firewalld
+sudo firewall-cmd --permanent --add-port=80/tcp
+sudo firewall-cmd --permanent --add-port=443/tcp
+sudo firewall-cmd --reload
+
+# Make sure that the daemons start at boot
+sudo systemctl enable httpd
+sudo systemctl enable mariadb
+
+# Make sure that the daemons are started right now
+sudo systemctl restart httpd
+sudo systemctl restart mariadb
+
+# MariaDB setup
+sudo mysqladmin -u root $mysqlPasswd
+mysql -u root -ppassword -e "DROP USER ''@'localhost';"
+mysql -u root -ppassword -e "DROP USER ''@'$(hostname)';"
+mysql -u root -ppassword -e "DROP USER ''@'localhost';"
+mysql -u root -ppassword -e "DROP USER ''@'$(hostname)';"
+mysql restart
+

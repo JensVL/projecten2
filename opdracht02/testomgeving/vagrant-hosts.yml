@@ -30,6 +30,6 @@
 # [1] http://docs.vagrantup.com/v2/synced-folders/basic_usage.html
 ---
 
-- name: srv001
-  ip: 192.168.56.31
+- name: LAMP-srv
+  ip: 192.168.2.2
 

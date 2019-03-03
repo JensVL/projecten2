@@ -1,7 +1,5 @@
 # Vagrant environment with shell provisioning
 
-Source: <https://github.com/bertvv/vagrant-shell-skeleton>
-
 Scaffolding code for a multi-VM Vagrant environment with shell provisioning. It is based on my reusable "[One Vagrantfile to rule them all](https://bertvv.github.io/notes-to-self/2015/10/05/one-vagrantfile-to-rule-them-all/)" (I gave a [lightning talk about this](https://youtu.be/qJ0VNO6z68M) at [Config Management Camp 2016 Ghent](http://cfgmgmtcamp.eu/) - [slides here](http://www.slideshare.net/bertvanvreckem/one-vagrantfile-to-rule-them-all)). Hosts are defined in a simple Yaml format (see below), so setting up a multi-VM environment becomes almost trivial.
 
 For a more advanced Vagrant setup with Ansible provisioning, see this project's big brother, [ansible-skeleton](https://github.com/bertvv/ansible-skeleton).
@@ -19,7 +17,6 @@ The short version... After forking and cloning, add VMs in `vagrant-hosts.yml`, 
 ---
 - name: srv001
   ip: 192.168.56.31
-  box: bento/centos-7.5
 ```
 
 and write a provisioning script with the same name as the VM in the `provisioning/` folder (e.g. `provisioning/srv001.sh`).
