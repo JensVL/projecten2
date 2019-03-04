@@ -64,6 +64,7 @@
 * Gestart met WISA SQL Server provisioning.
 
 [Afbeelding individueel rapport tijdregistratie]
+![Time-registration-week04-Matthias-VanDeVelde](week04-MatthiasVanDeVelde.JPG)  
 
 ## Wat plan je volgende week te doen?
 
