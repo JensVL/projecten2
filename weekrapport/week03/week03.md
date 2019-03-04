@@ -90,7 +90,10 @@
 ## Feedback technisch luik
 
 ### Algemeen
-Gecontroleerde labo's 1 - 2 - 3 zijn OK, vergeet basiszaken niet, zoals copy runnning startup. Binnen een virtuele omgeving niet zo belangrijk, maar in real omgevingen wel.
+* Gecontroleerde labo's 1 - 2 - 3 zijn OK, vergeet basiszaken niet, zoals copy runnning startup. Binnen een virtuele omgeving niet zo belangrijk, maar in real omgevingen wel.
+* Labo 4 fysiek te tonen op maandag 11 maart
+- - te weinig tijd om fysiek te implementeren.
+- - Labo 4 gedemonstreerd aan OR op do 28/2 tijdens les CN2 -> fysieke uitvoering OK.
 ### Yordi De Rijcke
 ### Olivier De Vriese
 ### Nathan Cammerman
