@@ -93,15 +93,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       custom_synced_folders(node.vm, host)
       forwarded_ports(node.vm, host)
 
-      if host['os'] == "windows"
-          
-      end
-
       # Add VM to a VirtualBox group
       node.vm.provider :virtualbox do |vb|
         vb.memory = host['memory'] if host.key? 'memory'
         vb.cpus = host['cpus'] if host.key? 'cpus'
-
+        vb.gui = host['gui']
         # WARNING: if the name of the current directory is the same as the
         # host name, this will fail.
         vb.customize ['modifyvm', :id, '--groups', PROJECT_NAME]
@@ -109,15 +105,30 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
       # Run configuration script for the VM
       if host['os'] == "windows"
-        config.vm.guest = :windows
+        # config.vm.guest = :windows
         config.vm.communicator = "winrm"
         config.winrm.username = host['winrm-user'] #"Administrator"
         config.winrm.password = host['winrm-pw'] #"Admin2019"  
 
+        # node.vm.provision 'shell', path: 'provisioning/' + host['name'] + '.ps1', privileged: true
+        provision   = "./provisioning"
+        iis         = host['iis']
+        asp         = host['asp']
+        sql         = host['sql']
 
+        config.vm.provision :shell,
+        path: provision + "/installiis.ps1",
+        args: ["-username " + iis['username'] + " -password " + iis['password'] + " -downloadpath  " + iis['downloadpath']]
+        config.vm.provision :shell,
+            path: provision + "/installasp.ps1",
+            args: ["-asp35 " + asp['asp35'] + " -asp45 " + asp['asp45']]
+        config.vm.provision :shell,
+            privileged: true,
+            path: provision + "/installsqlserver.ps1",
+            args: ["-downloadpath " + sql['downloadpath'] + " -instancename " + sql['instancename'] + " -rootpassword "+ sql['rootpassword'] + " -tcpportnr " + sql['tcpportnr'] + " -dbname " + sql['dbname'] + " -username " + sql['username'] + " -password " + sql['password']]
 
-        node.vm.provision 'shell', path: 'provisioning/' + host['name'] + '.ps1'
       else
+
         node.vm.provision 'shell', path: 'provisioning/' + host['name'] + '.sh'
       end
     end

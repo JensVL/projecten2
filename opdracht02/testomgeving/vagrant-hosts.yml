@@ -30,9 +30,26 @@
 # [1] http://docs.vagrantup.com/v2/synced-folders/basic_usage.html
 ---
 
-- name: yeetWisa1
-  box: yeet
+- name: wisaserver
+  box: wisaserver
   ip: 192.168.248.10
   os: windows
+  gui: false
   winrm-user: Administrator
   winrm-pw: Admin2019
+  iis:
+    username: ""
+    password: ""
+    downloadpath: ""
+  asp:
+    asp35: $true
+    asp45: $true
+  sql:
+      downloadpath: ""
+      instancename: ""
+      rootpassword: "Admin2019"
+      #NOTE: Port-number has to be between 49152 and 65535
+      tcpportnr: "50000"
+      dbname: "wisa"
+      username: "Administratr"
+      password: "Admin2019"
