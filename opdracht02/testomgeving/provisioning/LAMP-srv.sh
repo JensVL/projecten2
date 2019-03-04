@@ -30,15 +30,14 @@ export readonly PROVISIONING_FILES="${PROVISIONING_SCRIPTS}/files/${HOSTNAME}"
 source ${PROVISIONING_SCRIPTS}/util.sh
 # Actions/settings common to all servers
 source ${PROVISIONING_SCRIPTS}/common.sh
-
+# Password input
+source ${PROVISIONING_SCRIPTS}/.${HOSTNAME}.conf
+rm ${PROVISIONING_SCRIPTS}/.${HOSTNAME}.conf
 #------------------------------------------------------------------------------
 # Provision server
 #------------------------------------------------------------------------------
 
 info "Starting server specific provisioning tasks on ${HOSTNAME}"
-
-# TODO: insert code here, e.g. install Apache, add users (see the provided
-# functions in utils.sh), etc.
 
 # Update mirrors for intstall
 sudo dnf update -y
@@ -61,11 +60,14 @@ sudo systemctl enable mariadb
 sudo systemctl restart httpd
 sudo systemctl restart mariadb
 
+# Linux users setup
+echo -e "${linuxRootPasswd}\n${linuxRootPasswd}" | sudo passwd root
+echo -e "${linuxVagrantPasswd}\n${linuxVagrantPasswd}" | sudo passwd vagrant
+
 # MariaDB setup
 sudo mysqladmin -u root $mysqlPasswd
-mysql -u root -ppassword -e "DROP USER ''@'localhost';"
-mysql -u root -ppassword -e "DROP USER ''@'$(hostname)';"
-mysql -u root -ppassword -e "DROP USER ''@'localhost';"
-mysql -u root -ppassword -e "DROP USER ''@'$(hostname)';"
+mysql -u root -p$mysqlPasswd -e "DROP USER ''@'localhost';"
+mysql -u root -p$mysqlPasswd -e "DROP USER ''@'$(hostname)';"
+
 mysql restart
 
