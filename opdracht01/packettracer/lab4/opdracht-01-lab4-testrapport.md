@@ -58,3 +58,6 @@ De wachtwoorden voor router 1 tot en met 3 zijn succesvol geëncrypteerd.
 
 ## Static routes
 Alle pings waren vanop elke PC succesvol.
+
+#Test 2:
+alles wat nog niet in orde was in de eerste test is nu opgelost.
