@@ -51,6 +51,7 @@
 * Gestart testplan WISA.
 
 [Afbeelding individueel rapport tijdregistratie]
+[![Time-registration-week04-Nathan-Cammerman](week04-NathanCammerman.JPG)
 
 ### Matthias Van De Velde
 

@@ -20,35 +20,36 @@
 
 1. Complete WISA stack.
     - Verantwoordelijke: Matthias Van De Velde, Nathan Cammerman
-    - Tester: Yordi De Rijcke & Olivier De Vriese
+    - Tester: Jens Van Liefferinge
 2. Windows Server base box.
     - Verantwoordelijke: Matthias Van De Velde, Nathan Cammerman
-    - Tester: Yordi De Rijcke & Olivier De Vriese
+    - Tester: Jens Van Liefferinge
 3. WISA provisionscript(mits aanpassing vagrantfile): IIS, SQL Server, ASP.NET.
     - Verantwoordelijke: Matthias Van De Velde, Nathan Cammerman
-    - Tester: Yordi De Rijcke & Olivier De Vriese
+    - Tester: Jens Van Liefferinge
 4. Complete LAMP stack.
     - Verantwoordelijke: Yordi De Rijcke & Olivier De Vriese
-    - Tester: Matthias Van De Velde, Nathan Cammerman
+    - Tester: Jens Van Liefferinge
 5. LAMP provisionscript: Apache, MariaDb, Php.
     - Verantwoordelijke: Yordi De Rijcke & Olivier De Vriese
-    - Tester: Matthias Van De Velde, Nathan Cammerman
+    - Tester: Jens Van Liefferinge
 6. Hosts adden in vagrant-hosts.yml
     - Verantwoordelijke: Matthias Van De Velde
-    - Tester: Nathan Cammerman
+    - Tester: Jens Van Liefferinge
 7. Vagrant file aanpassen voor powershell commands.
     - Verantwoordelijke: Matthias Van De Velde
-    - Tester: Nathan Cammerman
+    - Tester: Jens Van Liefferinge
 
 
 ## Tijdbesteding
 
 | Student    | Geschat | Gerealiseerd |
 | :---       | ---:    | ---:         |
-| student1   |         |              |
-| student2   |         |              |
-| student3   |         |              |
-| student4   |         |              |
+| Matthias Van De Velde   |         |              |
+| Nathan Cammerman   |         |              |
+| Yordi De Rijcke |         |              |
+| Olivier De Vriese   |         |              |
+| Jens Van Liefferinge   |         |              |
 | **totaal** |         |              |
 
 (na oplevering van de taak een schermafbeelding toevoegen van rapport tijdbesteding voor deze taak)
