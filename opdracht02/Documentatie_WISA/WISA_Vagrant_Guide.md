@@ -55,10 +55,8 @@
 
 24. "Server Manager" starting at login (for non-Core) afzetten: Start -> powershell -> New-ItemProperty -Path HKLM:Software\Microsoft\Windows\CurrentVersion\policies\system -Name EnableLUA -PropertyType DWord -Value 0 -Force -> enter.
 
-25. Automatisering puppet instalaties: Start -> opwershell -> 
-reg add KEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System /v EnableLUA /d 0 /t REG_DWORD /f /reg:64 -> enter.
-
-26. Base WinRM Configuration: Start -> powershell -> secedit /export /cfg c:\secpol.cfg
+25. Base WinRM Configuration: Start -> powershell -> 
+secedit /export /cfg c:\secpol.cfg
 (gc C:\secpol.cfg).replace(“PasswordComplexity = 1”, “PasswordComplexity = 0”) | Out-File C:\secpol.cfg
 secedit /configure /db c:\windows\security\local.sdb /cfg c:\secpol.cfg /areas SECURITYPOLICY
 rm -force c:\secpol.cfg -confirm:$false
@@ -69,7 +67,7 @@ winrm set winrm/config/service @{AllowUnencrypted="true"}
 winrm set winrm/config/service/auth @{Basic="true"}
 sc config WinRM start= auto
 
-27. herstart de virtuele machine en sluit hem daarna af.
+26. herstart de virtuele machine en sluit hem daarna af.
 
 ### Vagrant eigen base box opstarten.
 
