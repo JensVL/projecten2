@@ -30,13 +30,13 @@
 # [1] http://docs.vagrantup.com/v2/synced-folders/basic_usage.html
 ---
 
-- name: wisaserver
+- name: wisastack
   box: fpkmatthi/Windows2016 
   ip: 192.168.248.10
   os: windows
   gui: false
-  winrm-user: Administrator
-  winrm-pw: Admin2019
+  winrm-user: vagrant
+  winrm-pw: vagrant
   iis:
     username: ""
     password: ""
@@ -48,8 +48,11 @@
       downloadpath: ""
       instancename: ""
       rootpassword: "Admin2019"
-      #NOTE: Port-number has to be between 49152 and 65535
+      # Port-number: [49152, 65535]
       tcpportnr: "50000"
-      dbname: "wisa"
-      username: "Administratr"
-      password: "Admin2019"
+      dbname: "vagrant"
+      username: "vagrant"
+      password: "vagrant"
+  forwarded_ports:
+    - guest: "3389"
+      host: "3389"

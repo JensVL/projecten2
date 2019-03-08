@@ -1,101 +1,135 @@
 # Testplan: Base box Vagrant (WISA)
 *Author: Nathan Cammerman*
 
+## Test Virtual Machine 
 
-## Eigen Base box gebruiken.
+### Boot VM
 
-### Base box maken:
-*In dit voorbeeld maken we gebruik van virtualbox en gaan we ervan uit dat U de windowsServer2016 iso heeft*.
+1. Start your virtual machine.
+```
+vagrant up
+```
 
-1. Open virtual box.
+### Test remote desktop enabled
 
-2. Klik op nieuw.
+1. Make a Remote Desktop Connection
+```
+vagrant rdp
+```
+3. Login using 'vagrant' without quotes.
 
-3. Geef het een naam, locatie, laat type op Microsoft Windows staan en selecteer de versie "Other Windows (64-bit)".
 
-4. Geef de virtuele machine een geheugengrootte van minimum 2 Gigabyte indien mogelijk.
+## Test WinRm turned on
 
-5. Kies optie: "Maak nieuwe virtuele hade schijf aan"
+1. Open a powershell terminal and type
 
-6. Kies optie: "VDI" 
+```
+Test-WSMan
+```
 
-7. Kies optie: "dynamisch gealloceerd"
+3. If WinRm is running you will see the following items: 
+```
+wsmid           : http://schemas.dmtf.org/wbem/wsman/identity/1/wsmanidentity.xsd
+ProtocolVersion : http://schemas.dmtf.org/wbem/wsman/1/wsman.xsd
+ProductVendor   : Microsoft Corporation
+ProductVersion  : OS: 0.0.0 SP: 0.0 Stack: 3.0
+```
 
-8. Kies uw opslaggrootte. Aanbevolen -> 100gb.
+### Test UAC turned off 
 
-9. Ga naar instellingen van uw virtuele machine.
+1. Open the powershell in your virtual machine.
 
-10. Onder netwerken mag er maar 1 adapter zijn en deze moet van het type "NAT" zijn.
+2. Type in the command 
+```
+REG QUERY HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\ /v EnableLUA
+```
+3. If the results read `NABLELUA REG_DWORD 0x1`, then UAC is enabled. If the output shows `ENABLELUA REG_DWORD 0x0`, then UAC is successfully disabled.
 
-11. onder opsclag in de instellingen klikt u op het CD icoontje en selecteerd u de WindowsServer2016Iso.
 
-12. (optioneel) Onder beeldscherm kan U het videogeheugen maximaal zetten om betere prestaties te bekomen.
+### Test shared folder enabled
 
-13. (optioneel) Onder Systeem en dan processor kan U dit ook verhogen om betere prestaties te bekomen.
+1. Open the powershell in your virtual machine.
 
-14. Start de virtuele machine door er op te klikken.
+2. Go to the root directory of the C drive.
+```
+cd /
+```
 
-15. Kies voor de opties English, English(Belgium), Belgium period.
+3. Check for the folder *vagrant* and try to access it.
+```
+dir vagrant
+cd vagrant
+```
 
-16. Kies voor desktop experience.
 
-17. Kies voor custom installation. Hierbij maak je een nieuwe partitie aan door op new te klikken. Ga dan verder.
+### Test internet connectivity
 
-18. Na het heropstarten verwijder je de iso onder apparaten.
+1. Open a browser in your virtual machine.
 
-19. Log in.
+2. Surf to a desired site.
 
-20. UAC afzetten: start -> Control panel -> System Security -> onder Action center kies **Change User Account Control settings** -> doe de sleepbalk helemaal naar beneden tot **Never notify** ->ok->herstart de machine.
+3. You should be able to access this site if you have an internet connection.
 
-21. Disable complex passwords afzetten: Start -> Open "Administrative Tool" -> select "Local Security Policy" -> vervang paswoord "Must Meet Complex Requirements option" naar "Disabled".
 
-22. Shutdown Event Tracker uitzetten: start -> start run applicatie -> geef "gpedit.msc" in -> klik op "Computer Configuration> Administrative Templates> System". Scroll naar beneden tot je "Display shutdown event tracker" ziet -> klik erop -> selecteer Disable (links bovenaan).
+### Test ping connection guest to host
 
-23. "Server Manager" starting at login (for non-Core) afzetten: Start -> powershell -> New-ItemProperty -Path HKLM:Software\Microsoft\Windows\CurrentVersion\policies\system -Name EnableLUA -PropertyType DWord -Value 0 -Force -> enter.
+1. Turn off the firewall of your host machine.
 
-24. Automatisering puppet instalaties: Start -> opwershell -> 
-reg add KEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System /v EnableLUA /d 0 /t REG_DWORD /f /reg:64 -> enter.
+2. Ping from your virtual machine to your host machine.
 
-25. Base WinRM Configuration: Start -> powershell -> secedit /export /cfg c:\secpol.cfg
-(gc C:\secpol.cfg).replace(“PasswordComplexity = 1”, “PasswordComplexity = 0”) | Out-File C:\secpol.cfg
-secedit /configure /db c:\windows\security\local.sdb /cfg c:\secpol.cfg /areas SECURITYPOLICY
-rm -force c:\secpol.cfg -confirm:$false
-winrm quickconfig -q
-winrm set winrm/config/winrs @{MaxMemoryPerShellMB="512"}
-winrm set winrm/config @{MaxTimeoutms="1800000"}
-winrm set winrm/config/service @{AllowUnencrypted="true"}
-winrm set winrm/config/service/auth @{Basic="true"}
-sc config WinRM start= auto
+3. You should see successful pings.
 
-26. herstart de virtuele machine en sluit hem daarna af.
+4. After you are done, please turn your firewall back on of your host machine.
 
-### Vagrant eigen base box opstarten.
 
-1. open cmd op je hast computer. Dit doe je door eerst naar start te gaan. Dan typ je "cmd" in en klik je er op.
 
-2. Navigeer je naar de gewenste directory door het commando "dir" gevolgd door het gewenste pad. gelieve een directory te kiezen die gemakkelijk navigerbaar is.
+## Vagrant Base box
 
-3. Nu gaan we van onze virtuele machine een base box maken. Dit doen we door in de cmd het volgend command in te geven: vagrant package --base *naam van uw Virtuele machine*.
-Dit maakt een package.box file. Deze stap kan lang duren.
+# Connect to the databases
 
-4. Vervolgens dient U het volgend e commando in te geven om de ze base box toe te voegen: vagrant box add --name *pad naar package.box file*. Deze stap kan lang duren.
+1. Open Microsoft SQL Server Management Studio with the following parameters:
 
-5. Vervolgens willen we de gewenste base box selecteren. Dit doen we door het commando: vagrant init *naam van de base box*
+```
+Server name: 192.168.248.10,50000
+Authentication: SQL Server Authentication
+Login: vagrant
+Password: vagrant
+```
 
-6. Vervolgens willen we de base box opstarten dit doen we door het commando: vagrant up
+# Deploying webapplicationserver
+## Requirements
+* Visual Studio 2017
+* Windows 2016 box up and provisioned
 
-7. Vervolgens willen we inloggen in onze base box. Dit doen we met het commando: vagrant ssh
+1. Download the web application from the following server.
+https://github.com/WebIII/08thBeerhallMvcCRUD/archive/master.zip
 
-8. Vervolgens start de base box zich op.
+2. Extract the folder to any location.
 
-### Vagrant base box opstarten van Vagrant server.
+3. Open the project with PROJECT_NAME.sln file (Allocated in the DOTNET project-map)
 
-1. open cmd op je hast computer. Dit doe je door eerst naar start te gaan. Dan typ je "cmd" in en klik je er op.
+4. Right click on the application in the solution explorer and select the “Publish” option
 
-2. Vervolgens willen we de gewenste base box selecteren van de vagrant server. Dit doen we door het commando: vagrant init *naam van de base box op de vagrant server*
+5. Create new publishing profile: “IIS, FTP, etc”
 
-3. Vervolgens willen we de base box opstarten dit doen we door het commando: vagrant up
+5. Enter following settings:
 
-4. Vervolgens willen we inloggen in onze base box. Dit doen we met het commando: vagrant ssh
+```
+Publish method: Web Deploy
+Server: 192.168.248.10
+Site name: Default Web Site
+User name: vagrant
+Password: vagrant
+Destination URL: http://192.168.248.10/Bierhall
+Validate connection and press “next”
+```
+6. Choose configuration option "Debug" and tik boxes "Remove additional files at destination" and "Exclude files from the App_Data folder" on. 
 
-5. Vervolgens start de base box zich op.
+7. Press Save and Publish the Application.
+
+
+## Test webapplicationserver
+
+1. To test, you can surf on your host-machine to 192.168.248.10 and the application should be running
+
+2. To verify the Database functionality: try to add, edit and delete information and reload the page after each operation.

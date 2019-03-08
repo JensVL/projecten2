@@ -3,9 +3,9 @@ Param(
   [String]$instancename  = "SQLEXPRESS",
   [String]$rootpassword = "root",
   [int]$tcpportnr = 50000,
-  [String]$dbname = "wisa",
-  [String]$username = "wisa",
-  [String]$password = "wisa"
+  [String]$dbname = "vagrant",
+  [String]$username = "vagrant",
+  [String]$password = "vagrant"
 )
 
 if($downloadpath.EndsWith("\")){

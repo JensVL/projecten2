@@ -27,7 +27,7 @@
 
 10. Onder netwerken mag er maar 1 adapter zijn en deze moet van het type "NAT" zijn.
 
-11. onder opsclag in de instellingen klikt u op het CD icoontje en selecteerd u de WindowsServer2016Iso.
+11. Onder opsclag in de instellingen klikt u op het CD icoontje en selecteerd u de WindowsServer2016Iso.
 
 12. (optioneel) Onder beeldscherm kan U het videogeheugen maximaal zetten om betere prestaties te bekomen.
 
@@ -55,8 +55,7 @@
 
 24. "Server Manager" starting at login (for non-Core) afzetten: Start -> powershell -> New-ItemProperty -Path HKLM:Software\Microsoft\Windows\CurrentVersion\policies\system -Name EnableLUA -PropertyType DWord -Value 0 -Force -> enter.
 
-25. Base WinRM Configuration: Start -> powershell -> 
-secedit /export /cfg c:\secpol.cfg
+25. Base WinRM Configuration: Start -> powershell -> secedit /export /cfg c:\secpol.cfg
 (gc C:\secpol.cfg).replace(“PasswordComplexity = 1”, “PasswordComplexity = 0”) | Out-File C:\secpol.cfg
 secedit /configure /db c:\windows\security\local.sdb /cfg c:\secpol.cfg /areas SECURITYPOLICY
 rm -force c:\secpol.cfg -confirm:$false
@@ -67,11 +66,15 @@ winrm set winrm/config/service @{AllowUnencrypted="true"}
 winrm set winrm/config/service/auth @{Basic="true"}
 sc config WinRM start= auto
 
-26. herstart de virtuele machine en sluit hem daarna af.
+26. creatie shared folder: Server manager dashboard -> Tools —> klik op "Computer Management" -> expand "System Tools" —> expand "Shared Folders" —> klik op "Shares" —> Selecteer "New Share" -> Wizard -> next -> typ het pad waar je de "shared folder" wilt of klik "browse" en maak een nieuwe folder met "Make new folder" (en kies dan dit pad) -> next -> naam + descriptie invullen -> selecteer gewenste optie -> finish
+
+27. Toestaan Remote Desktop: open server manager -> local Server -> klik op de "Disabled" tekst -> vanuit de property window, selecteer "Sta externe verbindingen met deze computer toe" -> klik "ok" -> Er komt een waarschuwings window  -> klik ok.
+
+28. Herstart de virtuele machine en sluit hem daarna af.
 
 ### Vagrant eigen base box opstarten.
 
-1. open cmd op je host computer. Dit doe je door eerst naar start te gaan. Dan typ je "cmd" in en klik je er op.
+1. Open cmd op je host computer. Dit doe je door eerst naar start te gaan. Dan typ je "cmd" in en klik je er op.
 
 2. Navigeer je naar de gewenste directory door het commando "dir" gevolgd door het gewenste pad. gelieve een directory te kiezen die gemakkelijk navigerbaar is.
 
@@ -99,3 +102,41 @@ Dit maakt een package.box file. Deze stap kan lang duren.
 4. Vervolgens willen we inloggen in onze base box. Dit doen we met het commando: vagrant ssh
 
 5. Vervolgens start de base box zich op.
+
+# Connect to the databases
+
+1. Open Microsoft SQL Server Management Studio with following parameters:
+
+```
+Server name: 192.168.248.10,50000
+Authentication: SQL Server Authentication
+Login: vagrant
+Password: vagrant
+```
+
+# Deploying webapplicationserver
+
+1. Open the project using the PROJECT_NAME.sln file (Located in the DOTNETproject-map)
+
+2. Right click on the application in the solution explorer and select the “Publish” option
+
+3. Create new publishing profile: “IIS, FTP, etc”
+
+4. Enter following settings:
+
+```
+Publish method: Web Deploy
+Server: 192.168.248.10
+Site name: Default Web Site
+User name: vagrant
+Password: vagrant
+Destination URL: http://192.168.248.10/Bierhalle
+Validate connection and press “next”
+```
+5. Chose configuration option "Debug" and tik boxes "Remove additional files at destination" and "Exclude files from the App_Data folder" on. 
+
+6. Press Save and Publish the Application.
+
+7. To test, you can surf on your host-machine to 192.168.248.10 and the application should be running
+
+8. To verify the Database functionality: try to add, edit and delete information and reload the page after each operation.
