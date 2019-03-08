@@ -27,7 +27,7 @@
 
 10. Onder netwerken mag er maar 1 adapter zijn en deze moet van het type "NAT" zijn.
 
-11. onder opsclag in de instellingen klikt u op het CD icoontje en selecteerd u de WindowsServer2016Iso.
+11. Onder opsclag in de instellingen klikt u op het CD icoontje en selecteerd u de WindowsServer2016Iso.
 
 12. (optioneel) Onder beeldscherm kan U het videogeheugen maximaal zetten om betere prestaties te bekomen.
 
@@ -43,17 +43,19 @@
 
 18. Na het heropstarten verwijder je de iso onder apparaten.
 
-19. Log in.
+19. Er wordt gevraagd naar een Naam en paswoord. Kies hiervoor een veilig paswoord(in ons geval gebruiken we Admin2019). Als gebruikersnaam kies je het beste "Administrator".
 
-20. UAC afzetten: start -> Control panel -> System Security -> onder Action center kies **Change User Account Control settings** -> doe de sleepbalk helemaal naar beneden tot **Never notify** ->ok->herstart de machine.
+20. Log in.
 
-21. Disable complex passwords afzetten: Start -> Open "Administrative Tool" -> select "Local Security Policy" -> vervang paswoord "Must Meet Complex Requirements option" naar "Disabled".
+21. UAC afzetten: start -> Control panel -> System Security -> onder Action center kies **Change User Account Control settings** -> doe de sleepbalk helemaal naar beneden tot **Never notify** ->ok->herstart de machine.
 
-22. Shutdown Event Tracker uitzetten: start -> start run applicatie -> geef "gpedit.msc" in -> klik op "Computer Configuration> Administrative Templates> System". Scroll naar beneden tot je "Display shutdown event tracker" ziet -> klik erop -> selecteer Disable (links bovenaan).
+22. Disable complex passwords afzetten: Start -> Open "Administrative Tool" -> select "Local Security Policy" -> vervang paswoord "Must Meet Complex Requirements option" naar "Disabled".
 
-23. "Server Manager" starting at login (for non-Core) afzetten: Start -> powershell -> New-ItemProperty -Path HKLM:Software\Microsoft\Windows\CurrentVersion\policies\system -Name EnableLUA -PropertyType DWord -Value 0 -Force -> enter.
+23. Shutdown Event Tracker uitzetten: start -> start run applicatie -> geef "gpedit.msc" in -> klik op "Computer Configuration> Administrative Templates> System". Scroll naar beneden tot je "Display shutdown event tracker" ziet -> klik erop -> selecteer Disable (links bovenaan).
 
-24. Base WinRM Configuration: Start -> powershell -> secedit /export /cfg c:\secpol.cfg
+24. "Server Manager" starting at login (for non-Core) afzetten: Start -> powershell -> New-ItemProperty -Path HKLM:Software\Microsoft\Windows\CurrentVersion\policies\system -Name EnableLUA -PropertyType DWord -Value 0 -Force -> enter.
+
+25. Base WinRM Configuration: Start -> powershell -> secedit /export /cfg c:\secpol.cfg
 (gc C:\secpol.cfg).replace(“PasswordComplexity = 1”, “PasswordComplexity = 0”) | Out-File C:\secpol.cfg
 secedit /configure /db c:\windows\security\local.sdb /cfg c:\secpol.cfg /areas SECURITYPOLICY
 rm -force c:\secpol.cfg -confirm:$false
@@ -64,13 +66,13 @@ winrm set winrm/config/service @{AllowUnencrypted="true"}
 winrm set winrm/config/service/auth @{Basic="true"}
 sc config WinRM start= auto
 
-25. Enable Remote desktop: Open Server Manager -> local server -> klik op de Disabled tekst -> selecteer “Allow remote connections to this Computer” ->Er komt een warning message, selecteer "OK" -> Enable Remote Desktop Add Firewall Rule.
+27. Toestaan Remote Desktop: open server manager -> local Server -> klik op de "Disabled" tekst -> vanuit de property window, selecteer "Sta externe verbindingen met deze computer toe" -> klik "ok" -> Er komt een waarschuwings window  -> klik ok.
 
-26. herstart de virtuele machine en sluit hem daarna af.
+26. Herstart de virtuele machine en sluit hem daarna af.
 
 ### Vagrant eigen base box opstarten.
 
-1. open cmd op je hast computer. Dit doe je door eerst naar start te gaan. Dan typ je "cmd" in en klik je er op.
+1. Open cmd op je host computer. Dit doe je door eerst naar start te gaan. Dan typ je "cmd" in en klik je er op.
 
 2. Navigeer je naar de gewenste directory door het commando "dir" gevolgd door het gewenste pad. gelieve een directory te kiezen die gemakkelijk navigerbaar is.
 
@@ -79,17 +81,17 @@ Dit maakt een package.box file. Deze stap kan lang duren.
 
 4. Vervolgens dient U het volgend e commando in te geven om de ze base box toe te voegen: vagrant box add --name *pad naar package.box file*. Deze stap kan lang duren.
 
-5. Hierna willen we de gewenste base box selecteren. Dit doen we door het commando: vagrant init *naam van de base box*
+5. Vervolgens willen we de gewenste base box selecteren. Dit doen we door het commando: vagrant init *naam van de base box*
 
-6. Nu willen we de base box opstarten dit doen we door het commando: vagrant up
+6. Hierna willen we de base box opstarten dit doen we door het commando: vagrant up
 
-7. Vervolgens willen we inloggen in onze base box. Dit doen we met het commando: vagrant ssh
+7. Nu willen we ons inloggen in onze base box. Dit doen we met het commando: vagrant ssh
 
-8. Ten slotte start de base box zich op.
+8. Vervolgens start de base box zich op.
 
 ### Vagrant base box opstarten van Vagrant server.
 
-1. open cmd op je hast computer. Dit doe je door eerst naar start te gaan. Dan typ je "cmd" in en klik je er op.
+1. open cmd op je host computer. Dit doe je door eerst naar start te gaan. Dan typ je "cmd" in en klik je er op.
 
 2. Vervolgens willen we de gewenste base box selecteren van de vagrant server. Dit doen we door het commando: vagrant init *naam van de base box op de vagrant server*
 
@@ -101,7 +103,7 @@ Dit maakt een package.box file. Deze stap kan lang duren.
 
 # Connect to the databases
 
-1. Open Microsoft SQL Server Management Studio met volgende parameters:
+1. Open Microsoft SQL Server Management Studio with following parameters:
 
 ```
 Server name: 192.168.248.10,50000
@@ -112,7 +114,7 @@ Password: vagrant
 
 # Deploying webapplicationserver
 
-1. Open het project met de PROJECT_NAAM.sln file (Gealloceerd in de DOTNETproject-map)
+1. Open the project using the PROJECT_NAME.sln file (Located in the DOTNETproject-map)
 
 2. Right click on the application in the solution explorer and select the “Publish” option
 
