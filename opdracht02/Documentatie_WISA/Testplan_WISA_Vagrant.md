@@ -1,103 +1,99 @@
 # Testplan: Base box Vagrant (WISA)
 *Author: Nathan Cammerman*
 
+## Test Virtual Machine 
 
-## Eigen Base box gebruiken.
+### Test Login
 
-### Base box maken:
-*In dit voorbeeld maken we gebruik van virtualbox en gaan we ervan uit dat U de windowsServer2016 iso heeft*.
+1. Start your virtual machine.
 
-1. Open virtual box.
+2. Use password "vagrant" to log into the virtual machine.
 
-2. Klik op nieuw.
 
-3. Geef het een naam, locatie, laat type op Microsoft Windows staan en selecteer de versie "Other Windows (64-bit)".
+## Test WinRm turned on
 
-4. Geef de virtuele machine een geheugengrootte van minimum 2 Gigabyte indien mogelijk.
+1. Open the powershell in your virtual machine.
 
-5. Kies optie: "Maak nieuwe virtuele hade schijf aan"
+2. type in the command `Test-WSMan`.
 
-6. Kies optie: "VDI" 
+3. If WinRm is running you will see the following items: the WS-Management identity schema, the protocol version, the product vendor, and the product version of the tested service.
 
-7. Kies optie: "dynamisch gealloceerd"
+### Test UAC turned off 
 
-8. Kies uw opslaggrootte. Aanbevolen -> 100gb.
+1. Open the powershell in your virtual machine.
 
-9. Ga naar instellingen van uw virtuele machine.
+2. type in the command `REG QUERY HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\ /v EnableLUA`.
 
-10. Onder netwerken mag er maar 1 adapter zijn en deze moet van het type "NAT" zijn.
+3. If the results read `NABLELUA REG_DWORD 0x1`, then UAC is enabled. If the output shows `ENABLELUA REG_DWORD 0x0`, then UAC is successfully disabled.
 
-11. onder opsclag in de instellingen klikt u op het CD icoontje en selecteerd u de WindowsServer2016Iso.
+4. If UAC is enabled, please refer to "User guide" Step 21.
 
-12. (optioneel) Onder beeldscherm kan U het videogeheugen maximaal zetten om betere prestaties te bekomen.
+### Test shared folder enabled
 
-13. (optioneel) Onder Systeem en dan processor kan U dit ook verhogen om betere prestaties te bekomen.
+1. Open the powershell in your virtual machine.
 
-14. Start de virtuele machine door er op te klikken.
+2. type in the command `Get-WmiObject -Class Win32_Share`.
+The Win32_Share WMI class returns all instances of shared folders on a computer.
 
-15. Kies voor de opties English, English(Belgium), Belgium period.
+3. If it is disabled please refer to "User guide" step XX.
 
-16. Kies voor desktop experience.
+### Test internet connectivity
 
-17. Kies voor custom installation. Hierbij maak je een nieuwe partitie aan door op new te klikken. Ga dan verder.
+1. Open a browser in your virtual machine.
 
-18. Na het heropstarten verwijder je de iso onder apparaten.
+2. Surf to a desired site.
 
-19. Log in.
+3. You should be able to access this site if you have an internet connection.
 
-20. UAC afzetten: start -> Control panel -> System Security -> onder Action center kies **Change User Account Control settings** -> doe de sleepbalk helemaal naar beneden tot **Never notify** ->ok->herstart de machine.
+### Test ping connection guest to host
 
-21. Disable complex passwords afzetten: Start -> Open "Administrative Tool" -> select "Local Security Policy" -> vervang paswoord "Must Meet Complex Requirements option" naar "Disabled".
+1. Turn off the firewall of your host machine.
 
-22. Shutdown Event Tracker uitzetten: start -> start run applicatie -> geef "gpedit.msc" in -> klik op "Computer Configuration> Administrative Templates> System". Scroll naar beneden tot je "Display shutdown event tracker" ziet -> klik erop -> selecteer Disable (links bovenaan).
+2. Ping from your virtual machine to your host machine.
 
-23. "Server Manager" starting at login (for non-Core) afzetten: Start -> powershell -> New-ItemProperty -Path HKLM:Software\Microsoft\Windows\CurrentVersion\policies\system -Name EnableLUA -PropertyType DWord -Value 0 -Force -> enter.
+3. You should see successful pings.
 
-24. Base WinRM Configuration: Start -> powershell -> secedit /export /cfg c:\secpol.cfg
-(gc C:\secpol.cfg).replace(“PasswordComplexity = 1”, “PasswordComplexity = 0”) | Out-File C:\secpol.cfg
-secedit /configure /db c:\windows\security\local.sdb /cfg c:\secpol.cfg /areas SECURITYPOLICY
-rm -force c:\secpol.cfg -confirm:$false
-winrm quickconfig -q
-winrm set winrm/config/winrs @{MaxMemoryPerShellMB="512"}
-winrm set winrm/config @{MaxTimeoutms="1800000"}
-winrm set winrm/config/service @{AllowUnencrypted="true"}
-winrm set winrm/config/service/auth @{Basic="true"}
-sc config WinRM start= auto
+4. After you are done, please turn your firewall back on of your host machine.
 
-25. Enable Remote desktop: Open Server Manager -> local server -> klik op de Disabled tekst -> selecteer “Allow remote connections to this Computer” ->Er komt een warning message, selecteer "OK" -> Enable Remote Desktop Add Firewall Rule.
+### Test remote desktop enabled
 
-26. herstart de virtuele machine en sluit hem daarna af.
+1. Open server manager on virtual machine.
 
-### Vagrant eigen base box opstarten.
+2. In the server manager dashboard you should see under remote desktop enabled.
 
-1. open cmd op je hast computer. Dit doe je door eerst naar start te gaan. Dan typ je "cmd" in en klik je er op.
+3. If it is disabled please follow step 27 of our "User guide".
 
-2. Navigeer je naar de gewenste directory door het commando "dir" gevolgd door het gewenste pad. gelieve een directory te kiezen die gemakkelijk navigerbaar is.
+## Vagrant Base box
 
-3. Nu gaan we van onze virtuele machine een base box maken. Dit doen we door in de cmd het volgend command in te geven: vagrant package --base *naam van uw Virtuele machine*.
-Dit maakt een package.box file. Deze stap kan lang duren.
+### Initializing box
 
-4. Vervolgens dient U het volgend e commando in te geven om de ze base box toe te voegen: vagrant box add --name *pad naar package.box file*. Deze stap kan lang duren.
+1. Open command prompt on host PC.
 
-5. Hierna willen we de gewenste base box selecteren. Dit doen we door het commando: vagrant init *naam van de base box*
+2. Navigate to desired location in the directory.
 
-6. Nu willen we de base box opstarten dit doen we door het commando: vagrant up
+3. In the command prompt use the command `vagrant init *name basebox*`
 
-7. Vervolgens willen we inloggen in onze base box. Dit doen we met het commando: vagrant ssh
+4. Don't close the command prompt you need it to persue the following steps.
 
-8. Ten slotte start de base box zich op.
+---
 
-### Vagrant base box opstarten van Vagrant server.
+### Startup box
 
-1. open cmd op je hast computer. Dit doe je door eerst naar start te gaan. Dan typ je "cmd" in en klik je er op.
+1. In the same command prompt use the command `vagrant up`. You don't need to specialize a basebox because you already have initialized it.
 
-2. Vervolgens willen we de gewenste base box selecteren van de vagrant server. Dit doen we door het commando: vagrant init *naam van de base box op de vagrant server*
+2. If everything went correct the base box should start up.
 
-3. Vervolgens willen we de base box opstarten dit doen we door het commando: vagrant up
+3. Don't close the command prompt you need it to persue the following steps.
 
-4. Vervolgens willen we inloggen in onze base box. Dit doen we met het commando: vagrant ssh
+---
 
-5. Vervolgens start de base box zich op.
+### Remote desktop connection
+
+1. In the same command prompt use the command `vagrant rdp` to log into the base box.
+
+2. Use password "vagrant" (without quotes) to gain access to the basebox.
+
+3. Now you should be able to use the basebox.
 
 # Connect to the databases
 
@@ -132,6 +128,8 @@ Validate connection and press “next”
 5. Chose configuration option "Debug" and tik boxes "Remove additional files at destination" and "Exclude files from the App_Data folder" on. 
 
 6. Press Save and Publish the Application.
+
+## Test webapplicationserver
 
 7. To test, you can surf on your host-machine to 192.168.248.10 and the application should be running
 
