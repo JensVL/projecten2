@@ -40,12 +40,18 @@ $admin.UserFlags.value = $admin.UserFlags.value -bor 0x10000
 $admin.CommitChanges()
 ```
 
-## Configure WinRM
+## Configure WinRM(normal prompt)
 ```Powershell
-winrm set winrm/config/client/auth '@{Basic="true"}'
-winrm set winrm/config/service/auth '@{Basic="true"}'
-winrm set winrm/config/service '@{AllowUnencrypted="true"}'
+winrm quickconfig -q
+winrm set winrm/config/winrs @{MaxMemoryPerShellMB="512"}
+winrm set winrm/config @{MaxTimeoutms="1800000"}
+winrm set winrm/config/service @{AllowUnencrypted="true"}
+winrm set winrm/config/service/auth @{Basic="true"}
+sc config WinRM start= auto
 ```
+
+## Disable Server Manager on startup
+In server manager, Manage -> Server ManagerProperties -> tick the box
 
 ## Allow Remote Desktop connections
 ```Powershell
@@ -55,7 +61,7 @@ $obj.SetAllowTsConnections(1,1)
 
 ## Enable firewall rules for RDP and WinRM
 ```Powershell
-Set-NetFirewallRule -Name WINRM-HTTP-In-TCP-PUBLIC -RemoteAddress Any
+Set-NetFirewallRule -Name WINRM-HTTP-IN-TCP-PUBLIC -RemoteAddress Any
 Set-NetFirewallRule -Name RemoteDesktop-UserMode-In-TCP -Enabled True
 ```
 

@@ -1,6 +1,6 @@
 Param(
-  [string]$username = "wisa",
-  [String]$password = "wisa",
+  [string]$username = "vagrant",
+  [String]$password = "vagrant",
   [string]$downloadpath = "C:\SetupMedia"
 )
 
