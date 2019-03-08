@@ -66,9 +66,11 @@ winrm set winrm/config/service @{AllowUnencrypted="true"}
 winrm set winrm/config/service/auth @{Basic="true"}
 sc config WinRM start= auto
 
+26. creatie shared folder: Server manager dashboard -> Tools —> klik op "Computer Management" -> expand "System Tools" —> expand "Shared Folders" —> klik op "Shares" —> Selecteer "New Share" -> Wizard -> next -> typ het pad waar je de "shared folder" wilt of klik "browse" en maak een nieuwe folder met "Make new folder" (en kies dan dit pad) -> next -> naam + descriptie invullen -> selecteer gewenste optie -> finish
+
 27. Toestaan Remote Desktop: open server manager -> local Server -> klik op de "Disabled" tekst -> vanuit de property window, selecteer "Sta externe verbindingen met deze computer toe" -> klik "ok" -> Er komt een waarschuwings window  -> klik ok.
 
-26. Herstart de virtuele machine en sluit hem daarna af.
+28. Herstart de virtuele machine en sluit hem daarna af.
 
 ### Vagrant eigen base box opstarten.
 
