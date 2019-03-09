@@ -1,4 +1,4 @@
-# Voortgangsrapport week nn
+# Voortgangsrapport week 05
 
 * Groep: 10
 * Datum voortgangsgesprek:
@@ -45,6 +45,12 @@
 
 [Afbeelding individueel rapport tijdregistratie]
 
+### Jens Van Liefferinge
+
+* Testrapport 1 WISA_Vagrant
+
+![Time-registration-week05-JensVanLiefferinge](week05-JensVanLiefferinge.png)
+
 ## Wat plan je volgende week te doen?
 
 ### Algemeen
@@ -52,6 +58,8 @@
 ### Olivier De Vriese
 ### Nathan Cammerman
 ### Matthias Van De Velde
+### Jens Van Liefferinge
+* Testrapporten
 
 ## Waar hebben jullie nog problemen mee?
 
