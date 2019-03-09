@@ -1,5 +1,61 @@
 # Testplan: Base box Vagrant (WISA)
-*Author: Nathan Cammerman*
+*Author: Nathan Cammerman, Matthias Van De Velde*
+
+## Configurable components (vagrant-hosts.yml
+* name: Name of the base box instance
+* box: Base box used for the instance
+* ip: Ip address that uses a host-only adapter to communicate with host
+* os: Operating system of the base box
+* gui: Wether to start the instance in headless(false) or normal mode(true) 
+* winrm-user: windows username to communicate through winrm
+* winrm-pw: password used to validate winrm-user
+
+* iis:
+    * username: Username of the iis-user. By default "vagrant"
+    * password: Password of the iis-user. By default "vagrant"
+    * downloadpath: Where to store temporary iis installation files. By Default "C:\SetupMedia"
+* asp:
+    * asp35: Install ASP.NET 3.5 (and lower) ($true / $false)
+    * asp45: Install ASP.NET 4.5 (and higher) ($true / $false)
+* sql:
+    * downloadpath: Where to store temporary sql installation files.
+    * instancename: SQL-Server instance name. By default "SQLEXPRESS"
+    * rootpassword: Password of root user. By default "root"
+    * tcpportnr: TCP-port used to connect to the database (between 49152 and 65535)
+    * dbname: Database name. By default "vagrant"
+    * username: Username of development account. By default "vagrant"
+    * password: Password to validate sql username. By default "vagrant"
+* forwarded_ports: Forwarded ports for RDP connection (guest and host are both obligatory)
+
+## Connect to SQL database
+1. Open SQL Server Management Studio on your host machine
+2. Use the following table to confgure the connection
+
+| Item | Value |
+| :--- | :--- |
+| Server name | [ip-address,port-number] |
+| Authentication | "SQL Server Authentication" |
+| Login | [username] |
+| Password | [password] | 
+
+
+## Deploy application using Visual Studio
+1. Right click on the application in the solution explorer and select the “Publish" option
+2. Create new publishing profile: “IIS, FTP, etc"
+3. Use the following table to configure the connection
+
+| Item | Value |
+| :--- | :--- |
+| Publish method | "Web Deploy" |
+| Server | [ip address of server] |
+| Site name | "Default Web Site" |
+| User name | [iis username] |
+| Password | [iis password] |
+| Destination URL | [leave empty] |
+
+4. Click on Validate Connection
+5. If the connection was successfull, click save and then publish
+
 
 
 ## Eigen Base box gebruiken.
@@ -133,7 +189,7 @@ Password: vagrant
 Destination URL: http://192.168.248.10/Bierhalle
 Validate connection and press “next”
 ```
-5. Chose configuration option "Debug" and tik boxes "Remove additional files at destination" and "Exclude files from the App_Data folder" on. 
+5. Choose configuration option "Debug" and tik boxes "Remove additional files at destination" and "Exclude files from the App_Data folder" on. 
 
 6. Press Save and Publish the Application.
 

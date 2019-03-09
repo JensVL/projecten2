@@ -51,13 +51,26 @@ sc config WinRM start= auto
 ```
 
 ## Disable Server Manager on startup
-In server manager, Manage -> Server ManagerProperties -> tick the box
+Go to Server Manager  
+-> Manage  
+-> Server ManagerProperties  
+-> Tick the box
+-> Ok
 
 ## Allow Remote Desktop connections
 ```Powershell
 $obj = Get-WmiObject -Class "Win32_TerminalServiceSetting" -Namespace root\cimv2\terminalservices
 $obj.SetAllowTsConnections(1,1)
 ```
+
+## Disable UAC
+Go to start  
+-> Control panel  
+-> System Security   
+-> Under Action center, choose **Change User Account Control settings**  
+-> Drag the bar all the way down to **Never notify**  
+-> Ok  
+-> Restart
 
 ## Enable firewall rules for RDP and WinRM
 ```Powershell
@@ -71,7 +84,7 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted
 ```
 
 ## Install important updates
-
+> Self explanatory
 
 ## Cleanup WinSXS update debris
 ```Powershell
@@ -98,26 +111,13 @@ wget http://download.sysinternals.com/files/SDelete.zip -OutFile sdelete.zip
 ./sdelete.exe -z c:
 ```
 
-## Shutdown
+## Shut down
 ```Powershell
 Stop-computer
 ```
 
 # Packaging and running the box
-1. Package the box
-```
-vagrant package --base <vm-name-in-virtualbox> --output <path/where/to/store/name.box>
-vagrant box add --name <name> path/where/to/store/name.box
-```
+> Refer to *WISA-guide-create-basebox* to packge and create the base box
 
-2. Navigate to the folder where you want  to initialize the box
-3. Initialize the environment
-```
-vagrant init <name>
-```
-4. Start the box
-```
-vagrant up
-```
 
 
