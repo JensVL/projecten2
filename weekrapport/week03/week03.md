@@ -56,7 +56,7 @@
 * Checklist: How to reset a Cisco router and switch with remaining settings
 * Configured basic static route network(3 PC’s + 3 switches + 3 routers)
 
-![Time-registration-week02-Nathan-Cammerman](week02-NathanCammerman.PNG)
+![Time-registration-week03-Nathan-Cammerman](week03-NathanCammerman.PNG)
 
 ### Matthias Van De Velde
 
@@ -68,7 +68,7 @@
 * Configured basic static route network(3 PC’s + 3 switches + 3 routers)
 * Checklist: How to reset a Cisco router and switch with remaining settings  
 
-![Time-registration-week02-Matthias-VanDeVelde](week02-MatthiasVanDeVelde.JPG)  
+![Time-registration-week03-Matthias-VanDeVelde](week03-MatthiasVanDeVelde.JPG)  
 
 ## Wat plan je volgende week te doen?
 
