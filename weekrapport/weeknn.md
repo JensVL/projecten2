@@ -8,7 +8,9 @@
 | Yordi De Rijcke |       |           |
 | Olivier De Vriese |       |           |
 | Nathan Cammerman |       |           |
+| Jens Van Liefferinge |      |         |
 | Matthias Van De Velde |       |           |
+
 
 ## Wat heb je deze week gerealiseerd?
 
