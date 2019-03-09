@@ -1,7 +1,7 @@
 # Voortgangsrapport week 04
 
 * Groep: 10
-* Datum voortgangsgesprek:04/03/2019
+* Datum voortgangsgesprek: 04/03/2019
 
 | Student  | Aanw. | Opmerking |
 | :---     | :---  | :---      |
@@ -73,7 +73,14 @@
 ### Yordi De Rijcke
 ### Olivier De Vriese
 ### Nathan Cammerman
+* User guide
+* Testplan
+* Dowloading base box
 ### Matthias Van De Velde
+* Base box rework
+* Implement provisioning for IIS, SQL Server and ASP.NET
+* Adding Windows support to Vagrantfile
+* Uploading base box to the cloud
 
 ## Waar hebben jullie nog problemen mee?
 
