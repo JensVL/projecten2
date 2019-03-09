@@ -51,7 +51,7 @@
 * Gestart testplan WISA.
 
 [Afbeelding individueel rapport tijdregistratie]
-[![Time-registration-week04-Nathan-Cammerman](week04-NathanCammerman.JPG)
+[![Time-registration-week04-Nathan-Cammerman](week04-NathanCammerman.png)
 
 ### Matthias Van De Velde
 
@@ -65,7 +65,7 @@
 * Gestart met WISA SQL Server provisioning.
 
 [Afbeelding individueel rapport tijdregistratie]
-![Time-registration-week04-Matthias-VanDeVelde](week04-MatthiasVanDeVelde.JPG)  
+![Time-registration-week04-Matthias-VanDeVelde](week04-MatthiasVanDeVelde.png)  
 
 ## Wat plan je volgende week te doen?
 
@@ -73,14 +73,17 @@
 ### Yordi De Rijcke
 ### Olivier De Vriese
 ### Nathan Cammerman
-* User guide
-* Testplan
+* Wisa testplan maken
 * Dowloading base box
+* Technische documentatie maken
+* Gebruikersdocumentatie maken
+* Documentatie Vagrant lezen
 ### Matthias Van De Velde
 * Base box rework
 * Implement provisioning for IIS, SQL Server and ASP.NET
 * Adding Windows support to Vagrantfile
 * Uploading base box to the cloud
+* Documentatie Vagrant lezen
 
 ## Waar hebben jullie nog problemen mee?
 

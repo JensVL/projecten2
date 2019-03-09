@@ -8,6 +8,7 @@
 | Yordi De Rijcke |       |           |
 | Olivier De Vriese |       |           |
 | Nathan Cammerman |       |           |
+| Jens Van Liefferinge |      |         |
 | Matthias Van De Velde |       |           |
 
 ## Wat heb je deze week gerealiseerd?
@@ -16,8 +17,12 @@
 
 [Afbeelding huidige toestand Kanban-bord(en) invoegen]
 
-* ...
-* ...
+* Windows 2016 base box gemaakt
+* Windows 2016 base box geüpload op Vagrant Cloud
+* Support voor windows in Vagrantfile toegevoegd
+* Provisioning scripts voor IIS, SQL Server and ASP.NET toegevoegd
+* Gebruikers- en technische documentatie voor WISA stack toegevoegd
+* Eerste testplan en testrapport voor WISA stack toegevoegd
 
 [Afbeelding teamoverzicht tijdregistratie onderverdeeld per deelopdracht]
 
@@ -35,15 +40,25 @@
 
 ### Nathan Cammerman
 
-* ...
+* Technische documentatie aanvullen
+* Gebruikersdocumentatie aanvullen
+* Wisa Testplan
+* Windows support aan Vagrantfile toegevoegd
+* Forwarded ports aan vagrant-hosts.yml toegevoegd
 
-[Afbeelding individueel rapport tijdregistratie]
+![Time-registration-week05-NathanCammerman](week05-NathanCammerman.png)
 
 ### Matthias Van De Velde
 
-* ...
+* Base box reworked
+* Fixed RDP connection firewall rules
+* Edited provisioning scripts
+* Forwarded ports aan vagrant-hosts.yml toegevoegd
+* Technische documentatie aanvullen
+* Gebruikersdocumentatie aanvullen
+* Windows support aan Vagrantfile toegevoegd
 
-[Afbeelding individueel rapport tijdregistratie]
+![Time-registration-week05-MatthiasVanDeVelde](week05-MatthiasVanDeVelde.png)
 
 ### Jens Van Liefferinge
 
@@ -57,7 +72,9 @@
 ### Yordi De Rijcke
 ### Olivier De Vriese
 ### Nathan Cammerman
+* WISA Proof of concept op Lightsail
 ### Matthias Van De Velde
+* WISA Proof of concept op Lightsail
 ### Jens Van Liefferinge
 * Testrapporten
 
