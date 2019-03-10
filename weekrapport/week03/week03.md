@@ -35,7 +35,7 @@
 * Labo3: Development + testing
 * Trello configuratie
 
-[Afbeelding individueel rapport tijdregistratie]
+![Time-registration-week03-Yordi-De-Rijcke](week03-YordiDeRijcke.PNG)
 
 ### Olivier De Vriese
 
@@ -45,7 +45,7 @@
 * Labo4: Testing
 * Cheatsheet aangevuld
 
-[Afbeelding individueel rapport tijdregistratie]
+![Time-registration-week03-Olivier-De-Vriese](week03-OlivierDeVriese.jpg)
 
 ### Nathan Cammerman
  
