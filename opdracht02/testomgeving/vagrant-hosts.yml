@@ -5,7 +5,7 @@
 # have a `name:`.  Other optional settings that can be specified:
 #
 # * `box`: choose another base box instead of the default one specified in
-#          Vagrantfile. A box name in the form `USER/BOX` (e.g.
+#           Vagrantfile. A box name in the form `USER/BOX` (e.g.
 #          `bertvv/centos72`) is fetched from Atlas.
 # * `box_url`: Download the box from the specified URL instead of from Atlas.
 # * `ip`: by default, an IP will be assigned by DHCP. If you want a fixed
@@ -30,6 +30,30 @@
 # [1] http://docs.vagrantup.com/v2/synced-folders/basic_usage.html
 ---
 
-- name: LAMP-srv
-  ip: 192.168.2.2
+- name: wisastack
+  box: fpkmatthi/Windows2016 
+  ip: 192.168.248.10
+  os: windows
+  gui: false
+  winrm-user: vagrant
+  winrm-pw: vagrant
+  iis:
+    username: ""
+    password: ""
+    downloadpath: ""
+  asp:
+    asp35: $true
+    asp45: $true
+  sql:
+      downloadpath: ""
+      instancename: ""
+      rootpassword: "Admin2019"
+      # Port-number: [49152, 65535]
+      tcpportnr: "50000"
+      dbname: "vagrant"
+      username: "vagrant"
+      password: "vagrant"
+  forwarded_ports:
+    - guest: "3389"
+      host: "3389"
 

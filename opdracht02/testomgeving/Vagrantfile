@@ -78,9 +78,46 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       node.vm.network :private_network, network_options(host)
       config.vm.network "forwarded_port", guest: 80, host: 8080 # Port-Forward Apache
       custom_synced_folders(node.vm, host)
+      forwarded_ports(node.vm, host)
+
+      # Add VM to a VirtualBox group
+      node.vm.provider :virtualbox do |vb|
+        vb.memory = host['memory'] if host.key? 'memory'
+        vb.cpus = host['cpus'] if host.key? 'cpus'
+        vb.gui = host['gui']
+        # WARNING: if the name of the current directory is the same as the
+        # host name, this will fail.
+        vb.customize ['modifyvm', :id, '--groups', PROJECT_NAME]
+      end
 
       # Run configuration script for the VM
-      node.vm.provision 'shell', path: 'provisioning/' + host['name'] + '.sh'
+      if host['os'] == "windows"
+        # config.vm.guest = :windows
+        config.vm.communicator = "winrm"
+        config.winrm.username = host['winrm-user'] #"Administrator"
+        config.winrm.password = host['winrm-pw'] #"Admin2019"  
+
+        # node.vm.provision 'shell', path: 'provisioning/' + host['name'] + '.ps1', privileged: true
+        provision   = "./provisioning"
+        iis         = host['iis']
+        asp         = host['asp']
+        sql         = host['sql']
+
+        config.vm.provision :shell,
+        path: provision + "/installiis.ps1",
+        args: ["-username " + iis['username'] + " -password " + iis['password'] + " -downloadpath  " + iis['downloadpath']]
+        config.vm.provision :shell,
+            path: provision + "/installasp.ps1",
+            args: ["-asp35 " + asp['asp35'] + " -asp45 " + asp['asp45']]
+        config.vm.provision :shell,
+            privileged: true,
+            path: provision + "/installsqlserver.ps1",
+            args: ["-downloadpath " + sql['downloadpath'] + " -instancename " + sql['instancename'] + " -rootpassword "+ sql['rootpassword'] + " -tcpportnr " + sql['tcpportnr'] + " -dbname " + sql['dbname'] + " -username " + sql['username'] + " -password " + sql['password']]
+
+      else
+
+        node.vm.provision 'shell', path: 'provisioning/' + host['name'] + '.sh'
+      end
     end
   end
 end

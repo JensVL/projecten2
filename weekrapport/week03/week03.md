@@ -56,7 +56,7 @@
 * Checklist: How to reset a Cisco router and switch with remaining settings
 * Configured basic static route network(3 PC’s + 3 switches + 3 routers)
 
-![Time-registration-week02-Nathan-Cammerman](week02-NathanCammerman.PNG)
+![Time-registration-week03-Nathan-Cammerman](week03-NathanCammerman.PNG)
 
 ### Matthias Van De Velde
 
@@ -68,7 +68,7 @@
 * Configured basic static route network(3 PC’s + 3 switches + 3 routers)
 * Checklist: How to reset a Cisco router and switch with remaining settings  
 
-![Time-registration-week02-Matthias-VanDeVelde](week02-MatthiasVanDeVelde.JPG)  
+![Time-registration-week03-Matthias-VanDeVelde](week03-MatthiasVanDeVelde.JPG)  
 
 ## Wat plan je volgende week te doen?
 
@@ -90,7 +90,10 @@
 ## Feedback technisch luik
 
 ### Algemeen
-Gecontroleerde labo's 1 - 2 - 3 zijn OK, vergeet basiszaken niet, zoals copy runnning startup. Binnen een virtuele omgeving niet zo belangrijk, maar in real omgevingen wel.
+* Gecontroleerde labo's 1 - 2 - 3 zijn OK, vergeet basiszaken niet, zoals copy runnning startup. Binnen een virtuele omgeving niet zo belangrijk, maar in real omgevingen wel.
+* Labo 4 fysiek te tonen op maandag 11 maart
+- - te weinig tijd om fysiek te implementeren.
+- - Labo 4 gedemonstreerd aan OR op do 28/2 tijdens les CN2 -> fysieke uitvoering OK.
 ### Yordi De Rijcke
 ### Olivier De Vriese
 ### Nathan Cammerman
