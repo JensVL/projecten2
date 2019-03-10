@@ -47,8 +47,8 @@
 | :---       | ---:    | ---:         |
 | Yordi De Rijcke   |     6    |      5.5       |
 | Olivier De Vriese   |    6.5     |     5.5         |
-| Nathan Cammerman   |     13    |              |
-| Matthias Van De Velde   |    13     |              |
-| **totaal** |         |              |
+| Nathan Cammerman   |     13    |      17.5        |
+| Matthias Van De Velde   |    13     |     18.8         |
+| **totaal** |    38.5     |       47.3       |
 
-(na oplevering van de taak een schermafbeelding toevoegen van rapport tijdbesteding voor deze taak)
+![Time-registration-week03](Time-registration-week03.png)
