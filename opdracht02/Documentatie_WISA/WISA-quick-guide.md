@@ -1,4 +1,5 @@
 # WISA - A quick guide to create and configure a windows 2016 base box
+*Authors: Nathan Cammerman, Matthias Van De Velde*
 
 # Requirements
 1. Virtualbox
