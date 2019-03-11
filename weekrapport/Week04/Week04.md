@@ -71,7 +71,15 @@
 
 ### Algemeen
 ### Yordi De Rijcke
+* Configuratie Linux
+* Configuratie MariaDB
+* Installscript verbeteren
+
 ### Olivier De Vriese
+* Configuratie Linux
+* Configuratie MariaDB
+* Installscript verbeteren
+
 ### Nathan Cammerman
 * Wisa testplan maken
 * Dowloading base box
@@ -87,7 +95,7 @@
 
 ## Waar hebben jullie nog problemen mee?
 
-* ...
+* Olivier & Yordi: Tijdsregistratie beter bijhouden
 * ...
 
 ## Feedback technisch luik
