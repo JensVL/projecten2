@@ -58,4 +58,21 @@
   forwarded_ports:
     - guest: "3389"
       host: "3389"
+- name: LAMP-srv
+  box: YordiDerijcke/FedoraServer
+  ip: 192.168.248.11
+  os: linux
+  gui: false
+  memory: 8192
+  cpus: 4
+  linux:
+    rootPassword: "toor"
+  mariaDB:
+    rootPassword: "toor"
+    dbName: "vagrant"
+    username: "vagrant"
+    password: "vagrant"
+  forwarded_ports:
+    - guest: 80
+      host: 8080
 
