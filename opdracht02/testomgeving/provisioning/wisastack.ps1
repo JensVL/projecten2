@@ -10,9 +10,8 @@ Param(
   [string]$iisusername = "vagrant",
   [String]$iispassword = "vagrant",
 
-  [string]$downloadpath = "C:\SetupMedia",
   [boolean]$asp35 = $true,
-  [boolean]$asp45 = $true,
+  [boolean]$asp45 = $true
 
 )
 
@@ -47,7 +46,7 @@ if($asp45){
 }
 
 
-//
+
 $instancename = $instancename.ToUpper()
 
 if($tcpportnr -lt 49152 -or $tcpportnr -gt 65535){
