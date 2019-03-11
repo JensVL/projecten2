@@ -36,6 +36,7 @@
 * Installatiescript verbeterd
 
 [Afbeelding individueel rapport tijdregistratie]
+![Time-registration-week04-Yordi-DeRijcke](week4-5-YordiDR.JPG)
 
 ### Olivier De Vriese
 * Linux configuratie
@@ -43,6 +44,7 @@
 * Installatiescript verbeterd
 
 [Afbeelding individueel rapport tijdregistratie]
+![Time-registration-week04-Olivier-DeVriese](week4-5-OlivierDV.JPG)
 
 ### Nathan Cammerman
 
