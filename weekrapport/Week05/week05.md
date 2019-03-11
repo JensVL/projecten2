@@ -15,7 +15,7 @@
 
 ### Algemeen
 
-[Afbeelding huidige toestand Kanban-bord(en) invoegen]
+![Kanban-bord](week05-Kanbanbord.png)
 
 * Windows 2016 base box gemaakt
 * Windows 2016 base box geüpload op Vagrant Cloud
@@ -24,7 +24,7 @@
 * Gebruikers- en technische documentatie voor WISA stack toegevoegd
 * Eerste testplan en testrapport voor WISA stack toegevoegd
 
-[Afbeelding teamoverzicht tijdregistratie onderverdeeld per deelopdracht]
+![Time-per-assignment](week05-time-per-assignment.png)
 
 ### Yordi De Rijcke
 
