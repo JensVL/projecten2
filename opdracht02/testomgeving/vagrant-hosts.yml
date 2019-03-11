@@ -31,14 +31,14 @@
 ---
 
 - name: wisastack
-  box: JonasV/WindowsServer2016
+  box: fpkmatthi/Windows2016
   ip: 192.168.248.10
   os: windows
   gui: false
-  memory: 4096
-  cpus: 2
-  winrm-user: vagrant
-  winrm-pw: vagrant
+  memory: 8192
+  cpus: 3
+  # winrm-user: vagrant
+  # winrm-pw: vagrant
   iis:
     username: ""
     password: ""
@@ -49,7 +49,7 @@
   sql:
       downloadpath: ""
       instancename: ""
-      rootpassword: "Admin2019"
+      rootpassword: "root"
       # Port-number: [49152, 65535]
       tcpportnr: "50000"
       dbname: "vagrant"
