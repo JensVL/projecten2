@@ -14,7 +14,6 @@
 
 ### Algemeen
 
-[Afbeelding huidige toestand Kanban-bord(en) invoegen]
 
 * Configured IPv6 static and default routes
 * Accessed and Configured switch with basic settings through console connection
@@ -26,7 +25,7 @@
 * Checklist: How to reset a Cisco router and switch with remaining settings
 * Cheat sheet with basic IOS commands
 
-[Afbeelding teamoverzicht tijdregistratie onderverdeeld per deelopdracht]
+![Time-per-assignment](week03-time-per-assignment.png)
 
 ### Yordi De Rijcke
 

@@ -14,8 +14,6 @@
 
 ### Algemeen
 
-[Afbeelding huidige toestand Kanban-bord(en) invoegen]
-
 * Labo 4 fysiek gedeelte.
 * Gestart met WISA configuratie windows server.
 * Gestart met WISA creatie Windows Server base box.
@@ -27,7 +25,7 @@
 * Gestart met LAMP installatiescript.
 * Gestart met LAMP configuratie Apache.
 
-[Afbeelding teamoverzicht tijdregistratie onderverdeeld per deelopdracht]
+![Time-per-assignment](week04-time-per-assignment.png)
 
 ### Yordi De Rijcke
 
