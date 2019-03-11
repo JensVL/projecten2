@@ -19,6 +19,7 @@ if($downloadpath.EndsWith("\")){
     $computerName.Remove($computerName.LastIndexOf("\"))
 }
 
+# Install + configure IIS
 Install-WindowsFeature Web-Server, Web-Mgmt-Service -IncludeManagementTools > $null
 
 mkdir $downloadpath
@@ -36,7 +37,7 @@ Set-Acl "C:\inetpub\wwwroot" $Acl
 [void][Microsoft.Web.Management.Server.ManagementAuthorization]::Grant($iisusername, "Default Web Site", $FALSE)
 
 
-
+# Install ASP.NET
 if($asp35){
     Install-WindowsFeature "Web-Asp-Net" > $null
 }
@@ -46,7 +47,7 @@ if($asp45){
 }
 
 
-
+# Install + configure SQL Server
 $instancename = $instancename.ToUpper()
 
 if($tcpportnr -lt 49152 -or $tcpportnr -gt 65535){
@@ -68,3 +69,40 @@ Invoke-Sqlcmd -InputFile "C:\vagrant\provisioning\configuresqlserver.sql" -Serve
 Set-ItemProperty -path "HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\MSSQL14.SQLEXPRESS\MSSQLServer\SuperSocketNetLib\Tcp\IPAll" -name TcpPort -value $tcpportnr
 Restart-Service -Force "MSSQL`$$instancename" > $null
 New-NetFirewallRule -DisplayName "Allow inbound sqlserver" -Direction Inbound -LocalPort $tcpportnr -Protocol TCP -Action Allow > $null
+
+
+
+# Deploy .net app
+[string]$username="vagrant"
+[string]$downloadlink="https://github.com/rxtur/BlogEngine.NET/releases/download/v3.3.6.0/3360.zip"
+[string]$downloadlinkpath="C:\Users\" + $username + "\Documents\aspdotnetapp.zip"
+[string]$outpath="C:\inetpub\wwwroot\"
+
+
+## Downloading from link
+Write-Host("Downloading zip")
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+Invoke-WebRequest $downloadlink -OutFile $downloadlinkpath
+
+## Delete wwwroot files and folders
+Write-Host("clearing wwwroot")
+Get-ChildItem -Path C:\inetpub\wwwroot -Include *.* -File -Recurse | foreach {$_.Delete()}
+
+##  Unpacking download
+Write-Host("Unpacking zip")
+Add-Type -AssemblyName System.IO.Compression.FileSystem
+[System.IO.Compression.ZipFile]::ExtractToDirectory($downloadlinkpath, $outpath)
+Write-Host("Zip unpacked")
+
+## Setting permissions
+$accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("IIS_IUSRS", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow")
+
+$AclAppData = Get-Acl "C:\inetpub\wwwroot\App_Data"
+$AclCustom = Get-Acl "C:\inetpub\wwwroot\Custom"
+
+$AclAppData.AddAccessRule($accessRule)
+$AclCustom.AddAccessRule($accessRule)
+
+Set-Acl -Path "C:\inetpub\wwwroot\App_Data" -ACLObject $AclAppData
+Set-Acl -Path "C:\inetpub\wwwroot\Custom" -ACLObject $AclCustom
+
