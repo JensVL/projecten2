@@ -23,18 +23,24 @@
 * Provisioning scripts voor IIS, SQL Server and ASP.NET toegevoegd
 * Gebruikers- en technische documentatie voor WISA stack toegevoegd
 * Eerste testplan en testrapport voor WISA stack toegevoegd
+* Linux configuratie
+* MariaDB configuratie
+* Installatiescript verbeterd
 
 [Afbeelding teamoverzicht tijdregistratie onderverdeeld per deelopdracht]
 
 ### Yordi De Rijcke
 
-* ...
+* Linux configuratie
+* MariaDB configuratie
+* Installatiescript verbeterd
 
 [Afbeelding individueel rapport tijdregistratie]
 
 ### Olivier De Vriese
-
-* ...
+* Linux configuratie
+* MariaDB configuratie
+* Installatiescript verbeterd
 
 [Afbeelding individueel rapport tijdregistratie]
 
@@ -70,7 +76,13 @@
 
 ### Algemeen
 ### Yordi De Rijcke
+* LAMP proof of concept Drupal
+* Documentatie schrijven
+
 ### Olivier De Vriese
+* LAMP proof of concept Drupal
+* Documentatie schrijven
+
 ### Nathan Cammerman
 * WISA Proof of concept op Lightsail
 ### Matthias Van De Velde
