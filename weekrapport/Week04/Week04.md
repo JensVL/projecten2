@@ -35,6 +35,7 @@
 * Gestart met LAMP configuratie Apache.
 
 [Afbeelding individueel rapport tijdregistratie]
+![Time-registration-week04-Yordi-DeRijcke](week4-5-YordiDR.JPG)
 
 ### Olivier De Vriese
 
@@ -42,6 +43,7 @@
 * Gestart met LAMP configuratie Apache.
 
 [Afbeelding individueel rapport tijdregistratie]
+![Time-registration-week04-Olivier-DeVriese](week4-5-OlivierDV.JPG)
 
 ### Nathan Cammerman
 
@@ -71,7 +73,15 @@
 
 ### Algemeen
 ### Yordi De Rijcke
+* Configuratie Linux
+* Configuratie MariaDB
+* Installscript verbeteren
+
 ### Olivier De Vriese
+* Configuratie Linux
+* Configuratie MariaDB
+* Installscript verbeteren
+
 ### Nathan Cammerman
 * Wisa testplan maken
 * Dowloading base box
@@ -87,7 +97,7 @@
 
 ## Waar hebben jullie nog problemen mee?
 
-* ...
+* Olivier & Yordi: Tijdsregistratie beter bijhouden
 * ...
 
 ## Feedback technisch luik
