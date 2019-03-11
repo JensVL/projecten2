@@ -80,24 +80,35 @@ Password: vagrant
 * Visual Studio 2017
 * Windows 2016 box up and provisioned
 
-1. Download the web application from the following server.
-https://github.com/WebIII/08thBeerhallMvcCRUD/archive/master.zip
+1. Download the following web application.  
+https://code.msdn.microsoft.com/ASPNET-Web-Deployment-c2d409f9/file/116730/2/ASP.NET%20Web%20Deployment%20using%20Visual%20Studio.zip
 2. Extract the folder to any location.
-3. Open the project with PROJECT_NAME.sln file (Allocated in the DOTNET project-map)
-4. Right click on the application in the solution explorer and select the “Publish” option
+3. Open the .sln-file in `ContosoUniversity-End/`
+4. Right click on the application(not the solution itself) in the solution explorer and select the “Publish” option
 5. Create new publishing profile: “IIS, FTP, etc”
 6. Enter following settings:
 ```
 Publish method: Web Deploy
 Server: 192.168.248.10
-Site name: Default Web Site
+Site name: Default Web Site/ContosoUniversity
 User name: vagrant
 Password: vagrant
-Destination URL: http://192.168.248.10/Bierhall
+Destination URL: http://192.168.248.10/ContosoUniversity
 Validate connection and press “next”
 ```
 7. Choose configuration option "Debug" and tik boxes "Remove additional files at destination" and "Exclude files from the App_Data folder" on. 
-8. Press Save and Publish the Application.
+8. Under Databases, configure both connection strings by clicking on the triple dot button. Both have the same configuration
+![database-connectionstring-config](database-connectionstring-config.png)
+
+8. Press Save.
+9. Go to the properties of the the application.
+10. Under Application, set the target framework to .NET Framework 4.6
+11. Go to Package/Publish SQL and click on import from Web.config 
+12. Configure both connection strings by clicking on the triple dot button. Both have the same configuration
+![database-connectionstring-config](database-connectionstring-config.png)
+12. Press Ctrl + Shift + S to save everything
+13. Go back to the publish page by right clicking on the application and selecting publish.
+14. Chcekc if the customProfile is selected and press publish
 
 
 ### Test webapplicationserver
