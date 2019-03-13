@@ -113,12 +113,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         iis         = host['iis']
         asp         = host['asp']
         sql         = host['sql']
-
+        
         config.vm.provision :shell,
           privileged: true,
           path: 'provisioning/' + host['name'] + '.ps1', # "/installsqlserver.ps1",
-          args: ["-downloadpath " + sql['downloadpath'] + " -instancename " + sql['instancename'] + " -rootpassword "+ sql['rootpassword'] + " -tcpportnr " + sql['tcpportnr'] + " -dbname " + sql['dbname'] + " -sqlusername " + sql['username'] + " -sqlpassword " + sql['password'] + "-iisusername " + iis['username'] + " -iispassword " + iis['password'] + " -downloadpath  " + iis['downloadpath'] + "-asp35 " + asp['asp35'] + " -asp45 " + asp['asp45']]
-
+          args: ["-downloadpath " + sql['downloadpath'] + " -instancename " + sql['instancename'] + " -rootpassword "+ sql['rootpassword'] + " -tcpportnr " + sql['tcpportnr'] + " -dbname " + sql['dbname'] + " -sqlusername " + sql['username'] + " -sqlpassword " + sql['password'] + "-iisusername " + iis['username'] + " -iispassword " + iis['password'] + " -asp35 " + asp['asp35'] + " -asp45 " + asp['asp45'] + " -blogdemo " + host['blogdemo']]
       else
 
         node.vm.provision 'shell', path: 'provisioning/' + host['name'] + '.sh'

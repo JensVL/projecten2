@@ -35,8 +35,8 @@
   ip: 192.168.248.10
   os: windows
   gui: false
-  memory: 8192
-  cpus: 3
+  memory: 4096
+  cpus: 2
   # winrm-user: vagrant
   # winrm-pw: vagrant
   iis:
@@ -58,4 +58,5 @@
   forwarded_ports:
     - guest: "3389"
       host: "3389"
+  blogdemo: $true
 

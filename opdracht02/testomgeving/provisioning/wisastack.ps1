@@ -11,15 +11,18 @@ Param(
   [String]$iispassword = "vagrant",
 
   [boolean]$asp35 = $true,
-  [boolean]$asp45 = $true
+  [boolean]$asp45 = $true,
 
+  [boolean]$blogdemo = $false
 )
 
 if($downloadpath.EndsWith("\")){
     $computerName.Remove($computerName.LastIndexOf("\"))
 }
 
+
 # Install + configure IIS
+Write-Host('Installing IIS...')
 Install-WindowsFeature Web-Server, Web-Mgmt-Service -IncludeManagementTools > $null
 
 mkdir $downloadpath
@@ -38,6 +41,7 @@ Set-Acl "C:\inetpub\wwwroot" $Acl
 
 
 # Install ASP.NET
+Write-Host('Installing ASP.NET...')
 if($asp35){
     Install-WindowsFeature "Web-Asp-Net" > $null
 }
@@ -48,6 +52,7 @@ if($asp45){
 
 
 # Install + configure SQL Server
+Write-Host('Installing SQL Server...')
 $instancename = $instancename.ToUpper()
 
 if($tcpportnr -lt 49152 -or $tcpportnr -gt 65535){
@@ -63,7 +68,6 @@ Start-Process -FilePath $downloadpath\SQLEXPR_x64_ENU.exe -WorkingDirectory $dow
 Start-Process -FilePath $downloadpath\SQLEXPR_x64_ENU\SETUP.EXE -ArgumentList "/Q /Action=install /IAcceptSQLServerLicenseTerms /FEATURES=SQL,Tools /TCPENABLED=1 /SECURITYMODE=`"SQL`" /SQLSYSADMINACCOUNTS=`"BUILTIN\Administrators`" /INSTANCENAME=$instancename /INSTANCEID=$instancename /SAPWD=$rootpassword" -wait
 
 Import-Module -name 'C:\Program Files (x86)\Microsoft SQL Server\140\Tools\PowerShell\Modules\SQLPS'
-Write-Host "dbname=$dbname"
 Invoke-Sqlcmd -InputFile "C:\vagrant\provisioning\configuresqlserver.sql" -ServerInstance ".\$instancename" -Variable "dbname=$dbname", "login=$sqlusername", "password=$sqlpassword"
 
 Set-ItemProperty -path "HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\MSSQL14.SQLEXPRESS\MSSQLServer\SuperSocketNetLib\Tcp\IPAll" -name TcpPort -value $tcpportnr
@@ -71,38 +75,38 @@ Restart-Service -Force "MSSQL`$$instancename" > $null
 New-NetFirewallRule -DisplayName "Allow inbound sqlserver" -Direction Inbound -LocalPort $tcpportnr -Protocol TCP -Action Allow > $null
 
 
+if($blogdemo){
+    # Deploy .net app
+    Write-Host('Deploying App...')
+    [string]$username="vagrant"
+    [string]$downloadlink="https://github.com/rxtur/BlogEngine.NET/releases/download/v3.3.6.0/3360.zip"
+    [string]$downloadlinkpath="C:\Users\" + $username + "\Documents\aspdotnetapp.zip"
+    [string]$outpath="C:\inetpub\wwwroot\"
 
-# Deploy .net app
-[string]$username="vagrant"
-[string]$downloadlink="https://github.com/rxtur/BlogEngine.NET/releases/download/v3.3.6.0/3360.zip"
-[string]$downloadlinkpath="C:\Users\" + $username + "\Documents\aspdotnetapp.zip"
-[string]$outpath="C:\inetpub\wwwroot\"
+    ## Downloading from link
+    Write-Host("Downloading zip")
+    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+    Invoke-WebRequest $downloadlink -OutFile $downloadlinkpath
 
+    ## Delete wwwroot files and folders
+    Write-Host("clearing wwwroot")
+    Get-ChildItem -Path C:\inetpub\wwwroot -Include *.* -File -Recurse | foreach {$_.Delete()}
 
-## Downloading from link
-Write-Host("Downloading zip")
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-Invoke-WebRequest $downloadlink -OutFile $downloadlinkpath
+    ##  Unpacking download
+    Write-Host("Unpacking zip")
+    Add-Type -AssemblyName System.IO.Compression.FileSystem
+    [System.IO.Compression.ZipFile]::ExtractToDirectory($downloadlinkpath, $outpath)
+    Write-Host("Zip unpacked")
 
-## Delete wwwroot files and folders
-Write-Host("clearing wwwroot")
-Get-ChildItem -Path C:\inetpub\wwwroot -Include *.* -File -Recurse | foreach {$_.Delete()}
+    ## Setting permissions
+    $accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("IIS_IUSRS", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow")
 
-##  Unpacking download
-Write-Host("Unpacking zip")
-Add-Type -AssemblyName System.IO.Compression.FileSystem
-[System.IO.Compression.ZipFile]::ExtractToDirectory($downloadlinkpath, $outpath)
-Write-Host("Zip unpacked")
+    $AclAppData = Get-Acl "C:\inetpub\wwwroot\App_Data"
+    $AclCustom = Get-Acl "C:\inetpub\wwwroot\Custom"
 
-## Setting permissions
-$accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("IIS_IUSRS", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow")
+    $AclAppData.AddAccessRule($accessRule)
+    $AclCustom.AddAccessRule($accessRule)
 
-$AclAppData = Get-Acl "C:\inetpub\wwwroot\App_Data"
-$AclCustom = Get-Acl "C:\inetpub\wwwroot\Custom"
-
-$AclAppData.AddAccessRule($accessRule)
-$AclCustom.AddAccessRule($accessRule)
-
-Set-Acl -Path "C:\inetpub\wwwroot\App_Data" -ACLObject $AclAppData
-Set-Acl -Path "C:\inetpub\wwwroot\Custom" -ACLObject $AclCustom
-
+    Set-Acl -Path "C:\inetpub\wwwroot\App_Data" -ACLObject $AclAppData
+    Set-Acl -Path "C:\inetpub\wwwroot\Custom" -ACLObject $AclCustom
+}
