@@ -30,7 +30,6 @@ export readonly PROVISIONING_FILES="${PROVISIONING_SCRIPTS}/files/${HOSTNAME}"
 source ${PROVISIONING_SCRIPTS}/util.sh
 # Actions/settings common to all servers
 source ${PROVISIONING_SCRIPTS}/common.sh
-rm ${PROVISIONING_SCRIPTS}/.${HOSTNAME}.conf
 
 #------------------------------------------------------------------------------
 # Provision server
