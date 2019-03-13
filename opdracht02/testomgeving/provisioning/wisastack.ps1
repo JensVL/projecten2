@@ -12,6 +12,8 @@ Param(
 
   [boolean]$asp35 = $true,
   [boolean]$asp45 = $true,
+  [boolean]$dotnetcore21 = $true,
+  [boolean]$dotnetcore22 = $true,
 
   [boolean]$blogdemo = $false
 )
@@ -49,6 +51,31 @@ if($asp35){
 if($asp45){
     Install-WindowsFeature "Web-Asp-Net45" > $null
 }
+
+if($dotnetcore21){
+    # download .NET core 2.1
+    Invoke-WebRequest https://download.visualstudio.microsoft.com/download/pr/dc431217-1692-4db1-9e8b-3512c9788292/3070b595006fadcac1ce3b02aff5fadf/dotnet-hosting-2.1.9-win.exe -OutFile $downloadpath + "\dotnet-hosting-2.1.9-win.exe"
+
+    # run installer
+    # TODO
+
+    # restart web server
+    # net stop was /y
+    # net start w3svc
+}
+
+if($dotnetcore22){
+    # download .NET core 2.1
+    Invoke-WebRequest https://download.visualstudio.microsoft.com/download/pr/a46ea5ce-a13f-47ff-8728-46cb92eb7ae3/1834ef35031f8ab84312bcc0eceb12af/dotnet-hosting-2.2.3-win.exe -OutFile $downloadpath + "\dotnet-hosting-2.2.3-win.exe"
+
+    # run installer
+    # TODO
+
+    # restart web server
+    # net stop was /y
+    # net start w3svc
+}
+
 
 
 # Install + configure SQL Server
