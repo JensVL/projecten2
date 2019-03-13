@@ -59,7 +59,7 @@
 #    - guest: "3389"
 #      host: "3389"
 - name: LAMP-srv
-  box: YordiDerijcke/FedoraServer
+  box: bento/centos-7.6
   ip: 192.168.248.11
   os: linux
   gui: false
