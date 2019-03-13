@@ -123,13 +123,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	linux	= host['linux']
 	mariaDB	= host['mariaDB']
 
-        node.vm.provision 'shell', path: 'provisioning/' + host['name'] + '.sh'
+        node.vm.provision 'shell', path: 'provisioning/' + host['name'] + '.sh',
 	args: [
 	"-linuxRootPassword " + linux['rootPassword'] +
-	" -linuxVagrantPassword " + linux['vagrantPassword']
+	" -linuxVagrantPassword " + linux['vagrantPassword'] +
 	" -mariaDBRootPassword " + mariaDB['rootPassword'] +
 	" -mariaDBName " + mariaDB['dbName'] +
-	" -mariaDBUserName " + mariaDB['username']
+	" -mariaDBUserName " + mariaDB['username'] +
 	" -mariaDBPassword " + mariaDB['password']
 	]
       end
