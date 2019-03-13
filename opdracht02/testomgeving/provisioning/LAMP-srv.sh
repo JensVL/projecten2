@@ -102,7 +102,7 @@ echo -e "${linuxVagrantPassword}\n${linuxVagrantPassword}" | sudo passwd vagrant
 
 # MariaDB setup
 echo 'Changing MySQL root password'
-mysqladmin -u root -ptoor password "$mariaDBRootPassword"
+mysqladmin -u root password "$mariaDBRootPassword"
 
 echo 'Deleting default MySQL databases & users...'
 mysql -u root -p$mariaDBRootPassword -e "DELETE FROM mysql.user WHERE User=''; DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1'); DROP DATABASE IF EXISTS test; FLUSH PRIVILEGES;"
