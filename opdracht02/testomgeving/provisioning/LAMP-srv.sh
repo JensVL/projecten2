@@ -43,7 +43,6 @@ if [ $# != 12 ]; then
   exit 1
 fi
 
-
 while [ $# -gt 0 ]; do
   case "$1" in
     -linuxRootPassword)
@@ -74,11 +73,8 @@ done
 
 info "Starting server specific provisioning tasks on ${HOSTNAME}"
 
-# Update mirrors for install
-sudo dnf update -y
-
 # Install apache, mariaDB, php, Drupal
-sudo dnf install -y httpd mariadb-server php drupal8 drupal8-httpd php-opcache php-mysqlnd
+sudo yum install -y httpd mariadb-server php
 
 # Enable firewall & disable ports for apache
 sudo systemctl enable firewalld
@@ -86,13 +82,6 @@ sudo systemctl start firewalld
 sudo firewall-cmd --permanent --add-port=80/tcp
 sudo firewall-cmd --permanent --add-port=443/tcp
 sudo firewall-cmd --reload
-
-# Drupal setup
-sudo setsebool -P httpd_can_network_connect_db=1
-sudo setsebool -P httpd_can_sendmail=1
-sudo sed -i 's/Require local\Require all granted/' /etc/httpd/conf.d/drupal8.conf
-sudo cp /etc/drupal8/sites/default/default.settings.php /etc/drupal8/sites/default/settings.php
-sudo chmod 666 /etc/drupal8/sites/default/settings.php
 
 # Make sure that the daemons start at boot
 sudo systemctl enable httpd
@@ -103,8 +92,8 @@ sudo systemctl restart httpd
 sudo systemctl restart mariadb
 
 # Linux users setup
-echo -e "${linuxRootPasswd}\n${linuxRootPasswd}" | sudo passwd root
-echo -e "${linuxVagrantPasswd}\n${linuxVagrantPasswd}" | sudo passwd vagrant
+echo -e "${linuxRootPassword}\n${linuxRootPassword}" | sudo passwd root
+echo -e "${linuxVagrantPassword}\n${linuxVagrantPassword}" | sudo passwd vagrant
 
 # MariaDB setup
 ## User setup
@@ -119,5 +108,8 @@ mysql -e "GRANT ALL PRIVILEGES ON ${mariaDBName}.* TO '${mariaDBName}'@'localhos
 mysql -e "FLUSH PRIVILEGES;"
 
 mysql restart
+
+# Call the web application setup
+./webapp.sh
 
 exit 0
