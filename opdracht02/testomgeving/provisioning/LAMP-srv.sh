@@ -42,8 +42,8 @@ info "Starting server specific provisioning tasks on ${HOSTNAME}"
 # Update mirrors for intstall
 sudo dnf update -y
 
-# Install apache, mariaDB, php
-sudo dnf install -y httpd mariadb-server php
+# Install apache, mariaDB, php, Drupal
+sudo dnf install -y httpd mariadb-server php drupal8 drupal8-httpd php-opcache php-mysqlnd
 
 # Enable firewall & disable ports for apache
 sudo systemctl enable firewalld
