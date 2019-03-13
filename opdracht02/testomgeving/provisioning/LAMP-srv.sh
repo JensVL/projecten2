@@ -30,8 +30,6 @@ export readonly PROVISIONING_FILES="${PROVISIONING_SCRIPTS}/files/${HOSTNAME}"
 source ${PROVISIONING_SCRIPTS}/util.sh
 # Actions/settings common to all servers
 source ${PROVISIONING_SCRIPTS}/common.sh
-# Password input
-source ${PROVISIONING_SCRIPTS}/.${HOSTNAME}.conf
 rm ${PROVISIONING_SCRIPTS}/.${HOSTNAME}.conf
 #------------------------------------------------------------------------------
 # Provision server
@@ -51,6 +49,13 @@ sudo systemctl start firewalld
 sudo firewall-cmd --permanent --add-port=80/tcp
 sudo firewall-cmd --permanent --add-port=443/tcp
 sudo firewall-cmd --reload
+
+# Drupal setup
+sudo setsebool -P httpd_can_network_connect_db=1
+sudo setsebool -P httpd_can_sendmail=1
+sudo sed -i 's/Require local\Require all granted/' /etc/httpd/conf.d/drupal8.conf
+sudo cp /etc/drupal8/sites/default/default.settings.php /etc/drupal8/sites/default/settings.php
+sudo chmod 666 /etc/drupal8/sites/default/settings.php
 
 # Make sure that the daemons start at boot
 sudo systemctl enable httpd
