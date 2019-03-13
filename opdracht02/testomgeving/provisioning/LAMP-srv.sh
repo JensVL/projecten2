@@ -39,17 +39,39 @@ rm ${PROVISIONING_SCRIPTS}/.${HOSTNAME}.conf
 #------------------------------------------------------------------------------
 # Interpret parameters
 #------------------------------------------------------------------------------
-if [ $# != 6 ]; then
+if [ $# != 12 ]; then
   echo 'Incorrect amount of parameters specified!'
   exit 1
 fi
 
-linuxRootPassword="$1"
-linuxVagrantPassword="$2"
-mariaDBRootPassword="$3"
-mariaDBName="$4"
-mariaDBUserName="$5"
-mariaDBPassword="$6"
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+    -linuxRootPassword)
+      linuxRootPassword="$2";;
+
+    -linuxVagrantPassword)
+      linuxVagrantPassword="$2";;
+
+    -mariaDBRootPassword)
+      mariaDBRootPassword="$2";;
+
+    -mariaDBName)
+      mariaDBName="$2";;
+
+    -mariaDBUserName)
+      mariaDBUserName="$2";;
+
+    -mariaDBPassword)
+      mariaDBPassword="$2";;
+
+    *)
+      echo 'Incorrect parameter specified!'
+      exit 1;;
+  esac
+
+  shift && shift
+done
 
 info "Starting server specific provisioning tasks on ${HOSTNAME}"
 
