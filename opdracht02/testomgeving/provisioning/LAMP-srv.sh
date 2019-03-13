@@ -39,16 +39,17 @@ rm ${PROVISIONING_SCRIPTS}/.${HOSTNAME}.conf
 #------------------------------------------------------------------------------
 # Interpret parameters
 #------------------------------------------------------------------------------
-if [ $# != 5 ]; then
+if [ $# != 6 ]; then
   echo 'Incorrect amount of parameters specified!'
   exit 1
 fi
 
 linuxRootPassword="$1"
-mariaDBRootPassword="$2"
-mariaDBName="$3"
-mariaDBUserName="$4"
-mariaDBPassword="$5"
+linuxVagrantPassword="$2"
+mariaDBRootPassword="$3"
+mariaDBName="$4"
+mariaDBUserName="$5"
+mariaDBPassword="$6"
 
 info "Starting server specific provisioning tasks on ${HOSTNAME}"
 
@@ -82,7 +83,7 @@ sudo systemctl restart mariadb
 
 # Linux users setup
 echo -e "${linuxRootPasswd}\n${linuxRootPasswd}" | sudo passwd root
-#echo -e "${linuxVagrantPasswd}\n${linuxVagrantPasswd}" | sudo passwd vagrant
+echo -e "${linuxVagrantPasswd}\n${linuxVagrantPasswd}" | sudo passwd vagrant
 
 # MariaDB setup
 ## User setup

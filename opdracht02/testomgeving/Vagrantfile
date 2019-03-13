@@ -126,6 +126,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         node.vm.provision 'shell', path: 'provisioning/' + host['name'] + '.sh'
 	args: [
 	"-linuxRootPassword " + linux['rootPassword'] +
+	" -linuxVagrantPassword " + linux['vagrantPassword']
 	" -mariaDBRootPassword " + mariaDB['rootPassword'] +
 	" -mariaDBName " + mariaDB['dbName'] +
 	" -mariaDBUserName " + mariaDB['username']
