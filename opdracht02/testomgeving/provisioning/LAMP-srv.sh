@@ -31,13 +31,28 @@ source ${PROVISIONING_SCRIPTS}/util.sh
 # Actions/settings common to all servers
 source ${PROVISIONING_SCRIPTS}/common.sh
 rm ${PROVISIONING_SCRIPTS}/.${HOSTNAME}.conf
+
 #------------------------------------------------------------------------------
 # Provision server
 #------------------------------------------------------------------------------
 
+#------------------------------------------------------------------------------
+# Interpret parameters
+#------------------------------------------------------------------------------
+if [ $# != 5 ]; then
+  echo 'Incorrect amount of parameters specified!'
+  exit 1
+fi
+
+linuxRootPassword="$1"
+mariaDBRootPassword="$2"
+mariaDBName="$3"
+mariaDBUserName="$4"
+mariaDBPassword="$5"
+
 info "Starting server specific provisioning tasks on ${HOSTNAME}"
 
-# Update mirrors for intstall
+# Update mirrors for install
 sudo dnf update -y
 
 # Install apache, mariaDB, php, Drupal
@@ -67,12 +82,20 @@ sudo systemctl restart mariadb
 
 # Linux users setup
 echo -e "${linuxRootPasswd}\n${linuxRootPasswd}" | sudo passwd root
-echo -e "${linuxVagrantPasswd}\n${linuxVagrantPasswd}" | sudo passwd vagrant
+#echo -e "${linuxVagrantPasswd}\n${linuxVagrantPasswd}" | sudo passwd vagrant
 
 # MariaDB setup
-sudo mysqladmin -u root $mysqlPasswd
-mysql -u root -p$mysqlPasswd -e "DROP USER ''@'localhost';"
-mysql -u root -p$mysqlPasswd -e "DROP USER ''@'$(hostname)';"
+## User setup
+sudo mysqladmin -u root $mariaDBRootPassword
+mysql -u root -p$mariaDBRootPassword -e "DROP USER ''@'localhost';"
+mysql -u root -p$mariaDBRootPassword -e "DROP USER ''@'$(hostname)';"
+
+## Vagrant DB setup
+mysql -e "CREATE DATABASE ${mariaDBName} /*\!40100 DEFAULT CHARACTER SET utf8 */;"
+mysql -e "CREATE USER ${mariaDBUserName}@localhost IDENTIFIED BY '${mariaDBPassword}';"
+mysql -e "GRANT ALL PRIVILEGES ON ${mariaDBName}.* TO '${mariaDBName}'@'localhost';"
+mysql -e "FLUSH PRIVILEGES;"
 
 mysql restart
 
+exit 0
