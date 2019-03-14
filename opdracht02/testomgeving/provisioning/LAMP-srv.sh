@@ -75,7 +75,7 @@ info "Starting server specific provisioning tasks on ${HOSTNAME}"
 
 # Install LAMP server packages
 echo 'Installing packages...'
-sudo yum install -y httpd mariadb-server php expect
+sudo yum install -y httpd mariadb-server
 
 # Enable firewall & disable ports for apache
 echo 'Changing firewall settings...'
@@ -101,18 +101,18 @@ echo -e "${linuxRootPassword}\n${linuxRootPassword}" | sudo passwd root
 echo -e "${linuxVagrantPassword}\n${linuxVagrantPassword}" | sudo passwd vagrant
 
 # MariaDB setup
-echo 'Changing MySQL root password'
-mysqladmin -u root password "$mariaDBRootPassword"
+#echo 'Changing MySQL root password'
+#mysqladmin -u root password "$mariaDBRootPassword"
 
-echo 'Deleting default MySQL databases & users...'
-mysql -u root -p$mariaDBRootPassword -e "DELETE FROM mysql.user WHERE User=''; DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1'); DROP DATABASE IF EXISTS test; FLUSH PRIVILEGES;"
+#echo 'Deleting default MySQL databases & users...'
+#mysql -u root -p$mariaDBRootPassword -e "DELETE FROM mysql.user WHERE User=''; DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1'); DROP DATABASE IF EXISTS test; FLUSH PRIVILEGES;"
 
 ## Vagrant DB setup
-echo 'Creating MySQL database for the web application...'
-mysql -u root -p$mariaDBRootPassword -e "CREATE DATABASE ${mariaDBName} /*\!40100 DEFAULT CHARACTER SET utf8 */;"
-mysql -u root -p$mariaDBRootPassword -e "CREATE USER ${mariaDBUserName}@localhost IDENTIFIED BY '${mariaDBPassword}';"
-mysql -u root -p$mariaDBRootPassword -e "GRANT ALL PRIVILEGES ON ${mariaDBName}.* TO '${mariaDBUserName}'@'localhost';"
-mysql -u root -p$mariaDBRootPassword -e "FLUSH PRIVILEGES;"
+#echo 'Creating MySQL database for the web application...'
+#mysql -u root -p$mariaDBRootPassword -e "CREATE DATABASE ${mariaDBName} /*\!40100 DEFAULT CHARACTER SET utf8 */;"
+#mysql -u root -p$mariaDBRootPassword -e "CREATE USER ${mariaDBUserName}@localhost IDENTIFIED BY '${mariaDBPassword}';"
+#mysql -u root -p$mariaDBRootPassword -e "GRANT ALL PRIVILEGES ON ${mariaDBName}.* TO '${mariaDBUserName}'@'localhost';"
+#mysql -u root -p$mariaDBRootPassword -e "FLUSH PRIVILEGES;"
 
 # Call the web application setup
 ${PROVISIONING_SCRIPTS}/webapp.sh
