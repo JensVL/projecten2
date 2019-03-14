@@ -39,7 +39,7 @@ source ${PROVISIONING_SCRIPTS}/common.sh
 # Interpret parameters
 #------------------------------------------------------------------------------
 if [ $# != 12 ]; then
-  echo 'Incorrect amount of parameters specified!'
+  info 'Provisioning: Incorrect amount of parameters specified!'
   exit 1
 fi
 
@@ -64,7 +64,7 @@ while [ $# -gt 0 ]; do
       mariaDBPassword="$2";;
 
     *)
-      echo 'Incorrect parameter specified!'
+      echo 'Provisioning: Incorrect parameter specified!'
       exit 1;;
   esac
 
@@ -74,11 +74,11 @@ done
 info "Starting server specific provisioning tasks on ${HOSTNAME}"
 
 # Install LAMP server packages
-echo 'Installing packages...'
+info 'Installing packages...'
 sudo yum install -y httpd mariadb-server
 
 # Enable firewall & disable ports for apache
-echo 'Changing firewall settings...'
+info 'Changing firewall settings...'
 sudo systemctl enable firewalld
 sudo systemctl start firewalld
 sudo firewall-cmd --permanent --add-port=80/tcp
@@ -86,29 +86,29 @@ sudo firewall-cmd --permanent --add-port=443/tcp
 sudo firewall-cmd --reload
 
 # Make sure that the daemons start at boot
-echo 'Enabling services...'
+info 'Enabling services...'
 sudo systemctl enable httpd
 sudo systemctl enable mariadb
 
 # Make sure that the daemons are started right now
-echo 'Restarting services...'
+info 'Restarting services...'
 sudo systemctl restart httpd
 sudo systemctl restart mariadb
 
 # Linux users setup
-echo 'Changing linux user passwords...'
+info 'Changing linux user passwords...'
 echo -e "${linuxRootPassword}\n${linuxRootPassword}" | sudo passwd root
 echo -e "${linuxVagrantPassword}\n${linuxVagrantPassword}" | sudo passwd vagrant
 
 # MariaDB setup
-#echo 'Changing MySQL root password'
+#info 'Changing MySQL root password'
 #mysqladmin -u root password "$mariaDBRootPassword"
 
-#echo 'Deleting default MySQL databases & users...'
+#info 'Deleting default MySQL databases & users...'
 #mysql -u root -p$mariaDBRootPassword -e "DELETE FROM mysql.user WHERE User=''; DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1'); DROP DATABASE IF EXISTS test; FLUSH PRIVILEGES;"
 
 ## Vagrant DB setup
-#echo 'Creating MySQL database for the web application...'
+#info 'Creating MySQL database for the web application...'
 #mysql -u root -p$mariaDBRootPassword -e "CREATE DATABASE ${mariaDBName} /*\!40100 DEFAULT CHARACTER SET utf8 */;"
 #mysql -u root -p$mariaDBRootPassword -e "CREATE USER ${mariaDBUserName}@localhost IDENTIFIED BY '${mariaDBPassword}';"
 #mysql -u root -p$mariaDBRootPassword -e "GRANT ALL PRIVILEGES ON ${mariaDBName}.* TO '${mariaDBUserName}'@'localhost';"
