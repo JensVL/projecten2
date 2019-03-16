@@ -49,7 +49,6 @@ $Acl.SetAccessRule((New-Object  system.security.accesscontrol.filesystemaccessru
 Set-Acl "C:\inetpub\wwwroot" $Acl
 
 Try{
-    Write-Host('User vagrant already exists(skipping)')
     [void][System.Reflection.Assembly]::LoadWithPartialName("Microsoft.Web.Management")
     [void][Microsoft.Web.Management.Server.ManagementAuthentication]::CreateUser($iisusername, $iispassword)
     [void][Microsoft.Web.Management.Server.ManagementAuthorization]::Grant($iisusername, "Default Web Site", $FALSE)
@@ -103,7 +102,7 @@ if($dotnetcore21){
 if($dotnetcore22){
     # download .NET core 2.2
     $DotNETCoreUpdatesPath = "Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Updates\.NET Core" 
-    $DotNetCoreItems = Get-Item -ErrorAction Stop -Path $DotNETCoreUpdatesPath 
+    $DotNetCoreItems = Get-Item -ErrorAction Stop -Path $DotNETCoreUpdatesPath 2>$null
     $Installed = $False 
     $DotNetCoreItems.GetSubKeyNames() | where { $_ -Match "Microsoft .NET Core.*Windows Server Hosting" } | ForEach-Object { 
         $Installed = $True 
@@ -169,7 +168,7 @@ if($blogdemo){
     $publocation = "C:\inetpub\wwwroot\"
     $directoryInfo = Get-ChildItem $publocation | Measure-Object
     if(!($directoryInfo.count -eq 0)){
-        Get-ChildItem -Path $publocation -Include * -File -Recurse | foreach { $_.Delete()}
+        # Get-ChildItem -Path $publocation -Include * -File -Recurse | foreach { $_.Delete()}
         Write-Host('Deploying Blog Demo ...')
         $msdeploy = "C:\Program Files\IIS\Microsoft Web Deploy V3\msdeploy.exe"
         & $msdeploy -verb:sync -source:package="C:\vagrant\provisioning\Blogifierpackage\App.zip" -dest:auto >$null
