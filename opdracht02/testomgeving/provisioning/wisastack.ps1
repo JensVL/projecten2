@@ -30,7 +30,7 @@ if(!(Test-Path $downloadpath)){
 $serviceWebserver = Get-WindowsFeature Web-Server
 $servicesWebManagement = Get-WindowsFeature Web-Mgmt-Service
 if(!($serviceWebserver).Installed -or !($servicesWebManagement).Installed){
-    Write-Host('Downloading IIS...')
+    Write-Host('Downloading and installing IIS...')
     Install-WindowsFeature Web-Server, Web-Mgmt-Service -IncludeManagementTools > $null
 }else{
     Write-Host('IIS already installed(skipping)')
@@ -101,20 +101,23 @@ if($dotnetcore21){
 
 if($dotnetcore22){
     # download .NET core 2.2
-    $DotNETCoreUpdatesPath = "Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Updates\.NET Core" 
-    $DotNetCoreItems = Get-Item -ErrorAction Stop -Path $DotNETCoreUpdatesPath 2>$null
-    $Installed = $False 
-    $DotNetCoreItems.GetSubKeyNames() | where { $_ -Match "Microsoft .NET Core.*Windows Server Hosting" } | ForEach-Object { 
-        $Installed = $True 
-    } 
-
+    $dotnetcoreinstallation = "Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Updates\.NET Core" 
+    $Installed = $false 
+    if(Test-Path $dotnetcoreinstallation){
+        $DotNetCoreItems = Get-Item -ErrorAction Stop -Path $dotnetcoreinstallation 2>$null
+        $DotNetCoreItems.GetSubKeyNames() | where { $_ -Match "Microsoft .NET Core.*Windows Server Hosting" } | ForEach-Object { 
+            # TODO: check if version is 2.2 and then set $Installed = $true
+            $Installed = $true 
+        } 
+    }
+    
     if(!($Installed)) { 
         Write-Host "Can not find ASP.NET Core installed on the host" 
     
         $file = $downloadpath + "\dotnet-hosting-2.2.3-win.exe"
         if(!(Test-Path $file)) {
             Write-Host('Downloading .NET Core 2.2 installer ...')
-            # Invoke-WebRequest https://download.visualstudio.microsoft.com/download/pr/a46ea5ce-a13f-47ff-8728-46cb92eb7ae3/1834ef35031f8ab84312bcc0eceb12af/dotnet-hosting-2.2.3-win.exe -OutFile $file
+            Invoke-WebRequest https://download.visualstudio.microsoft.com/download/pr/a46ea5ce-a13f-47ff-8728-46cb92eb7ae3/1834ef35031f8ab84312bcc0eceb12af/dotnet-hosting-2.2.3-win.exe -OutFile $file
         
             # Start-Sleep -s 15
         }
@@ -122,11 +125,10 @@ if($dotnetcore22){
         Write-Host('Running the .NET Core 2.2 installer ...')
         Start-Process -FilePath $file -ArgumentList /S, /v, /qn -Wait 
 
-
         # restart web server
         Write-Host('Restarting Web Services ...')
-        net stop was /y
-        net start w3svc
+        net stop was /y > $null
+        net start w3svc > $null
         
     } else {
         Write-Host('.NET Core 2.2 already installed(skipping)')
