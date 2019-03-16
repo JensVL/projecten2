@@ -29,11 +29,11 @@ if(!(Test-Path $downloadpath)){
 # Install + configure IIS
 $serviceWebserver = Get-WindowsFeature Web-Server
 $servicesWebManagement = Get-WindowsFeature Web-Mgmt-Service
-if(!($serviceWebserver).Installed || !($servicesWebManagement).Installed){
+if(!($serviceWebserver).Installed -or !($servicesWebManagement).Installed){
     Write-Host('Downloading IIS...')
     Install-WindowsFeature Web-Server, Web-Mgmt-Service -IncludeManagementTools > $null
 }else{
-    Write-Host('IIS already isntalled(skipping)')
+    Write-Host('IIS already installed(skipping)')
 }
 
 
@@ -65,7 +65,7 @@ if($asp35){
         Write-Host('Installing .NET Framework support for 3.5 and lower ...')
         Install-WindowsFeature Web-Asp-Net > $null
     }else{
-        Write-Host('.NET 3.5 Framework already isntalled(skipping)')
+        Write-Host('.NET 3.5 Framework already installed(skipping)')
     }
    
 }
@@ -76,7 +76,7 @@ if($asp45){
         Write-Host('Installing .NET Framework support for 4.5 and higher ...')
         Install-WindowsFeature Web-Asp-Net45 > $null
     }else{
-        Write-Host('.NET 4.5 Framework already isntalled(skipping)')
+        Write-Host('.NET 4.5 Framework already installed(skipping)')
     }
     
 }
@@ -89,39 +89,56 @@ if($dotnetcore21){
         Invoke-WebRequest https://download.visualstudio.microsoft.com/download/pr/dc431217-1692-4db1-9e8b-3512c9788292/3070b595006fadcac1ce3b02aff5fadf/dotnet-hosting-2.1.9-win.exe -OutFile $file
 
         # run installer
-        & $file /install
+        Write-Host('Running the .NET Core 2.1 installer ...')
+        Start-Process -FilePath $file -ArgumentList /S, /v, /qn -Wait 
 
         # restart web server
         net stop was /y
         net start w3svc
-    }else{
-        Write-Host('.NET Core 2.1 already isntalled(skipping)')
+    } else {
+        Write-Host('.NET Core 2.1 already installed(skipping)')
     }
 }
 
 if($dotnetcore22){
     # download .NET core 2.2
-    if(!(Test-Path "C:\Program Files\dotnet")){
-        Write-Host('Downloading .NET Core 2.2 installer ...')
-        $file = $downloadpath + "\dotnet-hosting-2.2.3-win.exe"
-        Invoke-WebRequest https://download.visualstudio.microsoft.com/download/pr/a46ea5ce-a13f-47ff-8728-46cb92eb7ae3/1834ef35031f8ab84312bcc0eceb12af/dotnet-hosting-2.2.3-win.exe -OutFile $file
+    $DotNETCoreUpdatesPath = "Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Updates\.NET Core" 
+    $DotNetCoreItems = Get-Item -ErrorAction Stop -Path $DotNETCoreUpdatesPath 
+    $Installed = $False 
+    $DotNetCoreItems.GetSubKeyNames() | where { $_ -Match "Microsoft .NET Core.*Windows Server Hosting" } | ForEach-Object { 
+        $Installed = $True 
+    } 
 
+    if(!($Installed)) { 
+        Write-Host "Can not find ASP.NET Core installed on the host" 
+    
+        $file = $downloadpath + "\dotnet-hosting-2.2.3-win.exe"
+        if(!(Test-Path $file)) {
+            Write-Host('Downloading .NET Core 2.2 installer ...')
+            # Invoke-WebRequest https://download.visualstudio.microsoft.com/download/pr/a46ea5ce-a13f-47ff-8728-46cb92eb7ae3/1834ef35031f8ab84312bcc0eceb12af/dotnet-hosting-2.2.3-win.exe -OutFile $file
+        
+            # Start-Sleep -s 15
+        }
         # run installer
-        & $file /install
+        Write-Host('Running the .NET Core 2.2 installer ...')
+        Start-Process -FilePath $file -ArgumentList /S, /v, /qn -Wait 
+
 
         # restart web server
+        Write-Host('Restarting Web Services ...')
         net stop was /y
         net start w3svc
-    }else{
-        Write-Host('.NET Core 2.2 already isntalled(skipping)')
+        
+    } else {
+        Write-Host('.NET Core 2.2 already installed(skipping)')
     }
 }
 
 
 
 # Install + configure SQL Server
-if (Test-Path “HKLM:\Software\Microsoft\Microsoft SQL Server\Instance Names\SQL”) {
-    Write-Host('SQL Server already isntalled(skipping)')
+if (Test-Path "HKLM:\Software\Microsoft\Microsoft SQL Server\Instance Names\SQL") {
+    Write-Host('SQL Server already installed(skipping)')
 } else {
     Write-Host('Installing SQL Server...')
     $instancename = $instancename.ToUpper()
@@ -148,12 +165,14 @@ if (Test-Path “HKLM:\Software\Microsoft\Microsoft SQL Server\Instance Names\SQ
 
 
 # Deploy blog demo
-Write-Host('Deploying Blog Demo ...')
 if($blogdemo){
+    $publocation = "C:\inetpub\wwwroot\"
+    $directoryInfo = Get-ChildItem $publocation | Measure-Object
     if(!($directoryInfo.count -eq 0)){
-        Get-ChildItem -Path C:\Temp -Include * -File -Recurse | foreach { $_.Delete()}
+        Get-ChildItem -Path $publocation -Include * -File -Recurse | foreach { $_.Delete()}
+        Write-Host('Deploying Blog Demo ...')
         $msdeploy = "C:\Program Files\IIS\Microsoft Web Deploy V3\msdeploy.exe"
-        & $msdeploy -verb:sync -source:package="C:\vagrant\provisioning\Blogifierpackage\App.zip" -dest:auto
+        & $msdeploy -verb:sync -source:package="C:\vagrant\provisioning\Blogifierpackage\App.zip" -dest:auto >$null
     }
 }
 
