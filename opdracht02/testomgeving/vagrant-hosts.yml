@@ -46,8 +46,6 @@
   asp:
     asp35: $true
     asp45: $true
-    dotnetcore21: $false
-    dotnetcore22: $false
   sql:
       downloadpath: ""
       instancename: ""
@@ -60,5 +58,23 @@
   forwarded_ports:
     - guest: "3389"
       host: "3389"
-  blogdemo: $true
+- name: LAMP-srv
+  box: bento/centos-7.6
+  ip: 192.168.248.11
+  os: linux
+  gui: false
+  memory: 4096
+  cpus: 2
+  linux:
+    rootPassword: "toor"
+    vagrantPassword: "vagrant"
+  mariaDB:
+    rootPassword: "toor"
+    dbName: "vagrant"
+    username: "vagrant"
+    password: "vagrant"
+  forwarded_ports:
+    - guest: 80
+      host: 8080
+
 

@@ -30,22 +30,55 @@ export readonly PROVISIONING_FILES="${PROVISIONING_SCRIPTS}/files/${HOSTNAME}"
 source ${PROVISIONING_SCRIPTS}/util.sh
 # Actions/settings common to all servers
 source ${PROVISIONING_SCRIPTS}/common.sh
-# Password input
-source ${PROVISIONING_SCRIPTS}/.${HOSTNAME}.conf
-rm ${PROVISIONING_SCRIPTS}/.${HOSTNAME}.conf
+
 #------------------------------------------------------------------------------
 # Provision server
 #------------------------------------------------------------------------------
 
+#------------------------------------------------------------------------------
+# Interpret parameters
+#------------------------------------------------------------------------------
+if [ $# != 12 ]; then
+  info 'Provisioning: Incorrect amount of parameters specified!'
+  exit 1
+fi
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+    -linuxRootPassword)
+      linuxRootPassword="$2";;
+
+    -linuxVagrantPassword)
+      linuxVagrantPassword="$2";;
+
+    -mariaDBRootPassword)
+      mariaDBRootPassword="$2";;
+
+    -mariaDBName)
+      mariaDBName="$2";;
+
+    -mariaDBUserName)
+      mariaDBUserName="$2";;
+
+    -mariaDBPassword)
+      mariaDBPassword="$2";;
+
+    *)
+      echo 'Provisioning: Incorrect parameter specified!'
+      exit 1;;
+  esac
+
+  shift && shift
+done
+
 info "Starting server specific provisioning tasks on ${HOSTNAME}"
 
-# Update mirrors for intstall
-sudo dnf update -y
-
-# Install apache, mariaDB, php
-sudo dnf install -y httpd mariadb-server php
+# Install LAMP server packages
+info 'Installing packages...'
+sudo yum install -y httpd mariadb-server
 
 # Enable firewall & disable ports for apache
+info 'Changing firewall settings...'
 sudo systemctl enable firewalld
 sudo systemctl start firewalld
 sudo firewall-cmd --permanent --add-port=80/tcp
@@ -53,21 +86,35 @@ sudo firewall-cmd --permanent --add-port=443/tcp
 sudo firewall-cmd --reload
 
 # Make sure that the daemons start at boot
+info 'Enabling services...'
 sudo systemctl enable httpd
 sudo systemctl enable mariadb
 
 # Make sure that the daemons are started right now
+info 'Restarting services...'
 sudo systemctl restart httpd
 sudo systemctl restart mariadb
 
 # Linux users setup
-echo -e "${linuxRootPasswd}\n${linuxRootPasswd}" | sudo passwd root
-echo -e "${linuxVagrantPasswd}\n${linuxVagrantPasswd}" | sudo passwd vagrant
+info 'Changing linux user passwords...'
+echo -e "${linuxRootPassword}\n${linuxRootPassword}" | sudo passwd root
+echo -e "${linuxVagrantPassword}\n${linuxVagrantPassword}" | sudo passwd vagrant
 
 # MariaDB setup
-sudo mysqladmin -u root $mysqlPasswd
-mysql -u root -p$mysqlPasswd -e "DROP USER ''@'localhost';"
-mysql -u root -p$mysqlPasswd -e "DROP USER ''@'$(hostname)';"
+info 'Changing MySQL root password'
+mysqladmin -u root password "$mariaDBRootPassword"
 
-mysql restart
+info 'Deleting default MySQL databases & users...'
+mysql -u root -p$mariaDBRootPassword -e "DELETE FROM mysql.user WHERE User=''; DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1'); DROP DATABASE IF EXISTS test; FLUSH PRIVILEGES;"
 
+## Vagrant DB setup
+info 'Creating MySQL database for the web application...'
+mysql -u root -p$mariaDBRootPassword -e "CREATE DATABASE ${mariaDBName} /*\!40100 DEFAULT CHARACTER SET utf8 */;"
+mysql -u root -p$mariaDBRootPassword -e "CREATE USER ${mariaDBUserName}@localhost IDENTIFIED BY '${mariaDBPassword}';"
+mysql -u root -p$mariaDBRootPassword -e "GRANT ALL PRIVILEGES ON ${mariaDBName}.* TO '${mariaDBUserName}'@'localhost';"
+mysql -u root -p$mariaDBRootPassword -e "FLUSH PRIVILEGES;"
+
+# Call the web application setup
+${PROVISIONING_SCRIPTS}/webapp.sh
+
+exit 0

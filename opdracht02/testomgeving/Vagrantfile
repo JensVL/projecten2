@@ -118,9 +118,21 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           privileged: true,
           path: 'provisioning/' + host['name'] + '.ps1', # "/installsqlserver.ps1",
           args: ["-downloadpath " + sql['downloadpath'] + " -instancename " + sql['instancename'] + " -rootpassword "+ sql['rootpassword'] + " -tcpportnr " + sql['tcpportnr'] + " -dbname " + sql['dbname'] + " -sqlusername " + sql['username'] + " -sqlpassword " + sql['password'] + "-iisusername " + iis['username'] + " -iispassword " + iis['password'] + " -asp35 " + asp['asp35'] + " -asp45 " + asp['asp45'] + " -dotnetcore21 " + asp['dotnetcore21'] + " -dotnetcore22 " + asp['dotnetcore22'] + " -blogdemo " + host['blogdemo']]
-      else
 
-        node.vm.provision 'shell', path: 'provisioning/' + host['name'] + '.sh'
+      elsif host['os'] == "linux"
+	      linux	= host['linux']
+	      mariaDB	= host['mariaDB']
+        
+        config.vm.provision :shell,
+	      path: 'provisioning/' + host['name'] + '.sh',
+        args: [
+        "-linuxRootPassword", linux['rootPassword'],
+        "-linuxVagrantPassword", linux['vagrantPassword'],
+        "-mariaDBRootPassword", mariaDB['rootPassword'],
+        "-mariaDBName", mariaDB['dbName'],
+        "-mariaDBUserName",  mariaDB['username'],
+        "-mariaDBPassword", mariaDB['password']
+        ]
       end
     end
   end
