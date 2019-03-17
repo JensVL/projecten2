@@ -56,6 +56,7 @@
   forwarded_ports:
     - guest: "3389"
       host: "3389"
+  blogdemo: $true
 
 - name: LAMP-srv
   box: bento/centos-7.6
