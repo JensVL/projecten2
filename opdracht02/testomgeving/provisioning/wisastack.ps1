@@ -26,6 +26,37 @@ Param(
 [boolean]$dotnetcore22 = [convert]::ToBoolean($stringdotnetcore22)
 [boolean]$blogdemo = [convert]::ToBoolean($stringblogdemo)
 
+
+
+Write-Host("downloadpath = " + $downloadpath)
+Write-Host("instancename = " + $instancename)
+Write-Host("rootpassword = " + $rootpassword)
+Write-Host("stringtcpportnr = " + $stringtcpportnr)
+
+Write-Host("dbname = " + $dbname)
+Write-Host("sqlusername = " + $sqlusername)
+Write-Host("sqlpassword = " + $sqlpassword)
+
+Write-Host("iisusername = " + $iisusername)
+Write-Host("iispassword = " + $iispassword)
+
+Write-Host("stringasp35 = " + $stringasp35)
+Write-Host("stringasp45 = " + $stringasp45)
+Write-Host("stringdotnetcore21 = " + $stringdotnetcore21)
+Write-Host("stringdotnetcore22 = " + $stringdotnetcore22)
+Write-Host("stringblogdemo = " + $stringblogdemo)
+
+
+Write-Host("tcpportnr = " + $tcpportnr)
+Write-Host("asp35 = " + $asp35)
+Write-Host("asp45 = " + $asp45)
+Write-Host("dotnetcore21 = " + $dotnetcore21)
+Write-Host("dotnetcore22 = " + $dotnetcore22)
+Write-Host("blogdemo = " + $blogdemo)
+
+
+
+
 if($downloadpath.EndsWith("\")){
     $computerName.Remove($computerName.LastIndexOf("\"))
 }
@@ -89,19 +120,34 @@ if($asp45){
 }
 
 if($dotnetcore21){
-    if(!(Test-Path "C:\Program Files\dotnet")){
-        # download .NET core 2.1
-        Write-Host('Downloading .NET Core 2.1 installer ...')
+    # download .NET core 2.1
+    $dotnetcoreinstallation = "Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Updates\.NET Core" 
+    $Installed = $false 
+    if(Test-Path $dotnetcoreinstallation){
+        $DotNetCoreItems = Get-Item -ErrorAction Stop -Path $dotnetcoreinstallation 2> $null
+        $DotNetCoreItems.GetSubKeyNames() | where { $_ -Match "Microsoft .NET Core.*Windows Server Hosting" } | ForEach-Object { 
+            # TODO: check if version is 2.1 and then set $Installed = $true, else $false
+            $Installed = $true 
+        } 
+    }
+    if(!($Installed)){
+        Write-Host "Can not find ASP.NET Core installed on the host" 
+
         $file = $downloadpath + "\dotnet-hosting-2.1.9-win.exe"
-        Invoke-WebRequest https://download.visualstudio.microsoft.com/download/pr/dc431217-1692-4db1-9e8b-3512c9788292/3070b595006fadcac1ce3b02aff5fadf/dotnet-hosting-2.1.9-win.exe -OutFile $file
+        if(!(Test-Path $downloadpath)){
+            Write-Host('Downloading .NET Core 2.1 installer ...')
+            Invoke-WebRequest https://download.visualstudio.microsoft.com/download/pr/dc431217-1692-4db1-9e8b-3512c9788292/3070b595006fadcac1ce3b02aff5fadf/dotnet-hosting-2.1.9-win.exe -OutFile $file
+        } 
 
         # run installer
         Write-Host('Running the .NET Core 2.1 installer ...')
         Start-Process -FilePath $file -ArgumentList /S, /v, /qn -Wait 
 
         # restart web server
-        net stop was /y
-        net start w3svc
+        Write-Host('Restarting Web Services ...')
+        net stop was /y > $null
+        net start w3svc > $null
+        Start-Sleep -s 10     
     } else {
         Write-Host('.NET Core 2.1 already installed(skipping)')
     }
@@ -112,9 +158,9 @@ if($dotnetcore22){
     $dotnetcoreinstallation = "Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Updates\.NET Core" 
     $Installed = $false 
     if(Test-Path $dotnetcoreinstallation){
-        $DotNetCoreItems = Get-Item -ErrorAction Stop -Path $dotnetcoreinstallation 2>$null
+        $DotNetCoreItems = Get-Item -ErrorAction Stop -Path $dotnetcoreinstallation 2> $null
         $DotNetCoreItems.GetSubKeyNames() | where { $_ -Match "Microsoft .NET Core.*Windows Server Hosting" } | ForEach-Object { 
-            # TODO: check if version is 2.2 and then set $Installed = $true
+            # TODO: check if version is 2.2 and then set $Installed = $true, else $false
             $Installed = $true 
         } 
     }
@@ -126,9 +172,8 @@ if($dotnetcore22){
         if(!(Test-Path $file)) {
             Write-Host('Downloading .NET Core 2.2 installer ...')
             Invoke-WebRequest https://download.visualstudio.microsoft.com/download/pr/a46ea5ce-a13f-47ff-8728-46cb92eb7ae3/1834ef35031f8ab84312bcc0eceb12af/dotnet-hosting-2.2.3-win.exe -OutFile $file
-        
-            # Start-Sleep -s 15
         }
+
         # run installer
         Write-Host('Running the .NET Core 2.2 installer ...')
         Start-Process -FilePath $file -ArgumentList /S, /v, /qn -Wait 
@@ -137,7 +182,7 @@ if($dotnetcore22){
         Write-Host('Restarting Web Services ...')
         net stop was /y > $null
         net start w3svc > $null
-        
+        Start-Sleep -s 10        
     } else {
         Write-Host('.NET Core 2.2 already installed(skipping)')
     }
@@ -181,7 +226,7 @@ if($blogdemo){
         # Get-ChildItem -Path $publocation -Include * -File -Recurse | foreach { $_.Delete()}
         Write-Host('Deploying Blog Demo ...')
         $msdeploy = "C:\Program Files\IIS\Microsoft Web Deploy V3\msdeploy.exe"
-        & $msdeploy -verb:sync -source:package="C:\vagrant\provisioning\Blogifierpackage\App.zip" -dest:auto >$null
+        & $msdeploy -verb:sync -source:package="C:\vagrant\provisioning\Blogifierpackage\App.zip" -dest:auto > $null
     }
 }
 
