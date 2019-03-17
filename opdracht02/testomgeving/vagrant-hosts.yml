@@ -37,22 +37,18 @@
   gui: false
   memory: 4096
   cpus: 2
-  # winrm-user: vagrant
-  # winrm-pw: vagrant
+  downloadpath: "C:\\SetupMedia"
   iis:
-    username: ""
-    password: ""
-    downloadpath: ""
+    username: "vagrant"
+    password: "vagrant"
   asp:
-    asp35: $true
-    asp45: $true
+    asp35: $false
+    asp45: $false
     dotnetcore21: $false
-    dotnetcore22: $false
+    dotnetcore22: $true
   sql:
-      downloadpath: ""
-      instancename: ""
+      instancename: "SQLEXPRESS"
       rootpassword: "root"
-      # Port-number: [49152, 65535]
       tcpportnr: "50000"
       dbname: "vagrant"
       username: "vagrant"
