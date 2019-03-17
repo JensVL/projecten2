@@ -27,32 +27,32 @@ Param(
 [boolean]$blogdemo = [convert]::ToBoolean($stringblogdemo)
 
 
+# # Testing purpose
+# Write-Host("downloadpath = " + $downloadpath)
+# Write-Host("instancename = " + $instancename)
+# Write-Host("rootpassword = " + $rootpassword)
+# Write-Host("stringtcpportnr = " + $stringtcpportnr)
 
-Write-Host("downloadpath = " + $downloadpath)
-Write-Host("instancename = " + $instancename)
-Write-Host("rootpassword = " + $rootpassword)
-Write-Host("stringtcpportnr = " + $stringtcpportnr)
+# Write-Host("dbname = " + $dbname)
+# Write-Host("sqlusername = " + $sqlusername)
+# Write-Host("sqlpassword = " + $sqlpassword)
 
-Write-Host("dbname = " + $dbname)
-Write-Host("sqlusername = " + $sqlusername)
-Write-Host("sqlpassword = " + $sqlpassword)
+# Write-Host("iisusername = " + $iisusername)
+# Write-Host("iispassword = " + $iispassword)
 
-Write-Host("iisusername = " + $iisusername)
-Write-Host("iispassword = " + $iispassword)
-
-Write-Host("stringasp35 = " + $stringasp35)
-Write-Host("stringasp45 = " + $stringasp45)
-Write-Host("stringdotnetcore21 = " + $stringdotnetcore21)
-Write-Host("stringdotnetcore22 = " + $stringdotnetcore22)
-Write-Host("stringblogdemo = " + $stringblogdemo)
+# Write-Host("stringasp35 = " + $stringasp35)
+# Write-Host("stringasp45 = " + $stringasp45)
+# Write-Host("stringdotnetcore21 = " + $stringdotnetcore21)
+# Write-Host("stringdotnetcore22 = " + $stringdotnetcore22)
+# Write-Host("stringblogdemo = " + $stringblogdemo)
 
 
-Write-Host("tcpportnr = " + $tcpportnr)
-Write-Host("asp35 = " + $asp35)
-Write-Host("asp45 = " + $asp45)
-Write-Host("dotnetcore21 = " + $dotnetcore21)
-Write-Host("dotnetcore22 = " + $dotnetcore22)
-Write-Host("blogdemo = " + $blogdemo)
+# Write-Host("tcpportnr = " + $tcpportnr)
+# Write-Host("asp35 = " + $asp35)
+# Write-Host("asp45 = " + $asp45)
+# Write-Host("dotnetcore21 = " + $dotnetcore21)
+# Write-Host("dotnetcore22 = " + $dotnetcore22)
+# Write-Host("blogdemo = " + $blogdemo)
 
 
 
