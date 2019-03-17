@@ -93,61 +93,18 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       custom_synced_folders(node.vm, host)
       forwarded_ports(node.vm, host)
 
-      # Add VM to a VirtualBox group
-      node.vm.provider :virtualbox do |vb|
-        vb.memory = host['memory'] if host.key? 'memory'
-        vb.cpus = host['cpus'] if host.key? 'cpus'
-        vb.gui = host['gui']
-        
-        # WARNING: if the name of the current directory is the same as the
-        # host name, this will fail.
-        vb.customize ['modifyvm', :id, '--groups', PROJECT_NAME]
-      end
-
-      # Run configuration script for the VM
-      if host['os'] == "windows"
-        config.vm.communicator = "winrm"
-        config.winrm.username = "vagrant"
-        config.winrm.password = "vagrant"
-
-        iis         = host['iis']
-        asp         = host['asp']
-        sql         = host['sql']
-
-        config.vm.provision :shell,
-          privileged: true,
-          path: 'provisioning/' + host['name'] + '.ps1', # "/installsqlserver.ps1",
-          args: [
-            host['downloadpath'],
-            sql['instancename'],
-            sql['rootpassword'],
-            sql['tcpportnr'],
-            sql['dbname'],
-            sql['username'],
-            sql['password'],
-            iis['username'],
-            iis['password'],
-            asp['asp35'],
-            asp['asp45'],
-            asp['dotnetcore21'],
-            asp['dotnetcore22'],
-            host['blogdemo']
-          ]
-
-      elsif host['os'] == "linux"
 	config.vm.provider :digital_ocean do |provider, override|
 	  override.ssh.private_key_path = '~/.ssh/id_rsa'
-	  override.vm.box = 'digital_ocean'
-	  override.vm.box_url = "https://github.com/devopsgroup-io/vagrant-digitalocean/raw/master/box/digital_ocean.box"
-	  provider.token = 'b14bc2e1ebe6839965735efb7c3ad2361cd400769e8d630447800438b5d59a1e'
+	  override.vm.box = host['box']
+	  provider.token = 'f3e7ca08ce392ac6f5cd319c855fc67172b6b3641dfec0cb5170e1656020d542'
 	  provider.image = 'centos-7-x64'
-	  provider.size = '4gb'
+	  provider.size = '1gb'
 	end
-	  
-	linux	= host['linux']
-	mariaDB = host['mariaDB']
-        
-        config.vm.provision :shell, path: 'provisioning/' + host['name'] + '.sh',
+
+      linux	= host['linux']
+      mariaDB	= host['mariaDB']
+      
+      config.vm.provision :shell, path: 'provisioning/' + host['name'] + '.sh',
         args: [
         "-linuxRootPassword", linux['rootPassword'],
         "-linuxVagrantPassword", linux['vagrantPassword'],
@@ -156,10 +113,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         "-mariaDBUserName",  mariaDB['username'],
         "-mariaDBPassword", mariaDB['password']
         ]
-      end
     end
   end
 end
-
-# -*- mode: ruby -*-
-# vi: ft=ruby :
