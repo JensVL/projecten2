@@ -133,10 +133,21 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             asp['dotnetcore22'],
             host['blogdemo']
           ]
-      
-      else
 
-        node.vm.provision 'shell', path: 'provisioning/' + host['name'] + '.sh'
+      elsif host['os'] == "linux"
+	      linux	= host['linux']
+	      mariaDB	= host['mariaDB']
+        
+        config.vm.provision :shell,
+	      path: 'provisioning/' + host['name'] + '.sh',
+        args: [
+        "-linuxRootPassword", linux['rootPassword'],
+        "-linuxVagrantPassword", linux['vagrantPassword'],
+        "-mariaDBRootPassword", mariaDB['rootPassword'],
+        "-mariaDBName", mariaDB['dbName'],
+        "-mariaDBUserName",  mariaDB['username'],
+        "-mariaDBPassword", mariaDB['password']
+        ]
       end
     end
   end
