@@ -28,4 +28,6 @@ sudo chown -R apache:apache /var/www/html/drupal
 info 'Drupal: Setting SELinux rule...'
 sudo chcon -R -t httpd_sys_content_rw_t /var/www/html/drupal/sites/
 
+info 'Apache: Restarting apache...'
+sudo systemctl restart httpd
 exit 0
