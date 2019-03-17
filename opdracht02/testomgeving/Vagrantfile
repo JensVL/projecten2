@@ -135,11 +135,19 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           ]
 
       elsif host['os'] == "linux"
-	      linux	= host['linux']
-	      mariaDB	= host['mariaDB']
+	config.vm.provider :digital_ocean do |provider, override|
+	  override.ssh.private_key_path = '~/.ssh/id_rsa'
+	  override.vm.box = 'digital_ocean'
+	  override.vm.box_url = "https://github.com/devopsgroup-io/vagrant-digitalocean/raw/master/box/digital_ocean.box"
+	  provider.token = 'b14bc2e1ebe6839965735efb7c3ad2361cd400769e8d630447800438b5d59a1e'
+	  provider.image = 'centos-7-x64'
+	  provider.size = '4gb'
+	end
+	  
+	linux	= host['linux']
+	mariaDB = host['mariaDB']
         
-        config.vm.provision :shell,
-	      path: 'provisioning/' + host['name'] + '.sh',
+        config.vm.provision :shell, path: 'provisioning/' + host['name'] + '.sh',
         args: [
         "-linuxRootPassword", linux['rootPassword'],
         "-linuxVagrantPassword", linux['vagrantPassword'],
