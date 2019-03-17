@@ -1,22 +1,30 @@
 Param(
-  [string]$downloadpath = "C:\SetupMedia",
+  [String]$downloadpath = "C:\SetupMedia",
   [String]$instancename  = "SQLEXPRESS",
   [String]$rootpassword = "root",
-  [int]$tcpportnr = 50000,
+  [String]$stringtcpportnr = "50000",
+  
   [String]$dbname = "vagrant",
   [String]$sqlusername = "vagrant",
   [String]$sqlpassword = "vagrant",
 
-  [string]$iisusername = "vagrant",
+  [String]$iisusername = "vagrant",
   [String]$iispassword = "vagrant",
 
-  [boolean]$asp35 = $false,
-  [boolean]$asp45 = $false,
-  [boolean]$dotnetcore21 = $false,
-  [boolean]$dotnetcore22 = $true,
+  [String]$stringasp35 = "$false",
+  [String]$stringasp45 = "$false",
+  [String]$stringdotnetcore21 = "$false",
+  [String]$stringdotnetcore22 = "$false",
 
-  [boolean]$blogdemo = $true
+  [String]$stringblogdemo = "$false"
 )
+
+[int]$tcpportnr = [convert]::ToInt32($stringtcpportnr, 10)
+[boolean]$asp35 = [convert]::ToBoolean($stringasp35)
+[boolean]$asp45 = [convert]::ToBoolean($stringasp45)
+[boolean]$dotnetcore21 = [convert]::ToBoolean($stringdotnetcore21)
+[boolean]$dotnetcore22 = [convert]::ToBoolean($stringdotnetcore22)
+[boolean]$blogdemo = [convert]::ToBoolean($stringblogdemo)
 
 if($downloadpath.EndsWith("\")){
     $computerName.Remove($computerName.LastIndexOf("\"))
