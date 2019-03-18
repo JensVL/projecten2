@@ -20,19 +20,31 @@
 * WISA - Autodeploy .NET Core Blog Application
 * WISA - .NET Core 2.1 and 2.2 support
 * General provisioning tweaks
-* ...
+* LAMP - Provioning
+* LAMP - Documentatie
+* LAMP - Testplan
+* LAMP - Configuratie
+* LAMP - Proof of Concept poging
 
 ![Time-per-assignment](week06-time-per-assignment.png)
 
 ### Yordi De Rijcke
 
-* ...
+* LAMP - Provioning
+* LAMP - Documentatie
+* LAMP - Testplan
+* LAMP - Configuratie
+* LAMP - Proof of Concept poging
 
 [Afbeelding individueel rapport tijdregistratie]
 
 ### Olivier De Vriese
 
-* ...
+* LAMP - Provioning
+* LAMP - Documentatie
+* LAMP - Testplan
+* LAMP - Configuratie
+* LAMP - Proof of Concept poging
 
 [Afbeelding individueel rapport tijdregistratie]
 
