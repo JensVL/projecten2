@@ -5,11 +5,11 @@
 
 | Student  | Aanw. | Opmerking |
 | :---     | :---  | :---      |
-| Yordi De Rijcke |       |           |
-| Olivier De Vriese |       |           |
-| Nathan Cammerman |       |           |
-| Jens Van Liefferinge |      |         |
-| Matthias Van De Velde |       |           |
+| Yordi De Rijcke |   x    |           |
+| Olivier De Vriese |  x     |           |
+| Nathan Cammerman |    x   |           |
+| Jens Van Liefferinge |       |         |
+| Matthias Van De Velde | x      |           |
 
 ## Wat heb je deze week gerealiseerd?
 
@@ -82,6 +82,9 @@
 ## Feedback technisch luik
 
 ### Algemeen
+* PoC via digital oceans getoond, LAMP stack werd getoond, en de drupal website werd geconfigureerd.
+* OK
+* provisionig WISA gedaan
 
 ### Yordi De Rijcke
 ### Olivier De Vriese
