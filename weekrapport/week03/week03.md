@@ -14,7 +14,6 @@
 
 ### Algemeen
 
-[Afbeelding huidige toestand Kanban-bord(en) invoegen]
 
 * Configured IPv6 static and default routes
 * Accessed and Configured switch with basic settings through console connection
@@ -26,7 +25,7 @@
 * Checklist: How to reset a Cisco router and switch with remaining settings
 * Cheat sheet with basic IOS commands
 
-[Afbeelding teamoverzicht tijdregistratie onderverdeeld per deelopdracht]
+![Time-per-assignment](week03-time-per-assignment.png)
 
 ### Yordi De Rijcke
 
@@ -35,7 +34,7 @@
 * Labo3: Development + testing
 * Trello configuratie
 
-[Afbeelding individueel rapport tijdregistratie]
+![Time-registration-week03-Yordi-De-Rijcke](week03-YordiDeRijcke.PNG)
 
 ### Olivier De Vriese
 
@@ -45,7 +44,7 @@
 * Labo4: Testing
 * Cheatsheet aangevuld
 
-[Afbeelding individueel rapport tijdregistratie]
+![Time-registration-week03-Olivier-De-Vriese](week03-OlivierDeVriese.jpg)
 
 ### Nathan Cammerman
  
@@ -56,7 +55,7 @@
 * Checklist: How to reset a Cisco router and switch with remaining settings
 * Configured basic static route network(3 PC’s + 3 switches + 3 routers)
 
-![Time-registration-week02-Nathan-Cammerman](week02-NathanCammerman.PNG)
+![Time-registration-week03-Nathan-Cammerman](week03-NathanCammerman.PNG)
 
 ### Matthias Van De Velde
 
@@ -68,7 +67,7 @@
 * Configured basic static route network(3 PC’s + 3 switches + 3 routers)
 * Checklist: How to reset a Cisco router and switch with remaining settings  
 
-![Time-registration-week02-Matthias-VanDeVelde](week02-MatthiasVanDeVelde.JPG)  
+![Time-registration-week03-Matthias-VanDeVelde](week03-MatthiasVanDeVelde.JPG)  
 
 ## Wat plan je volgende week te doen?
 

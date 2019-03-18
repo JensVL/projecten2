@@ -97,14 +97,58 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       node.vm.provider :virtualbox do |vb|
         vb.memory = host['memory'] if host.key? 'memory'
         vb.cpus = host['cpus'] if host.key? 'cpus'
-
+        vb.gui = host['gui']
+        
         # WARNING: if the name of the current directory is the same as the
         # host name, this will fail.
         vb.customize ['modifyvm', :id, '--groups', PROJECT_NAME]
       end
 
       # Run configuration script for the VM
-      node.vm.provision 'shell', path: 'provisioning/' + host['name'] + '.sh'
+      if host['os'] == "windows"
+        config.vm.communicator = "winrm"
+        config.winrm.username = "vagrant"
+        config.winrm.password = "vagrant"
+
+        iis         = host['iis']
+        asp         = host['asp']
+        sql         = host['sql']
+
+        config.vm.provision :shell,
+          privileged: true,
+          path: 'provisioning/' + host['name'] + '.ps1', # "/installsqlserver.ps1",
+          args: [
+            host['downloadpath'],
+            sql['instancename'],
+            sql['rootpassword'],
+            sql['tcpportnr'],
+            sql['dbname'],
+            sql['username'],
+            sql['password'],
+            iis['username'],
+            iis['password'],
+            asp['asp35'],
+            asp['asp45'],
+            asp['dotnetcore21'],
+            asp['dotnetcore22'],
+            host['blogdemo']
+          ]
+
+      elsif host['os'] == "linux"
+	      linux	= host['linux']
+	      mariaDB	= host['mariaDB']
+        
+        config.vm.provision :shell,
+	      path: 'provisioning/' + host['name'] + '.sh',
+        args: [
+        "-linuxRootPassword", linux['rootPassword'],
+        "-linuxVagrantPassword", linux['vagrantPassword'],
+        "-mariaDBRootPassword", mariaDB['rootPassword'],
+        "-mariaDBName", mariaDB['dbName'],
+        "-mariaDBUserName",  mariaDB['username'],
+        "-mariaDBPassword", mariaDB['password']
+        ]
+      end
     end
   end
 end
