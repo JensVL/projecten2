@@ -38,9 +38,11 @@
 
 ### Nathan Cammerman
 
-* ...
+* WISA-User-guide
+* WISA - Autodeploy .NET Core Blog Application
+* WISA - Matthias Van De velde bijstaan voor algemeen provisioning.
 
-[Afbeelding individueel rapport tijdregistratie]
+![Time-registration-week06-NathanCammerman](week06NathanCammerman.png)
 
 ### Matthias Van De Velde
 
