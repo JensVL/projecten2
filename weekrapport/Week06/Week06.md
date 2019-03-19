@@ -5,11 +5,11 @@
 
 | Student  | Aanw. | Opmerking |
 | :---     | :---  | :---      |
-| Yordi De Rijcke |       |           |
-| Olivier De Vriese |       |           |
-| Nathan Cammerman |       |           |
-| Jens Van Liefferinge |      |         |
-| Matthias Van De Velde |       |           |
+| Yordi De Rijcke |   x    |           |
+| Olivier De Vriese |  x     |           |
+| Nathan Cammerman |    x   |           |
+| Jens Van Liefferinge |       |         |
+| Matthias Van De Velde | x      |           |
 
 ## Wat heb je deze week gerealiseerd?
 
@@ -20,27 +20,41 @@
 * WISA - Autodeploy .NET Core Blog Application
 * WISA - .NET Core 2.1 and 2.2 support
 * General provisioning tweaks
-* ...
+* LAMP - Provioning
+* LAMP - Documentatie
+* LAMP - Testplan
+* LAMP - Configuratie
+* LAMP - Proof of Concept poging
 
 ![Time-per-assignment](week06-time-per-assignment.png)
 
 ### Yordi De Rijcke
 
-* ...
+* LAMP - Provioning
+* LAMP - Documentatie
+* LAMP - Testplan
+* LAMP - Configuratie
+* LAMP - Proof of Concept poging
 
 [Afbeelding individueel rapport tijdregistratie]
 
 ### Olivier De Vriese
 
-* ...
+* LAMP - Provioning
+* LAMP - Documentatie
+* LAMP - Testplan
+* LAMP - Configuratie
+* LAMP - Proof of Concept poging
 
 [Afbeelding individueel rapport tijdregistratie]
 
 ### Nathan Cammerman
 
-* ...
+* WISA-User-guide
+* WISA - Autodeploy .NET Core Blog Application
+* WISA - Matthias Van De velde bijstaan voor algemeen provisioning.
 
-[Afbeelding individueel rapport tijdregistratie]
+![Time-registration-week06-NathanCammerman](week06NathanCammerman.png)
 
 ### Matthias Van De Velde
 
@@ -68,6 +82,9 @@
 ## Feedback technisch luik
 
 ### Algemeen
+* PoC via digital oceans getoond, LAMP stack werd getoond, en de drupal website werd geconfigureerd.
+* OK
+* provisionig WISA gedaan
 
 ### Yordi De Rijcke
 ### Olivier De Vriese
