@@ -32,7 +32,7 @@ Gebruik als hostname "vagrant@localhost" en poort "2222".
 ```
 
 ## Apache & Drupal
-1. Controleer of de webserver werkt door te surfen naar "localhost:8080"
+1. Controleer of de webserver werkt door te surfen naar "192.168.248.11"
 2. Je zou nu de startpagina van Apache moeten zien
-3. Controleer of Drupal werkt door te surfen naar "localhost:8080/drupal"
+3. Controleer of Drupal werkt door te surfen naar "192.168.248.11/drupal"
 4. Je zou nu de startpagina van Drupal moeten zien
