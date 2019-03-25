@@ -1,6 +1,6 @@
 # Testrapport Opdracht 2: LAMP-Stack
 
-## Test 1
+## Test 2
 
 Uitvoerder(s) test: Jens Van Liefferinge
 Uitgevoerd op: 24/03/2019
@@ -14,7 +14,7 @@ Github commit: 82685ea
 4. SSH-sessie succesvol beëindigd.
 5. SSH verbinding opgezet via PuTTY en gegeven info. Wachtwoord ingevoerd, verbinding staat open.
 
-## MariaDB 
+## MariaDB
 
 1. Commando `mysql -uroot -p` ingegeven gevolgd door wachtwoord, prompt komt overeen met gegeven.
 2. Uit subshell gegaan.
