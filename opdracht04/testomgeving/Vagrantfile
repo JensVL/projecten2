@@ -112,22 +112,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         config.vm.provision :shell,
           privileged: true,
           path: 'provisioning/' + host['name'] + '.ps1',
-          args: [
-            host['downloadpath'],
-            sql['instancename'],
-            sql['rootpassword'],
-            sql['tcpportnr'],
-            sql['dbname'],
-            sql['username'],
-            sql['password'],
-            iis['username'],
-            iis['password'],
-            asp['asp35'],
-            asp['asp45'],
-            asp['dotnetcore21'],
-            asp['dotnetcore22'],
-            host['blogdemo']
-          ]
+          args: host['downloadpath']
       end
     end
   end

@@ -34,9 +34,10 @@
   box: fpkmatthi/Windows2016
   ip: 192.168.248.10
   os: windows
-  gui: false
-  memory: 4096
+  gui: true
+  memory: 2048
   cpus: 2
+  downloadpath: "C:\\SetupMedia"
   forwarded_ports:
     - guest: "3389"
       host: "3389"
