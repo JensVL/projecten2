@@ -15,3 +15,7 @@
 # Hidden Vagrant-directory
 .vagrant
 
+
+opdracht04/testomgeving/tmp/
+
+opdracht04/testomgeving/provision/rdpauth-certificate-template\.ldif

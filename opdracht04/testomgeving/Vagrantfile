@@ -104,15 +104,28 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       end
 
 
-      if host['os'] == "windows"
-        config.vm.communicator = "winrm"
-        config.winrm.username = "vagrant"
-        config.winrm.password = "vagrant"
+      config.winrm.transport = :plaintext
+      config.winrm.basic_auth_only = true
+      config.winrm.timeout =   1800 # 30 minutes
+      config.vm.boot_timeout = 1800 # 30 minutes
+      
+      if host['role'] == "dc"
+        config.vm.provision "shell", path: "provision/ps.ps1", args: "domain-controller.ps1"
+        config.vm.provision "reload"
+        config.vm.provision "shell", path: "provision/ps.ps1", args: "domain-controller-configure.ps1"
+        config.vm.provision "shell", inline: "$env:chocolateyVersion='0.10.11'; iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex", name: "Install Chocolatey"
+        config.vm.provision "shell", path: "provision/ps.ps1", args: "provision-base.ps1"
+        config.vm.provision "reload"
+        config.vm.provision "shell", path: "provision/ps.ps1", args: "ad-explorer.ps1"
+        config.vm.provision "shell", path: "provision/ps.ps1", args: "ca.ps1"
+        config.vm.provision "reload"
+        # TODO: provisioning algemener maken met parameters etc
+        # TODO: MDT provisioning
 
-        config.vm.provision :shell,
-          privileged: true,
-          path: 'provisioning/' + host['name'] + '.ps1',
-          args: host['downloadpath']
+      elsif host['role'] == "client"
+        # config.vm.provision "windows-sysprep"
+        config.vm.provision "shell", path: "provision/ps.ps1", args: "add-to-domain.ps1"
+        config.vm.provision "reload"
       end
     end
   end

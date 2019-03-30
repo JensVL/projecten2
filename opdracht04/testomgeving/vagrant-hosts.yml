@@ -30,16 +30,26 @@
 # [1] http://docs.vagrantup.com/v2/synced-folders/basic_usage.html
 ---
 
-- name: wisastack
-  box: fpkmatthi/Windows2016
+- name: Domain-Controller
+  box: windows-2016-amd64-no-windows-update-virtualbox
   ip: 192.168.248.10
-  os: windows
-  gui: true
+  role: dc
+  gui: false
   memory: 2048
   cpus: 2
-  downloadpath: "C:\\SetupMedia"
   forwarded_ports:
     - guest: "3389"
       host: "3389"
+
+- name: Client
+  box: windows-10-amd64-no-windows-update-virtualbox
+  ip: 192.168.248.11
+  role: client
+  gui: false
+  memory: 2048
+  cpus: 1
+  forwarded_ports:
+    - guest: "3389"
+      host: "33389"
 
 

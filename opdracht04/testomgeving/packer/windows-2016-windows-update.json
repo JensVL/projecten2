@@ -1,0 +1,100 @@
+{
+  "variables": {
+    "disk_size": "102400",
+    "iso_url": "https://software-download.microsoft.com/download/pr/Windows_Server_2016_Datacenter_EVAL_en-us_14393_refresh.ISO",
+    "iso_checksum": "1ce702a578a3cb1ac3d14873980838590f06d5b7101c5daaccbac9d73f1fb50f",
+    "iso_checksum_type": "sha256"
+  },
+  "builders": [
+    {
+      "name": "windows-2016-amd64-no-windows-update-virtualbox",
+      "type": "virtualbox-iso",
+      "guest_os_type": "Windows2016_64",
+      "guest_additions_mode": "attach",
+      "headless": true,
+      "vboxmanage": [
+        ["modifyvm", "{{.Name}}", "--memory", "2048"],
+        ["modifyvm", "{{.Name}}", "--cpus", "2"],
+        ["modifyvm", "{{.Name}}", "--vram", "64"],
+        ["modifyvm", "{{.Name}}", "--audio", "none"],
+        ["modifyvm", "{{.Name}}", "--nictype1", "82540EM"],
+        ["modifyvm", "{{.Name}}", "--nictype2", "82540EM"],
+        ["modifyvm", "{{.Name}}", "--nictype3", "82540EM"],
+        ["modifyvm", "{{.Name}}", "--nictype4", "82540EM"]
+      ],
+      "disk_size": "{{user `disk_size`}}",
+      "hard_drive_interface": "sata",
+      "iso_url": "{{user `iso_url`}}",
+      "iso_checksum": "{{user `iso_checksum`}}",
+      "iso_checksum_type": "{{user `iso_checksum_type`}}",
+      "communicator": "winrm",
+      "winrm_username": "vagrant",
+      "winrm_password": "vagrant",
+      "winrm_timeout": "4h",
+      "shutdown_command": "shutdown /s /t 0 /f /d p:4:1 /c \"Packer Shutdown\"",
+      "floppy_files": [
+        "windows-2016/autounattend.xml",
+        "provisioning/winrm.ps1"
+      ]
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "powershell",
+      "script": "windows-2016/provisioning/disable-windows-updates.ps1"
+    },
+    {
+      "type": "powershell",
+      "inline": "Uninstall-WindowsFeature Windows-Defender-Features"
+    },
+    {
+      "type": "powershell",
+      "inline": "Uninstall-WindowsFeature FS-SMB1"
+    },
+    {
+      "type": "powershell",
+      "script": "windows-2016/provisioning/virtualbox-prevent-vboxsrv-resolution-delay.ps1"
+    },
+    {
+      "type": "windows-restart"
+    },
+    {
+      "type": "powershell",
+      "script": "windows-2016/provisioning/libvirt-fix-cpu-driver.ps1"
+    },
+    {
+      "type": "file",
+      "source": "drivers/virtio-2016.zip",
+      "destination": "C:/Windows/Temp/virtio/virtio.zip"
+    },
+    {
+      "type": "powershell",
+      "script": "windows-2016/provisioning/provision.ps1"
+    },
+    {
+      "type": "windows-update"
+    },
+    {
+      "type": "powershell",
+      "script": "windows-2016/provisioning/provision-openssh.ps1"
+    },
+    {
+      "type": "windows-restart"
+    },
+    {
+      "type": "powershell",
+      "script": "windows-2016/provisioning/eject-media.ps1"
+    },
+    {
+      "type": "powershell",
+      "script": "windows-2016/provisioning/optimize.ps1"
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "vagrant",
+      "output": "{{.BuildName}}.box",
+      "vagrantfile_template": "Vagrantfile.template"
+    }
+  ]
+}
