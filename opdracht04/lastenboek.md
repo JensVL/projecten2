@@ -16,6 +16,10 @@
 2. MDT: Create server
     Verantwoordelijke: Yordi De Rijcke & Olivier De Vriese
     Tester: X
+    
+3. MDT: Automatisering serveropstelling
+    Verantwoordelijke: Matthias Van De Velde
+    Tester: X
 
 ## Tijdbesteding
 
