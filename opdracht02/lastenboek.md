@@ -1,4 +1,4 @@
-# Lastenboek Taak 1: Webapplicatieservers LAMP & WISA
+# Lastenboek Taak 2: Webapplicatieservers LAMP & WISA
 
 (Instructies vind je tussen haakjes. Verwijder die als het document volledig ingevuld is.)
 
