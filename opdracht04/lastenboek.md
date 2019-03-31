@@ -4,29 +4,28 @@
 
 ## Deliverables
 
-(Som hier de concrete eindresultaten op die je voor deze opdracht moet opleveren.)
-
-* ...
+* MDT Server opstellen
+* Windows 10 MDT Image maken met bijhorende programma's (Adobe Reader, LibreOffice, Java)
+* Voorstelling werking aan leerkracht
 
 ## Deeltaken
 
-(Som hier de deeltaken voor deze opdracht op en duid voor elk een verantwoordelijke en tester aan. Vermeld ook afhankelijkheden tussen deeltaken als die er zijn. Elke deeltaak wordt een kaartje op het kanban-bord!)
-
-1. ...
-    - Verantwoordelijke: studentx
-    - Tester: studenty
-2. ...
-    - Verantwoordelijke: studentx
-    - Tester: studenty
+1. MDT: Create client
+    Verantwoordelijke: Yordi De Rijcke & Olivier De Vriese
+    Tester: X
+2. MDT: Create server
+    Verantwoordelijke: Yordi De Rijcke & Olivier De Vriese
+    Tester: X
 
 ## Tijdbesteding
 
 | Student    | Geschat | Gerealiseerd |
 | :---       | ---:    | ---:         |
-| student1   |         |              |
-| student2   |         |              |
-| student3   |         |              |
-| student4   |         |              |
+| Matthias Van De Velde   |         |              |
+| Nathan Cammerman   |         |              |
+| Yordi De Rijcke   |     15    |              |
+| Olivier De Vriese   |         |              |
+| Jens Van Liefferinge   |         |              |
 | **totaal** |         |              |
 
 (na oplevering van de taak een schermafbeelding toevoegen van rapport tijdbesteding voor deze taak)
