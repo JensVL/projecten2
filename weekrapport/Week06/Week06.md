@@ -62,7 +62,12 @@
 * WISA - .NET Core 2.1 and 2.2 support
 * General provisioning tweaks
 
-![Time-registration-week05-MatthiasVanDeVelde](week06-MatthiasVanDeVelde.png)
+![Time-registration-week06-MatthiasVanDeVelde](week06-MatthiasVanDeVelde.png)
+
+### Jens Van Liefferinge
+* WISA deployment test report
+* WISA deployment test plan
+![Time-registration-week06-JensVanLiefferinge](week06-JensVanLiefferinge.png)
 
 ## Wat plan je volgende week te doen?
 

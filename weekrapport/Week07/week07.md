@@ -1,4 +1,4 @@
-# Voortgangsrapport week 06
+# Voortgangsrapport week 07
 
 * Groep: 10
 * Datum voortgangsgesprek: 25/03/2019
