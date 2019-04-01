@@ -58,4 +58,4 @@
 | Jens Van Liefferinge   |    10     |       9       |
 | **totaal** |    90     |      131        |
 
-(na oplevering van de taak een schermafbeelding toevoegen van rapport tijdbesteding voor deze taak)
+![Time-registration-week03](opdracht2-timeregistratio.png)
