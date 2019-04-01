@@ -51,4 +51,4 @@
 | Matthias Van De Velde   |    13     |     18.8         |
 | **totaal** |    38.5     |       47.3       |
 
-![Time-registration-week03](Time-registration-week03.png)
+![Time-registration-week03](Time-registration-week03.PNG)
