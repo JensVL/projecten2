@@ -1,4 +1,4 @@
-# Lastenboek Taak 1: Webapplicatieservers LAMP & WISA
+# Lastenboek Taak 2: Webapplicatieservers LAMP & WISA
 
 (Instructies vind je tussen haakjes. Verwijder die als het document volledig ingevuld is.)
 
@@ -27,16 +27,22 @@
 3. WISA provisionscript(mits aanpassing vagrantfile): IIS, SQL Server, ASP.NET.
     - Verantwoordelijke: Matthias Van De Velde, Nathan Cammerman
     - Tester: Jens Van Liefferinge
-4. Complete LAMP stack.
+4. LAMP technische documentatie
     - Verantwoordelijke: Yordi De Rijcke & Olivier De Vriese
     - Tester: Jens Van Liefferinge
-5. LAMP provisionscript: Apache, MariaDb, Php.
+5. LAMP testplan
     - Verantwoordelijke: Yordi De Rijcke & Olivier De Vriese
     - Tester: Jens Van Liefferinge
-6. Hosts adden in vagrant-hosts.yml
+6. LAMP provisionscript: Apache, MariaDb, Php.
+    - Verantwoordelijke: Yordi De Rijcke & Olivier De Vriese
+    - Tester: Jens Van Liefferinge
+7. LAMP proof of concept (Drupal & Digital Ocean)
+    - Verantwoordelijke: Yordi De Rijcke & Olivier De Vriese
+    - Tester: Jens Van Liefferinge
+8. Hosts adden in vagrant-hosts.yml
     - Verantwoordelijke: Matthias Van De Velde
     - Tester: Jens Van Liefferinge
-7. Vagrant file aanpassen voor powershell commands.
+9. Vagrant file aanpassen voor powershell commands.
     - Verantwoordelijke: Matthias Van De Velde
     - Tester: Jens Van Liefferinge
 
@@ -45,11 +51,11 @@
 
 | Student    | Geschat | Gerealiseerd |
 | :---       | ---:    | ---:         |
-| Matthias Van De Velde   |    25     |              |
-| Nathan Cammerman   |    12     |              |
-| Yordi De Rijcke |         |              |
-| Olivier De Vriese   |         |              |
-| Jens Van Liefferinge   |         |              |
-| **totaal** |         |              |
+| Matthias Van De Velde   |    25     |        47      |
+| Nathan Cammerman   |    12     |      32        |
+| Yordi De Rijcke |     20    |       22       |
+| Olivier De Vriese   |    23     |      21        |
+| Jens Van Liefferinge   |    10     |       9       |
+| **totaal** |    90     |      131        |
 
-(na oplevering van de taak een schermafbeelding toevoegen van rapport tijdbesteding voor deze taak)
+![Time-registration-week03](opdracht2-timeregistratio.png)
