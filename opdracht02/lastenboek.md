@@ -51,11 +51,11 @@
 
 | Student    | Geschat | Gerealiseerd |
 | :---       | ---:    | ---:         |
-| Matthias Van De Velde   |    25     |              |
-| Nathan Cammerman   |    12     |              |
+| Matthias Van De Velde   |    25     |        47      |
+| Nathan Cammerman   |    12     |      32        |
 | Yordi De Rijcke |     20    |       22       |
 | Olivier De Vriese   |    23     |      21        |
-| Jens Van Liefferinge   |         |              |
-| **totaal** |         |              |
+| Jens Van Liefferinge   |    10     |       9       |
+| **totaal** |    90     |      131        |
 
 (na oplevering van de taak een schermafbeelding toevoegen van rapport tijdbesteding voor deze taak)
