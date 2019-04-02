@@ -119,10 +119,19 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         config.vm.provision "shell", path: "provision/ps.ps1", args: "ad-explorer.ps1"
         config.vm.provision "shell", path: "provision/ps.ps1", args: "ca.ps1"
         config.vm.provision "reload"
+        # config.vm.provision "shell", path: "provision/ps.ps1", args: "fix-ip-after-ad.ps1"
+        # config.vm.provision "shell", path: "provision/ps.ps1", args: "routing-and-remote-access.ps1"
+        # config.vm.provision "reload"
+        # config.vm.provision "shell", path: "provision/ps.ps1", args: "routing-nat.ps1"
+        # config.vm.provision "shell", path: "provision/ps.ps1", args: "dhcp.ps1"
+
         # TODO: provisioning algemener maken met parameters etc
         # TODO: MDT provisioning
 
       elsif host['role'] == "client"
+        # node.vm.provider :virtualbox do |vb|
+        #   vb.customize ['modifyvm', :id, '--nic1', "null"]
+        # end
         # config.vm.provision "windows-sysprep"
         config.vm.provision "shell", path: "provision/ps.ps1", args: "add-to-domain.ps1"
         config.vm.provision "reload"

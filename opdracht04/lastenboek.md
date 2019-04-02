@@ -18,14 +18,14 @@
     Tester: X
     
 3. MDT: Automatisering serveropstelling
-    Verantwoordelijke: Matthias Van De Velde
+    Verantwoordelijke: Matthias Van De Velde, Nathan Cammerman, Jens Van Liefferinge
     Tester: X
 
 ## Tijdbesteding
 
 | Student    | Geschat | Gerealiseerd |
 | :---       | ---:    | ---:         |
-| Matthias Van De Velde   |         |              |
+| Matthias Van De Velde   |    22     |              |
 | Nathan Cammerman   |         |              |
 | Yordi De Rijcke   |     15    |              |
 | Olivier De Vriese   |         |              |

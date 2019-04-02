@@ -158,6 +158,13 @@ Write-Host 'Disabling the Windows Boot Manager menu...'
 #    NB with a timeout of 2 you can still press F8 to show the boot manager menu.
 bcdedit /set '{bootmgr}' displaybootmenu no
 
+Write-Host 'Disabling Shutdown Event Tracker'
+if ( -Not (Test-Path 'registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Reliability')) {
+    New-Item -Path 'registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT' -Name Reliability -Force
+}
+Set-ItemProperty -Path 'registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Reliability' -Name ShutdownReasonOn -Value 0
+
+
 # remove temporary files.
 'C:\tmp','C:\Windows\Temp',$env:TEMP | ForEach-Object {
     Get-ChildItem $_ -Recurse | Remove-Item -Force -Recurse -ErrorAction SilentlyContinue
