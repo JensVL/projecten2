@@ -31,7 +31,7 @@
 - 3 desktops, compleet met muis en toetsenbord
 - 3 PC schermen, 1 per desktop
 - 2 laptops
-- Beamer + projectiescherm: beide ophangen aan plafond vergaderrruimte
+- Beamer + projectiescherm: beide ophangen aan plafond vergaderruimte
 - 2 netwerkprinters: 1 groot met kopieerfunctie, 1 particuliere printer
 - 3 vaste telefoons: 1 per bureau
 - Fototoestel
