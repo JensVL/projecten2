@@ -7,6 +7,7 @@
 - Luca Bohez
 - Sharon Covent
 - Alec De Letter
+
 ## Groepsleden Systeembeheergroep 10
 - Matthias Van De Velde
 - Nathan Cammerman
@@ -27,11 +28,11 @@
 
 - 2 desktops, compleet met muis en toetsenbord
 - A3 printer op netwerk
-- 2 voIP toestellen
+- 2 VoIP toestellen
 - Beamer in vergaderruimte: ophangen aan plafond
 
 ## Extra informatie
 
-- Eventueel uitbreiden naar tweede accesss point in de toekomst
+- Eventueel uitbreiden naar tweede access point in de toekomst
 
 ## Deadline: 13 mei 2019

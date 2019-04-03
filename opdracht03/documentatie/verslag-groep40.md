@@ -6,6 +6,7 @@
 - Milan De Saeger
 - Simon Fisscher
 - Bryan Maes
+
 ## Groepsleden Systeembeheergroep 10
 - Matthias Van De Velde
 - Nathan Cammerman
@@ -41,7 +42,7 @@
 
 ## Extra informatie
 
-- Telefonie: voIP of abonnement: groep systeembeheer maakt keuze op basis van goedkoopste prijs
+- Telefonie: VoIP of abonnement: groep systeembeheer maakt keuze op basis van goedkoopste prijs
 - Groep systeembeheer regelt contact met elektricien indien nodig
 - Alle bekabeling via plafond
 - Eventueel uitbreiding in toekomst naar maximaal 5 werknemers
