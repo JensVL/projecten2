@@ -8,6 +8,7 @@
 - Casper De Boos
 - Gil Meeussen
 - Tibo Miseur
+
 ## Groepsleden Systeembeheergroep 10
 - Matthias Van De Velde
 - Nathan Cammerman
@@ -39,6 +40,7 @@
 
 - Microsoft Windows 10 Enterprise
 - Microsoft Office pakket
+- CRM software nog o.t.k.
 - AutoCAD
 - SketchUp
 - GIMP
@@ -47,6 +49,6 @@
 
 - Groep systeembeheer regelt contact met elektricien
 - Eventueel uitbreiding in toekomst naar maximaal 5 werknemers
-- Telefonie: voIP of abonnement: groep systeembeheer maakt keuze op basis van goedkoopste prijs
+- Telefonie: VoIP of abonnement: groep systeembeheer maakt keuze op basis van goedkoopste prijs
 
 ## Deadline: 13 mei 2019
