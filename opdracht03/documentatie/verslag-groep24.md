@@ -30,7 +30,7 @@
 - 3 desktops, compleet met muis en toetsenbord
 - 3 PC schermen, 1 per desktop
 - 2 laptops
-- Beamer + scherm: beide ophangen aan plafond vergaderrruimte
+- Beamer + projectiescherm: beide ophangen aan plafond vergaderrruimte
 - 2 netwerkprinters: 1 groot met kopieerfunctie, 1 particuliere printer
 - 3 vaste telefoons: 1 per bureau
 - Fototoestel
@@ -45,7 +45,7 @@
 
 ## Extra informatie
 
-- Groep systeembeheer regelt contact met elektricien
+- Groep systeembeheer regelt contact met elektricien indien nodig
 - Eventueel uitbreiding in toekomst naar maximaal 5 werknemers
 - Telefonie: voIP of abonnement: groep systeembeheer maakt keuze op basis van goedkoopste prijs
 
