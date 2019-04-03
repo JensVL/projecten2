@@ -1,0 +1,11 @@
+pushd routing ip nat
+uninstall
+install
+set global tcptimeoutmins=1440 udptimeoutmins=1 loglevel=ERROR
+
+add interface name="External" mode=FULL
+add interface name="Internal"
+
+popd
+
+exit
