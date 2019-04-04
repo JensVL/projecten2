@@ -41,7 +41,7 @@
   "provisioners": [
     {
       "type": "powershell",
-      "script": "windows-2016/provisioning/disable-windows-updates.ps1"
+      "script": "provisioning/disable-windows-updates.ps1"
     },
     {
       "type": "powershell",
@@ -53,14 +53,10 @@
     },
     {
       "type": "powershell",
-      "script": "windows-2016/provisioning/virtualbox-prevent-vboxsrv-resolution-delay.ps1"
+      "script": "provisioning/virtualbox-prevent-vboxsrv-resolution-delay.ps1"
     },
     {
       "type": "windows-restart"
-    },
-    {
-      "type": "powershell",
-      "script": "windows-2016/provisioning/libvirt-fix-cpu-driver.ps1"
     },
     {
       "type": "file",
@@ -69,22 +65,22 @@
     },
     {
       "type": "powershell",
-      "script": "windows-2016/provisioning/provision.ps1"
+      "script": "provisioning/provision.ps1"
     },
     {
       "type": "powershell",
-      "script": "windows-2016/provisioning/provision-openssh.ps1"
+      "script": "provisioning/provision-openssh.ps1"
     },
     {
       "type": "windows-restart"
     },
     {
       "type": "powershell",
-      "script": "windows-2016/provisioning/eject-media.ps1"
+      "script": "provisioning/eject-media.ps1"
     },
     {
       "type": "powershell",
-      "script": "windows-2016/provisioning/optimize.ps1"
+      "script": "provisioning/optimize.ps1"
     }
   ],
   "post-processors": [
