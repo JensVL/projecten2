@@ -15,7 +15,7 @@ windows-2016-amd64-no-windows-update-virtualbox.box: windows-2016/windows-2016-n
 		packer build -only=windows-2016-amd64-no-windows-update-virtualbox -on-error=abort windows-2016/windows-2016-no-windows-update.json
 	@echo BOX successfully built!
 	@echo to add to local vagrant install do:
-	@echo vagrant box add -f windows-2016-amd64-no-windows-update-virtualbox.box $@
+	@echo vagrant box add -f windows-2016-amd64-no-windows-update-virtualbox $@
 
 windows-2016-amd64-windows-update-virtualbox.box: windows-2016/windows-2016-windows-update.json windows-2016/autounattend.xml provisioning/*.ps1 drivers
 	rm -f $@
@@ -23,7 +23,7 @@ windows-2016-amd64-windows-update-virtualbox.box: windows-2016/windows-2016-wind
 		packer build -only=windows-2016-amd64-windows-update-virtualbox -on-error=abort windows-2016/windows-2016-windows-update.json
 	@echo BOX successfully built!
 	@echo to add to local vagrant install do:
-	@echo vagrant box add -f windows-2016-amd64-windows-update-virtualbox.box $@
+	@echo vagrant box add -f windows-2016-amd64-windows-update-virtualbox $@
 
 
 
@@ -34,7 +34,7 @@ windows-10-amd64-no-windows-update-virtualbox.box: windows-10/windows-10-no-wind
 		packer build -only=windows-10-amd64-no-windows-update-virtualbox -on-error=abort windows-10/windows-10-no-windows-update-virtualbox.json
 	@echo BOX successfully built!
 	@echo to add to local vagrant install do:
-	@echo vagrant box add -f windows-10-amd64-no-windows-update-virtualbox.box $@
+	@echo vagrant box add -f windows-10-amd64-no-windows-update-virtualbox $@
 
 windows-10-amd64-windows-update-virtualbox.box: windows-10/windows-10-windows-update.json windows-10/autounattend.xml provisioning/*.ps1 drivers
 	rm -f $@
@@ -42,7 +42,7 @@ windows-10-amd64-windows-update-virtualbox.box: windows-10/windows-10-windows-up
 		packer build -only=windows-10-amd64-windows-update-virtualbox -on-error=abort windows-10/windows-10-windows-update.json
 	@echo BOX successfully built!
 	@echo to add to local vagrant install do:
-	@echo vagrant box add -f windows-10-amd64-windows-update-virtualbox.box $@
+	@echo vagrant box add -f windows-10-amd64-windows-update-virtualbox $@
 
 
 
