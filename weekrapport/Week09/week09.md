@@ -38,6 +38,9 @@
 
 ### Nathan Cammerman
 
+* Windows Server: autodeploy using Powershell
+* Gesprekken met vastgoedstudenten
+
 ![Time-registration-week09-NathanCammerman](week09-NathanCammerman.PNG)
 
 
