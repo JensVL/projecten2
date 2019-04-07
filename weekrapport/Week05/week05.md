@@ -15,7 +15,7 @@
 
 ### Algemeen
 
-![Kanban-bord](week05-Kanbanbord.png)
+![Kanban-bord](week05-Kanbanbord.PNG)
 
 * Windows 2016 base box gemaakt
 * Windows 2016 base box geüpload op Vagrant Cloud
@@ -27,7 +27,7 @@
 * MariaDB configuratie
 * Installatiescript verbeterd
 
-![Time-per-assignment](week05-time-per-assignment.png)
+![Time-per-assignment](week05-time-per-assignment.PNG)
 
 ### Yordi De Rijcke
 

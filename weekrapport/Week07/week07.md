@@ -15,8 +15,6 @@
 
 ### Algemeen
 
-![Kanban-bord](week07-Kanbanbord.PNG)
-
 * Testplan LAMP.
 * Testrapport LAMP.
 * Opdracht 3 vragenlijst opstellen.
@@ -25,6 +23,8 @@
 * Microsoft deployment kit opzoekwerk.
 * Lichte aanpassing WISA gebruikersdocumentatie.
 * Proof-of-concept Digital Ocean. 
+
+![Time-per-assignment](week07-time-per-assignment.PNG)
 
 ### Yordi De Rijcke
 * Microsoft deployment kit client.

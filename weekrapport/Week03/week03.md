@@ -25,7 +25,7 @@
 * Checklist: How to reset a Cisco router and switch with remaining settings
 * Cheat sheet with basic IOS commands
 
-![Time-per-assignment](week03-time-per-assignment.png)
+![Time-per-assignment](week03-time-per-assignment.PNG)
 
 ### Yordi De Rijcke
 
@@ -34,7 +34,7 @@
 * Labo3: Development + testing
 * Trello configuratie
 
-![Time-registration-week03-Yordi-De-Rijcke](week03-YordiDeRijcke.PNG)
+![Time-registration-week03-Yordi-De-Rijcke](week03-YordiDeRijcke.png)
 
 ### Olivier De Vriese
 
@@ -44,7 +44,7 @@
 * Labo4: Testing
 * Cheatsheet aangevuld
 
-![Time-registration-week03-Olivier-De-Vriese](week03-OlivierDeVriese.jpg)
+![Time-registration-week03-Olivier-De-Vriese](week03-OlivierDeVriese.JPG)
 
 ### Nathan Cammerman
  

@@ -25,14 +25,13 @@
 * Gestart met LAMP installatiescript.
 * Gestart met LAMP configuratie Apache.
 
-![Time-per-assignment](week04-time-per-assignment.png)
+![Time-per-assignment](week04-time-per-assignment.PNG)
 
 ### Yordi De Rijcke
 
 * Gestart met LAMP installatiescript.
 * Gestart met LAMP configuratie Apache.
 
-[Afbeelding individueel rapport tijdregistratie]
 ![Time-registration-week04-Yordi-DeRijcke](week4-5-YordiDR.JPG)
 
 ### Olivier De Vriese
@@ -40,7 +39,6 @@
 * Gestart met LAMP installatiescript.
 * Gestart met LAMP configuratie Apache.
 
-[Afbeelding individueel rapport tijdregistratie]
 ![Time-registration-week04-Olivier-DeVriese](week4-5-OlivierDV.JPG)
 
 ### Nathan Cammerman
@@ -50,8 +48,7 @@
 * Gestart met WISA creatie Windows Server base box.
 * Gestart testplan WISA.
 
-[Afbeelding individueel rapport tijdregistratie]
-[![Time-registration-week04-Nathan-Cammerman](week04-NathanCammerman.png)
+![Time-registration-week04-Nathan-Cammerman](week04-NathanCammerman.PNG)
 
 ### Matthias Van De Velde
 
@@ -64,7 +61,6 @@
 * Gestart met WISA ASP.NET provisioning.
 * Gestart met WISA SQL Server provisioning.
 
-[Afbeelding individueel rapport tijdregistratie]
 ![Time-registration-week04-Matthias-VanDeVelde](week04-MatthiasVanDeVelde.png)  
 
 ## Wat plan je volgende week te doen?

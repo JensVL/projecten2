@@ -15,8 +15,6 @@
 
 ### Algemeen
 
-![Kanban-bord](week08-Kanban.PNG)
-
 * Opdracht 5 demo NAS in VM
 * MDT technische documentatie
 * vragenlijst opstellen vastgoed
@@ -24,6 +22,8 @@
 * MDT client
 * Windows-Server auto deploy
 * Testplan LAMP aanpassen
+
+![Time-per-assignment](week08-time-per-assignment.PNG)
 
 ### Yordi De Rijcke
 * MDT technische documentatie

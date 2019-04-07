@@ -15,7 +15,7 @@
 
 ### Algemeen
 
-![Kanban-bord](week06-Kanbanbord.png)
+![Kanban-bord](week06-Kanbanbord.PNG)
 
 * WISA - Autodeploy .NET Core Blog Application
 * WISA - .NET Core 2.1 and 2.2 support
@@ -26,7 +26,7 @@
 * LAMP - Configuratie
 * LAMP - Proof of Concept poging
 
-![Time-per-assignment](week06-time-per-assignment.png)
+![Time-per-assignment](week06-time-per-assignment.PNG)
 
 ### Yordi De Rijcke
 
@@ -36,7 +36,7 @@
 * LAMP - Configuratie
 * LAMP - Proof of Concept poging
 
-[Afbeelding individueel rapport tijdregistratie]
+![Time-registration-week06-YordiDeRijcke](week06NathanCammerman.PNG)
 
 ### Olivier De Vriese
 
@@ -46,7 +46,7 @@
 * LAMP - Configuratie
 * LAMP - Proof of Concept poging
 
-[Afbeelding individueel rapport tijdregistratie]
+![Time-registration-week06-OlivierDeVriese](week06NathanCammerman.PNG)
 
 ### Nathan Cammerman
 
@@ -54,7 +54,7 @@
 * WISA - Autodeploy .NET Core Blog Application
 * WISA - Matthias Van De velde bijstaan voor algemeen provisioning.
 
-![Time-registration-week06-NathanCammerman](week06NathanCammerman.png)
+![Time-registration-week06-NathanCammerman](week06NathanCammerman.PNG)
 
 ### Matthias Van De Velde
 
@@ -62,12 +62,12 @@
 * WISA - .NET Core 2.1 and 2.2 support
 * General provisioning tweaks
 
-![Time-registration-week06-MatthiasVanDeVelde](week06-MatthiasVanDeVelde.png)
+![Time-registration-week06-MatthiasVanDeVelde](week06-MatthiasVanDeVelde.PNG)
 
 ### Jens Van Liefferinge
 * WISA deployment test report
 * WISA deployment test plan
-![Time-registration-week06-JensVanLiefferinge](week06-JensVanLiefferinge.png)
+![Time-registration-week06-JensVanLiefferinge](week06-JensVanLiefferinge.PNG)
 
 ## Wat plan je volgende week te doen?
 
