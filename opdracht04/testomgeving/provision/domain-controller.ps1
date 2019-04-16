@@ -21,13 +21,4 @@ Install-WindowsFeature AD-Domain-Services,RSAT-AD-AdminCenter,RSAT-ADDS-Tools
 
 echo 'Installing the AD forest (be patient, this will take more than 30m to install)...'
 Import-Module ADDSDeployment
-Install-ADDSForest `
-    -InstallDns `
-    -CreateDnsDelegation:$false `
-    -ForestMode 'WinThreshold' `
-    -DomainMode 'WinThreshold' `
-    -DomainName $domain `
-    -DomainNetbiosName $netbiosDomain `
-    -SafeModeAdministratorPassword $safeModeAdminstratorPassword `
-    -NoRebootOnCompletion `
-    -Force
+Install-ADDSForest -InstallDns -CreateDnsDelegation:$false -ForestMode 'WinThreshold' -DomainMode 'WinThreshold' -DomainName $domain -DomainNetbiosName $netbiosDomain -SafeModeAdministratorPassword $safeModeAdminstratorPassword -NoRebootOnCompletion -Force
