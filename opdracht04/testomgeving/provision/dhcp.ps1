@@ -27,7 +27,7 @@ Set-DhcpServerv4Scope -ScopeId $scopeid -State Active
 ### TODO
 Write-Host("Configuring DHCP for WDS...")
 Set-DhcpServerv4OptionValue -ScopeId $scopeid -OptionId 066 -Value $internalStaticIPv4
-Set-DhcpServerv4OptionValue -ScopeId $scopeid -OptionId 067 -Value "boot\x64\wdsnbp.com" #location waar bootfile staat van PXE boot. Gaat er pas zijn als je het met WDS gemaakt hebt, hoop ik.
+Set-DhcpServerv4OptionValue -ScopeId $scopeid -OptionId 067 -Value "boot\x64\wdsnbp.com"
 Set-DhcpServerv4OptionValue -ScopeId $scopeid -OptionId 015 -Value "example.com"
 Set-DhcpServerv4OptionValue -ScopeId $scopeid -DnsServer $internalStaticIPv4
 
