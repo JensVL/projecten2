@@ -124,9 +124,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         config.vm.provision "reload"
         config.vm.provision "shell", path: "provision/ps.ps1", args: "routing-nat.ps1"
         config.vm.provision "shell", path: "provision/ps.ps1", args: "dhcp.ps1"
-
-        # TODO: provisioning algemener maken met parameters etc
-        # TODO: MDT provisioning
+        config.vm.provision "shell", path: "provision/ps.ps1", args: "wds.ps1"
 
       elsif host['role'] == "client"
         # node.vm.provider :virtualbox do |vb|
