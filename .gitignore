@@ -18,5 +18,4 @@
 
 opdracht04/testomgeving/tmp/
 
-opdracht04/testomgeving/provision/rdpauth-certificate-template\.ldif
 opdracht04/testomgeving/packer/windows-2016/windows-2016-amd64-no-windows-update-virtualbox-packer.log
