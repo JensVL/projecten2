@@ -1,0 +1,3 @@
+ipv6?
+tv schermen ethernet nodig? (G40)
+tot hoever gaat de default config?
