@@ -19,7 +19,7 @@
 
 * Windows Server - autodeploy (mdt)
 * Paker documentation
-
+* Logical network topology PT: G36 Configureren
 
 ![Time-per-assignment](week11-time-per-assignment.png)
 
@@ -34,7 +34,8 @@
 
 
 ### Nathan Cammerman
-
+* Windows Server - autodeploy (mdt)
+* Logical network topology PT: G36 Configureren
 ![Time-registration-week11-NathanCammerman](week11-NathanCammerman.png)
 
 
