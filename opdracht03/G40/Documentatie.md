@@ -21,11 +21,15 @@
   - VLAN:  Office & VOICE
 - Fa0/2 -> IP Phone 2 -> PC2
   - VLAN: Office & VOICE
-- Fa0/3 -> Printer0
+- Fa0/3 -> IP Phone 3 -> PC3
+  - VLAN: Office & VOICE
+- Fa0/4 -> IP Phone 4
+  - VLAN: Office & VOICE
+- Fa0/5 -> Printer0
   - VLAN: Office
-- Fa0/4 -> Office Access Point
+- Fa0/6 -> Office Access Point
   - VLAN: Office
-- Fa0/5 -> Guests Access Point
+- Fa0/7 -> Guests Access Point
   - VLAN: Guests
 
 # VLAN's
