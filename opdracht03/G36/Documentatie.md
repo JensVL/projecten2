@@ -1,0 +1,40 @@
+# Devices 
+## TelenetRouter1
+- S0/1/0 -> ISP (78.0.0.2)
+  - VLAN: Native
+  - IP: 78.0.0.1
+- G0/0/1 -> Switch1
+  - G0/0/1.10
+    - VLAN: Office
+    - IP: 192.168.10.1
+  - G0/0/1.20
+      - VLAN: Guests
+      - IP: 192.168.20.1
+  - G0/0/1.66
+      - VLAN: Management
+      - IP: 192.168.66.1
+
+## Switch1
+- G0/1 (trunk) -> TelenetRouter
+  - VLAN: Native
+- Fa0/1 -> IP Phone 1 -> PC1
+  - VLAN: Office
+- Fa0/2 -> IP Phone 2 -> PC2
+  - VLAN: Office
+- Fa0/3 -> Printer0
+  - VLAN: Office
+- Fa0/4 -> Office Access Point
+  - VLAN: Office
+- Fa0/5 -> Guests Access Point
+  - VLAN: Guests
+
+# VLAN's
+- 1: Default
+- 10: Office
+  - Domain: vastgoedOffice.com
+- 20: Guests
+  - Domain: vastgoedGuests.com
+- 66: Management
+  - Domain: vastgoed.com
+- 99: Native
+- 150: VOICE
