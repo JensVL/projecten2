@@ -28,12 +28,22 @@
 
 ### Yordi De Rijcke
 
-![Time-registration-week09-YordiDeRijcke](week09-YordiDeRijcke.PNG)
+* Gesprekken met vastgoedstudenten
+* MDT technische documentatie opstellen
+* MDT client verder afwerken
+* Eerste packet tracer opstelling vastgoedstudenten
+
+![Time-registration-week09-YordiDeRijcke](week09-YordiDeRijcke.JPG)
 
 
 ### Olivier De Vriese
 
-![Time-registration-week09-OlivierDeVriese](week09-OlivierDeVriesse.PNG)
+* Gesprekken met vastgoedstudenten
+* MDT technische documentatie opstellen
+* MDT client verder afwerken
+* Eerste packet tracer opstelling vastgoedstudenten 
+
+![Time-registration-week09-OlivierDeVriese](week09-OlivierDeVriese.JPG)
 
 
 ### Nathan Cammerman
