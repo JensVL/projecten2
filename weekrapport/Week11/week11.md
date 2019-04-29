@@ -57,7 +57,8 @@
 
 ### Yordi De Rijcke
 ### Olivier De Vriese
-### Nathan Cammerman
+### Nathan 
+* Topologie configureren
 ### Matthias Van De Velde
 * Finish topology G24 and 40
 * Create IP tables

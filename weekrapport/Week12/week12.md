@@ -23,6 +23,7 @@
 * Lastenboek opdracht 3
 * Topologie G24, G36, G40
 * Documentatie topologie G36, G40
+* Configureren topologie G24
 
 ![Time-per-assignment](week12-time-per-assignment.png)
 
@@ -47,7 +48,7 @@
 
 ### Nathan Cammerman
 
-* ...
+* Configureren topologie G24
 
 ![Time-registration-week12-NathanCammerman](week12-NathanCammerman.png)
 
