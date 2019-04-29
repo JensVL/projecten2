@@ -18,7 +18,6 @@
 ### Algemeen
 
 * MDT create client
-* Logical network topology PT: G36
 * Logical network topology PT: G24
 * Prijsraming template
 
@@ -27,12 +26,16 @@
 
 ### Yordi De Rijcke
 
-![Time-registration-week10-YordiDeRijcke](week10-YordiDeRijcke.png)
+* MDT further client configuration
+
+![Time-registration-week10-YordiDeRijcke](week10-YordiDeRijcke.jpg)
 
 
 ### Olivier De Vriese
 
-![Time-registration-week10-OlivierDeVriese](week10-OlivierDeVriesse.png)
+* MDT further client configuration
+
+![Time-registration-week10-OlivierDeVriese](week10-OlivierDeVriese.jpg)
 
 
 ### Nathan Cammerman

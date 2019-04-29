@@ -22,21 +22,28 @@
 * Voorbereiden Voorstelling G24, G36, G40
 * Lastenboek opdracht 3
 * Topologie G24, G36, G40
+* Documentatie topologie G36, G40
 
 ![Time-per-assignment](week12-time-per-assignment.png)
 
 
 ### Yordi De Rijcke
 
-* ...
+* Logische netwerk topologie PT: G36
+* Logische netwerk topologie PT: G40
+* Documentatie topologie G36
+* Documentatie topologie G40
 
-![Time-registration-week12-MatthiasVanDeVelde](week12-YordiDeRijcke.png)
+![Time-registration-week12-MatthiasVanDeVelde](week12-YordiDeRijcke.jpg)
 
 ### Olivier De Vriese
 
-* ...
+* Logische netwerk topologie PT: G36
+* Logische netwerk topologie PT: G40
+* Documentatie topologie G36
+* Documentatie topologie G40
 
-![Time-registration-week12-OlivierDeVriese](week12-OlivierDeVriese.png)
+![Time-registration-week12-OlivierDeVriese](week12-OlivierDeVriese.jpg)
 
 ### Nathan Cammerman
 
