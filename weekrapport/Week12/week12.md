@@ -1,15 +1,15 @@
 # Voortgangsrapport week 12
 
 * Groep: 10
-* Datum voortgangsgesprek:
+* Datum voortgangsgesprek: 28/04/2019
 
 | Student  | Aanw. | Opmerking |
 | :---     | :---  | :---      |
-| Yordi De Rijcke |       |           |
-| Olivier De Vriese |       |           |
-| Nathan Cammerman |       |           |
-| Jens Van Liefferinge |      |         |
-| Matthias Van De Velde |       |           |
+| Yordi De Rijcke |   x   |           |
+| Olivier De Vriese |   x    |           |
+| Nathan Cammerman |   x    |           |
+| Jens Van Liefferinge |   x   |         |
+| Matthias Van De Velde |   x    |           |
 
 
 ## Wat heb je deze week gerealiseerd?
@@ -46,7 +46,7 @@
 
 ### Matthias Van De Velde
 
-* ...
+* Opdracht 3: lastenboek aangevuld
 
 ![Time-registration-week12-MatthiasVanDeVelde](week12-MatthiasVanDeVelde.png)
 
