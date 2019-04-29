@@ -23,9 +23,9 @@
   - VLAN: Office & VOICE
 - Fa0/3 -> IP Phone 3 -> PC3
   - VLAN: Office & VOICE
-- Fa0/4 -> IP Phone 4
-  - VLAN: Office & VOICE
-- Fa0/5 -> Printer0
+- Fa0/4 -> Printer1
+  - VLAN: Office
+- Fa0/5 -> Printer2
   - VLAN: Office
 - Fa0/6 -> Office Access Point
   - VLAN: Office

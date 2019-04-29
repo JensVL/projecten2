@@ -28,6 +28,16 @@
 - Fa0/5 -> Guests Access Point
   - VLAN: Guests
 
+## Office Access Point
+- SSID: Office
+- AuthenticatieProtocol: WPA2-PSK 
+- Password: p2ops-g10
+
+## Guests Access Point
+- SSID: Guests
+- AuthenticatieProtocol: WPA2-PSK 
+- Password: p2ops-g10
+
 # VLAN's
 - 1: Default
 - 10: Office
