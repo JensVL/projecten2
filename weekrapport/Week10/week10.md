@@ -62,6 +62,7 @@
 ### Matthias Van De Velde
 * Opdracht 4 automatisatie server 
 ### Jens Van Liefferinge
+* Offertes
 
 ## Waar hebben jullie nog problemen mee?
 
