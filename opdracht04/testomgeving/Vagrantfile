@@ -106,8 +106,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
       config.winrm.transport = :plaintext
       config.winrm.basic_auth_only = true
-      config.winrm.timeout =   1800 # 30 minutes
-      config.vm.boot_timeout = 1800 # 30 minutes
+      config.winrm.timeout =   3600 # 60 minutes
+      config.vm.boot_timeout = 3600 # 60 minutes
       
       if host['role'] == "dc"
         config.vm.provision "shell", path: "provision/ps.ps1", args: "domain-controller.ps1"
@@ -125,9 +125,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         config.vm.provision "shell", path: "provision/ps.ps1", args: "routing-nat.ps1"
         config.vm.provision "shell", path: "provision/ps.ps1", args: "dhcp.ps1"
         config.vm.provision "reload"
-        config.vm.provision "shell", path: "provision/ps.ps1", args: "mdt.ps1"
+        config.vm.provision "shell", path: "provision/ps.ps1", args: "mdt-install.ps1"
+        config.vm.provision "reload"
+        config.vm.provision "shell", path: "provision/ps.ps1", args: "mdt-upgrade.ps1"
+        config.vm.provision "reload"
+        config.vm.provision "shell", path: "provision/ps.ps1", args: "mdt-config.ps1"        
+        config.vm.provision "reload"
         config.vm.provision "shell", path: "provision/ps.ps1", args: "wds.ps1"
-
+        
       elsif host['role'] == "client"
         # node.vm.provider :virtualbox do |vb|
         #   vb.customize ['modifyvm', :id, '--nic1', "null"]

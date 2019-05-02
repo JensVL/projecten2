@@ -1,16 +1,7 @@
-Write-Host "Installing MDT"
-choco install -y mdt
-
-Write-Host "Installing ADK"
-# choco install -y windows-adk
-choco install -y windows-adk-winpe
-
-
-
 Write-Host("Creating new partition...")
 if(!(Test-Path("E:\"))){
-    Get-Partition -DriveLetter C | Resize-Partition -Size 80GB
-    New-Partition -DiskNumber 0 -Size 15GB -DriveLetter E
+    Get-Partition -DriveLetter C | Resize-Partition -Size 50GB
+    New-Partition -DiskNumber 0 -Size 45GB -DriveLetter E
     Format-Volume -DriveLetter E -FileSystem NTFS
 }
 
@@ -108,10 +99,13 @@ UserPassword=vagrant
 
 Set-Content -Path "$InstallDrive\MDTProduction\Control\Bootstrap.ini" -Value $bootstrapIni -Force -Confirm:$false
 
+
+
+
 #Create LiteTouch Boot WIM & ISO
 Write-Host "Creating LiteTouch Boot Media"
 
-Write-Host "Restoring share..."
+Write-Host "Restoring persistent drive..."
 Restore-MDTPersistentDrive -Verbose
 
 Write-Host "Get share..."
@@ -140,29 +134,40 @@ if ($Applications) {
         "version": "6.2.2",
         "download": "https://mirror.dkm.cz/tdf/libreoffice/stable/6.2.2/win/x86_64/LibreOffice_6.2.2_Win_x64.msi",
         "filename": "LibreOffice_6.2.2_Win_x64.msi",
-        "install": "msiexec /i LibreOffice_6.2.2_Win_x64.msi /qb"
+        "install": "msiexec /i LibreOffice_6.2.2_Win_x64.msi /qb",
+        "cookie": ""
     },
     {
         "name": "JAVA",
-        "version": "8.201",
-        "download": "https://sdlc-esd.oracle.com/ESD6/JSCDL/jdk/8u201-b09/42970487e3af4f5aa5bca3f542482c60/JavaSetup8u201.exe?GroupName=JSC&FilePath=/ESD6/JSCDL/jdk/8u201-b09/42970487e3af4f5aa5bca3f542482c60/JavaSetup8u201.exe&BHost=javadl.sun.com&File=JavaSetup8u201.exe&AuthParam=1554392008_beb6275f09b8afed82665c353c9de72a&ext=.exe",
-        "filename": "JavaSetup8u201.exe",
-        "install": "JavaSetup8u201.exe /S"
+        "version": "12.0.1",
+        "download": "https://download.oracle.com/otn-pub/java/jdk/12.0.1+12/69cfe15208a647278a19ef0990eea691/jdk-12.0.1_windows-x64_bin.exe",
+        "filename": "jdk-12.0.1_windows-x64_bin.exe",
+        "install": "jdk-12.0.1_windows-x64_bin.exe /S",
+        "cookie": "oraclelicense=accept-securebackup-cookie"
     },
     {
         "name": "Adobe Reader DC",
         "version": "2015.007.20033.02",
         "download": "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/1500720033/AcroRdrDC1500720033_MUI.exe",
         "filename": "AcroRdrDC1500720033_MUI.exe",
-        "install": "AcroRdrDC1500720033_MUI.exe /sAll /rs /rps /msi /norestart /quiet ALLUSERS=1 EULA_ACCEPT=YES"
+        "install": "AcroRdrDC1500720033_MUI.exe /sAll /rs /rps /msi /norestart /quiet ALLUSERS=1 EULA_ACCEPT=YES",
+        "cookie": ""
     }
 ]
 "@
     $AppList = ConvertFrom-Json $AppList
 
     foreach ($Application in $AppList) {
-        New-Item -Path "$PSScriptRoot\mdt_apps\$($application.name)" -ItemType Directory -Force
-        Start-BitsTransfer -Source $Application.download -Destination "$PSScriptRoot\mdt_apps\$($application.name)\$($Application.filename)"
+        New-Item -Path "$InstallDrive\mdt_apps\$($Application.name)" -ItemType Directory -Force
+        $destination = "$InstallDrive\mdt_apps\$($Application.name)\$($Application.filename)"
+        if (![string]::IsNullOrEmpty($Application.cookie)) {
+            [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+            $client = new-object System.Net.WebClient 
+            $client.Headers.Add([System.Net.HttpRequestHeader]::Cookie, $Application.cookie) 
+            $client.DownloadFile($Application.download, $destination)
+        } else {
+            Start-BitsTransfer -Source $Application.download -Destination $destination
+        }
         $params = @{
             Path                  = "DS001:\Applications"
             Name                  = $Application.name
@@ -175,53 +180,12 @@ if ($Applications) {
             ErrorAction           = "Stop"
             CommandLine           = $Application.install
             WorkingDirectory      = ".\Applications\$($Application.name)"
-            ApplicationSourcePath = "$PSScriptRoot\mdt_apps\$($application.name)"
+            ApplicationSourcePath = "$InstallDrive\mdt_apps\$($Application.name)"
             DestinationFolder     = $Application.name
         }
         Import-MDTApplication @params
     }
-    Remove-Item -Path "$PSScriptRoot\mdt_apps" -Recurse -Force -Confirm:$false
+    Remove-Item -Path "$InstallDrive\mdt_apps" -Recurse -Force -Confirm:$false
 }
 
-Finish
 Write-Host "MDT installed"
-
-
-
-
-# # Fix - strange permissions set by mdt
-# # Configure NTFS Permissions for the MDT Build Lab deployment share
-# $DeploymentShareNTFS = "E:\MDTBuildLab"
-# icacls $DeploymentShareNTFS /grant '"Users":(OI)(CI)(RX)'
-# icacls $DeploymentShareNTFS /grant '"Administrators":(OI)(CI)(F)'
-# icacls $DeploymentShareNTFS /grant '"SYSTEM":(OI)(CI)(F)'
-# icacls "$DeploymentShareNTFS\Captures" /grant '"VIAMONSTRA\MDT_BA":(OI)(CI)(M)'
- 
-# # Configure Sharing Permissions for the MDT Build Lab deployment share
-# $DeploymentShare = "MDTBuildLab$"
-# Grant-SmbShareAccess -Name $DeploymentShare -AccountName "EVERYONE" -AccessRight Change -Force
-# Revoke-SmbShareAccess -Name $DeploymentShare -AccountName "CREATOR OWNER" -Force
-
-
-
-
-#Import WIM
-# Write-Host "Checking for wim files"
-# $Wims = Get-ChildItem $PSScriptRoot -Filter "*.wim" | Select-Object -ExpandProperty FullName ### Ze gaan er denk ik van uit dat u .wim file in een niveau boven U root staat
-# if (!$Wims) {
-#     Write-Host "No wim files found"
-# }
-
-# if ($Wims) {
-#     foreach($Wim in $Wims){
-#     $WimName = Split-Path $Wim -Leaf
-#     $WimName = $WimName.TrimEnd(".wim")
-#     Write-Host "$WimName found - will import"
-#     $params = @{
-#         Path              = "DS001:\Operating Systems"
-#         SourceFile        = $Wim
-#         DestinationFolder = $WimName
-#     }
-#     $osData = Import-MDTOperatingSystem @params -Verbose -ErrorAction Stop
-#     }
-# }
