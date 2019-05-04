@@ -29,8 +29,8 @@
 | :---       | ---:    | ---:         |
 | Jens Van Liefferinge   |    20     |              |
 | Matthias Van De Velde   |         |              |
-| Olivier De Vriese   |         |              |
-| Yordi De Rijcke   |         |              |
+| Olivier De Vriese   |    15     |              |
+| Yordi De Rijcke   |    15     |              |
 | Nathan Cammerman |         |              |
 | **totaal** |         |              |
 
