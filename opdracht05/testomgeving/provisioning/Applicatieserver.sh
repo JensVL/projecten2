@@ -114,4 +114,9 @@ mysql -u root -p$mariaDBRootPassword -e "CREATE USER ${mariaDBUserName}@localhos
 mysql -u root -p$mariaDBRootPassword -e "GRANT ALL PRIVILEGES ON ${mariaDBName}.* TO '${mariaDBUserName}'@'localhost';"
 mysql -u root -p$mariaDBRootPassword -e "FLUSH PRIVILEGES;"
 
+## Create backup directory
+info 'Creating backup directory...'
+sudo mkdir -p /backups/LedenDB
+sudo chown -R $USER /backups
+
 exit 0
