@@ -119,4 +119,9 @@ info 'Creating applicatieserver backup directory...'
 sudo mkdir -p /applicatieserver_backups/LedenDB/
 sudo chown -R $USER /applicatieserver_backups
 
+## Create lesmateriaal directory
+info 'Creating lesmateriaal directory...'
+sudo mkdir -p /lesmateriaal/{wit,geel,oranje,groen,blauw,bruin,zwart}
+sudo chown -R $USER /lesmateriaal
+
 exit 0
