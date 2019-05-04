@@ -30,7 +30,7 @@
 # [1] http://docs.vagrantup.com/v2/synced-folders/basic_usage.html
 ---
 
-- name: Domain-Controller
+- name: DC
   box: fpkmatthi/windows2016DC
   ip: 192.168.248.10
   role: dc
