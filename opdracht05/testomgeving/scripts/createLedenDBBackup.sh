@@ -2,23 +2,17 @@
 
 ### createLedenDBBackup.sh - A script to create a backup from the "Leden Database" ###
 
-## Check root access ##
-if [ $UID -ne 0 ]; then
-  echo 'You need to have root access to create a LedenDB backup!'
-  echo ''
-  exit 1
-fi
-
 ## Read credentials ##
 read -p 'Enter the DB username: ' DBUsername
 read -p 'Enter the DB password: ' DBPassword
 
 ## Check if directory exists ##
-if [ ! -d /backupServer_Sync/ledenDB_Backups/ ]; then
+if [ ! -d /backups/LedenDB ]; then
   echo 'Creating the backup directory...'
   echo ''
   
-  mkdir -p /backupServer_Sync/ledenDB_Backups/
+  sudo mkdir -p /backups/LedenDB
+  sudo chown -R $USER /backups
 
   if [ $? -ne 0 ]; then
     echo 'Creating the backup directory failed. Script wil exit.'
@@ -32,7 +26,7 @@ timestamp="$(date +'%d-%m-%Y_%H:%M:%S')"
 
 ## Create the backup file ##
 echo 'Creating the backup file...'
-mysqldump -u "$DBUsername" -p"$DBPassword" LedenDB > "/backupServer_Sync/ledenDB_Backups/${timestamp}.sql"
+mysqldump -u "$DBUsername" -p"$DBPassword" LedenDB > "/backups/LedenDB/${timestamp}.sql"
 
 ## Sync the newly created backup to the backupserver ##
 echo 'Syncing the newly created backup to the backupserver...'
