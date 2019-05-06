@@ -1,0 +1,225 @@
+﻿.lesmateriaalContent-wrapper {
+    display: flex;
+    min-height: 100%;
+    width: 100vw;
+    max-width: 100vw;
+    overflow-x: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+.kyu-nav, #thema-nav {
+    position: fixed;
+    width: 17vw;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    min-height: 100%;
+    padding: 0;
+}
+
+#thema-nav{
+    left: 17vw;
+}
+
+.kyu-kleur{
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    pointer-events: none;
+}
+
+    .kyu-nav > ul, #thema-nav > ul{
+        margin-top: 5vh;
+        list-style: none;
+        width: 100%;
+        padding: 0;
+    }
+
+        .kyu-nav > ul > li, #thema-nav > ul > li{
+            padding: 15px 0 15px 0;
+            text-align: left;
+            display: flex;
+            padding-left: 27.5%;
+            line-height: 120%;
+        }
+
+            .kyu-nav > ul > li.kyu-locked {
+                pointer-events: none;
+            }
+
+            .kyu-nav > ul > li.kyu-locked:hover {
+                cursor: default;
+                background-color: rgba(0,0,0,0);
+            }
+
+        .kyu-nav > ul > li > span{
+            margin: 0 10px 0 10px;
+            pointer-events: none;
+        }
+
+            .kyu-nav > ul > li:hover {
+                background-color: #d9d9d9;
+                cursor: pointer;
+            }
+
+            .kyu-nav {
+                background: #e6e6e6;
+            }
+
+.geselecteerdeKyu {
+    background-color: #d9d9d9;
+}
+
+#thema-nav {
+    background: #f2f2f2;
+    padding: 0;
+}
+
+    #thema-nav > ul > li:hover {
+        cursor: pointer;
+        background-color: #e5e5e5;
+    }
+
+.geselecteerdThema {
+    background-color: #e5e5e5;
+}
+
+.lesmateriaal-wrapper{
+
+    margin-top: 5vh;
+    margin-left: 34vw;
+    width: 66vw;
+    padding-left: 2vw;
+   
+}
+
+.lesmateriaal-wrapper > #lesmateriaalHead > .dropdown > button{
+    margin: 0;
+}
+
+div.dropdown-menu{
+    flex-direction: column;
+}
+
+.open > .dropdown-menu {
+    display: flex;
+}
+
+#lesmateriaal{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin-top: 3vh;
+}
+
+#loader{
+    position: absolute;
+    display: block;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.lesmateriaal-content{
+    position: absolute;
+    top: 3%;
+    left: 50%;
+    transform: translateX(-50%)
+}
+
+
+.dropdown-item{
+    padding: 0 10px 0 10px;
+}
+
+.dropdown-item:hover{
+    cursor: pointer;
+}
+
+.lesmateriaal-afbeeldingen {
+    display: flex;
+    justify-content: center;
+    margin: 5vh 0 5vh 0;
+}
+
+.lesmateriaal-afbeeldingen > img {
+    width: 7.5vw;
+    height: 7.5vw;
+    margin: 2px;
+}
+.lesmateriaal-afbeeldingen img:hover {
+    cursor: pointer;
+}
+
+.modal-header{
+    border: none;
+}
+
+.modal-header > button.close {
+    color: white;
+    opacity: .9;
+    font-size: 3rem;
+    outline: none;
+    transform: translateX(7.5vw) translateY(2vh)
+}
+
+#commentaarInput {
+    position: relative;
+}
+
+#commentaarInput > hr{
+    max-width: 50vw;
+}
+
+#commentaarInput > div{
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+    #commentaarInput > div > textarea {
+        border-width: 1.1px;
+    }
+    #commentaarInput > div > button {
+        margin: 5px 0 0 0;
+    }
+
+hr {
+    margin-bottom: 7.5vh;
+    margin-top: 7.5vh;
+}
+
+.commentaar {
+    display: flex !important;
+    padding-left: 5vw;
+}
+
+
+
+.commentaar-gebruiker{
+    width: 15vw;
+}
+
+    .commentaar-gebruiker > h5 {
+        font-weight: bolder;
+    }
+
+.commentaar-inhoud > p{
+    margin: 8px 0 8px 0;
+    width: 25vw;
+}
+
+.commentaar-geen{
+    text-align: center;
+}
+
+.commentaar-geen{
+    margin: 0 auto;
+}
+
+#commentaarInputArea{
+    resize: none;
+}

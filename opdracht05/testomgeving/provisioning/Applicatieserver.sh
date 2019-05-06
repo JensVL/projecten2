@@ -124,4 +124,18 @@ info 'Creating lesmateriaal directory...'
 mkdir -p /var/www/lesmateriaal/{wit,geel,oranje,groen,blauw,bruin,zwart}
 chmod -R 777 /var/www/lesmateriaal
 
+# Install .NET Core dependecies
+info 'Installing .NET Core dependecies...'
+wget -P /etc/yum.repos.d/ https://packages.efficios.com/repo.files/EfficiOS-RHEL7-x86-64.repo
+rpmkeys --import https://packages.efficios.com/rhel/repo.key
+yum updateinfo
+yum -y install lttng-ust libcurl openssl-libs krb5-libs libicu zlib libunwind libuuid
+
+# Install .NET Core
+info 'Installing .NET Core...'
+rpm --import https://packages.microsoft.com/keys/microsoft.asc
+sh -c 'echo -e "[packages-microsoft-com-prod]\nname=packages-microsoft-com-prod \nbaseurl=https://packages.microsoft.com/yumrepos/microsoft-rhel7.3-prod\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/dotnetdev.repo'
+yum update
+yum install libunwind libicu dotnet-sdk-2.1
+
 exit 0

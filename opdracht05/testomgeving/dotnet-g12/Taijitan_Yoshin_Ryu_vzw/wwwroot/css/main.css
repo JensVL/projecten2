@@ -1,0 +1,115 @@
+﻿html{
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.icon-bar{
+    background-color: black !important;
+}
+
+.alert{
+    max-width: 50vw;
+    margin: 20px 0 20px 0;
+}
+
+.navbar{
+    margin: 0;
+}
+
+button {
+    margin: 0 auto;
+    display: block;
+    background: none;
+    border: solid 1px #336566;
+    color: #336566;
+    padding: 5px 20px;
+}
+
+    button:active {
+        border-width: 2px;
+        padding: 4.5px 19.5px;
+    }
+
+.body-content {
+    display: block;
+    height: 100%;
+    padding-top: 50px;
+}
+
+.content-wrapper {
+    position: absolute;
+    min-width: 100%;
+    left: 0;
+    top: 45%;
+    transform: translateY(-50%);
+}
+
+.navbar {
+    background: white;
+    border: none;
+    box-shadow: 0px 3px 10px 0px rgba(207,207,207,1);
+}
+
+    .navbar > a:hover {
+        color: red;
+    }
+
+.navbar-brand h1 strong {
+    color: #336566;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar-brand > h1 {
+    font-weight: bold;
+    font-size: 1.2vw;
+    padding: 0;
+    margin: 0;
+    color: #9d9d9d;
+}
+
+.navbar-nav > li > button:active {
+    outline: none;
+    padding: 6px 12px;
+}
+
+.navbar-nav > li > a {
+    padding: 15px 0 15px 25px;
+}
+
+.navbar-nav > li > a, .navbar-nav > li > button {
+    color: #777777 !important;
+    outline: none;
+}
+
+    .navbar-nav > li > button > i{
+
+    }
+
+    .navbar-nav > .gebruikerEmail {
+        line-height: 50px;
+    }
+
+footer {
+    text-align: center;
+    margin-top: -5vh;
+}
+
+h3 {
+    color: #336566;
+    font-weight: bolder;
+    text-align: center;
+}
+
+#lesmateriaalModuleVoorbeeld {
+    width: 100%;
+    height: auto;
+    padding-top: 14px;
+}

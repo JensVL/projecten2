@@ -1,0 +1,59 @@
+﻿@model Taijitan_Yoshin_Ryu_vzw.Models.LesmateriaalViewModels.LesmateriaalViewModel
+
+@{
+    ViewData["Title"] = "Lesmateriaal";
+}
+@section AddCss {
+        <link rel="stylesheet" href="~/css/lesmateriaal.css" asp-append-version="true" />
+    }
+@section Scripts {
+        <script src="~/js/lesmateriaal.js"></script>
+}
+        <span style="display: none;" id="GraadIdGebruiker">@Model.HuidigLid.Graad.GraadId</span>
+        <span style="display: none;" id="HuidigeGebruiker">@Model.HuidigLid.Username</span>
+        <span style="display: none;" id="HuidigeGebruikerNaam">@Model.HuidigLid.Voornaam @Model.HuidigLid.Naam</span>
+        <div class="lesmateriaalContent-wrapper">
+            <div class="kyu-nav">
+                <ul>
+                    @{
+                        if (Model.Graden.Count > 0)
+                        {
+                            foreach (var kyu in Model.Graden)
+                            {
+                                if (kyu.GraadId > Model.HuidigLid.Graad.GraadId)
+                                {
+                                    <li class="kyu-locked" id="@kyu.GraadId"><div class="kyu-kleur" style="background-color:@kyu.Kleur"></div><span>@kyu.GraadNaam</span><i class="fas fa-lock"></i></li>
+                                }
+                                else
+                                {
+                                    if (kyu.GraadId == Model.HuidigLid.Graad.GraadId)
+                                    {
+                                        <li id="@kyu.GraadId" class="geselecteerdeKyu"><div class="kyu-kleur" style="background-color:@kyu.Kleur"></div><span>@kyu.GraadNaam</span></li>
+                                    }
+                                    else
+                                    {
+                                        <li id="@kyu.GraadId"><div class="kyu-kleur" style="background-color:@kyu.Kleur"></div><span>@kyu.GraadNaam</span></li>
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            <li class="geselecteerdeKyu"><span>Er zijn geen graden.</span></li>
+                        }
+                    }
+                </ul>
+            </div>
+            <div id="thema-nav">
+                
+            </div>
+            <div class="lesmateriaal-wrapper">
+                <div id="lesmateriaalHead">
+
+                </div>
+                <div id="lesmateriaal">
+                    <img id="loader" src="~/images/loader.gif" alt="Loading image" />
+                </div>
+                
+            </div>
+        </div>

@@ -1,0 +1,188 @@
+﻿@model Taijitan_Yoshin_Ryu_vzw.Models.SessieViewModels.SessieViewModel
+
+@{
+    ViewData["Title"] = "Sessie";
+}
+@section AddCss {
+    <link rel="stylesheet" href="~/css/sessieStart.css" asp-append-version="true" />
+}
+<div class="content-wrapper">
+    <div class="sessie-wrapper">
+        <div class="sessie-content">
+            @if (TempData["error"] != null)
+            {
+                <div class="alert alert-error">@TempData["error"]</div>
+            }
+            <h3>Aanwezigheden - @Model.Sessie.BeginDatumEnTijd.ToString("dd/MM/yyyy HH:mm")</h3>
+
+            <ul class="ledenlijst">
+                @foreach (var item in Model.Leden)
+                {
+                    var klasse = Model.AanwezigeLeden.Contains(item) ? "ledenlijstLid aanwezig" : "ledenlijstLid";
+                    <li class="@klasse " id="@item.Username">
+                        @item.Voornaam @item.Naam - @item.Username
+                    </li>
+                }
+                @if (Model.ExtraAanwezigen.Count > 0)
+                {
+                    <h5 class="extraAanwezigheden">Extra aanwezigheden</h5>
+                    foreach (var item in Model.ExtraAanwezigen)
+                    {
+                        <li class="ledenlijstLid aanwezig" id="@item.Username">
+                            @item.Voornaam @item.Naam - @item.Username
+                        </li>
+                    }
+                }
+            </ul>
+            <div class="buttonPanel">
+                <button data-toggle="modal" data-target="#CancelModal">Cancel</button>
+                <button data-toggle="modal" data-target="#NietInLijstModal">Lid toevoegen</button>
+                <button data-toggle="modal" data-target="#BevestigModal">Bevestigen</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="CancelModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="exampleModalLongTitle">Bent u zeker dat u de sessie wilt annuleren?</h4>
+            </div>
+            <div class="modal-body">
+                <form asp-controller="Sessie" asp-action="Cancel">                    
+                    <div class="form-group">
+                        <button type="submit" class="cancel">Annuleer sessie</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="NietInLijstModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="exampleModalLongTitle">Is dit de eerste keer dat u les volgt?</h4>
+            </div>
+            <div class="modal-body">
+                <div class="buttonPanel">
+                    <form>
+                        <button asp-controller="Sessie" asp-action="RegistreerAanwezigGast" class="lidtoevoegenModalButton">Eerste keer</button>
+                    </form>
+                    <form>
+                        <button asp-controller="Sessie" asp-action="RegistreerAanwezigNietInLijst" class="lidtoevoegenModalButton">Ik ben geregistreerd</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="BevestigModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="exampleModalLongTitle">Bent u zeker dat u de aanwezigheden wilt afsluiten?</h4>
+            </div>
+            <div class="modal-body">
+                <div class="buttonPanel">                    
+                    <button data-dismiss="modal">Annuleer</button>
+                    <button id="aanwezighedenBevestigen">Bevestigen</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    $('document').ready(() => { 
+
+        var aanwezigen = [];
+        /*Bij het laden van de pagina moet de array aanwezigen opgevuld worden met de leden 
+         die op dat moment al aanwezig zijn, zodat als er op geklikt wordt ze uit de lijst verdwijnen
+         */
+
+        $('.aanwezig').each((e) => {
+
+            aanwezigen.push($('.aanwezig').get(e).id);
+
+        });
+
+        $('.ledenlijstLid').click((e) => {
+             if (e.target.classList.contains('aanwezig')) {
+                 e.target.classList.remove('aanwezig');
+                 aanwezigen = jQuery.grep(aanwezigen, (a) => {
+                     return a != e.target.id;
+                 });
+             } else {
+                 e.target.classList.add('aanwezig');
+                 aanwezigen.push(e.target.id);
+             }
+         });
+
+        $('#aanwezighedenBevestigen').click(() => {
+
+            $.ajax({
+                type: "POST",
+                url: "/Sessie/AanwezigenToevoegen",
+                data: {aanwezigen: JSON.stringify(aanwezigen)},
+                success: () => {
+                    window.location.href = "/Sessie/SessieAanwezigen/";
+                }                
+            }); 
+        });
+
+        $('.lidtoevoegenModalButton').on('click', () => {
+
+            console.log('click');
+            $.ajax({
+                type: "POST",
+                url: "/Sessie/AanwezigenToevoegen",
+                data: { aanwezigen: JSON.stringify(aanwezigen) }
+            }); 
+
+        });
+
+    });    
+    /*bij het toevoegen van een ander lid(gast, of andere formule) moeten de aanwezigheden 
+      ook al is opgeslagen worden zodat ze niet verdwijnen.
+
+      window.onbeforeunload = function () {
+        $('#aanwezighedenBevestigen').click();
+    }
+     */
+
+
+
+    
+    window.setTimeout(function () {
+        $(".alert").fadeTo(500, 0).slideUp(500, function () {
+            $(this).remove();
+        });
+    }, 4000);
+</script>
+@*
+
+    @if (TempData["message"] != null)
+    {
+        <div class="alert alert-success">@TempData["message"]</div>
+    }
+    @if (TempData["error"] != null)
+    {
+        <div class="alert alert-warning">@TempData["error"]</div>
+    }
+    <div class="btn-group-vertical">
+        @foreach (var item in Model)
+        {
+            <a class="btn btn-primary" asp-controller="Sessie" asp-action="RegistreerAanwezigheid" asp-route-username="@item.Username">@item.Voornaam @item.Naam</a>
+        }
+    </div>*@

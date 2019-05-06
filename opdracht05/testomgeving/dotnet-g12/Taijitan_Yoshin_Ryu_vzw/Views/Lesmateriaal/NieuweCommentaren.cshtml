@@ -1,0 +1,25 @@
+﻿@model Taijitan_Yoshin_Ryu_vzw.Models.LesmateriaalViewModels.CommentaarViewModel
+@{
+    ViewData["Title"] = "Nieuwe commentaren";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section AddCss {
+    <link rel="stylesheet" href="~/css/NieuweCommentaar.css" asp-append-version="true" />
+}
+<div class="sessie-wrapper">
+    <div class="sessie-content">
+        <h3>@Model.Commentaren.Count() nieuwe commentaren</h3>
+        @foreach (var comment in Model.Commentaren)
+        {
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">@comment.Lesmateriaal.Titel</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">@comment.Lid.Voornaam @comment.Lid.Naam</h6>
+                    <p class="card-text">@comment.Inhoud</p>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
