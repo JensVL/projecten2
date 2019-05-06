@@ -103,36 +103,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         vb.customize ['modifyvm', :id, '--groups', PROJECT_NAME]
       end
 
-      if host['os'] == "windows"
-        config.vm.communicator = "winrm"
-        config.winrm.username = "vagrant"
-        config.winrm.password = "vagrant"
-
-        iis         = host['iis']
-        asp         = host['asp']
-        sql         = host['sql']
-
-        config.vm.provision :shell,
-          privileged: true,
-          path: 'provisioning/' + host['name'] + '.ps1', # "/installsqlserver.ps1",
-          args: [
-            host['downloadpath'],
-            sql['instancename'],
-            sql['rootpassword'],
-            sql['tcpportnr'],
-            sql['dbname'],
-            sql['username'],
-            sql['password'],
-            iis['username'],
-            iis['password'],
-            asp['asp35'],
-            asp['asp45'],
-            asp['dotnetcore21'],
-            asp['dotnetcore22'],
-            host['blogdemo']
-          ]
-
-      elsif host['os'] == "linux"
+      if host['os'] == "linux"
 	      linux	= host['linux']
 	      mariaDB	= host['mariaDB']
         

@@ -121,7 +121,7 @@ sudo chown -R $USER /backups
 
 ## Create lesmateriaal directory
 info 'Creating lesmateriaal directory...'
-sudo mkdir /var/www/lesmateriaal/{wit,geel,oranje,groen,blauw,bruin,zwart}
+sudo mkdir -p /var/www/lesmateriaal/{wit,geel,oranje,groen,blauw,bruin,zwart}
 sudo chmod -R 777 /var/www/lesmateriaal
 
 exit 0

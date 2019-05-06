@@ -35,8 +35,8 @@
   ip: '192.168.248.11'
   os: 'linux'
   gui: false
-  memory: 8192
-  cpus: 12
+  memory: 4096
+  cpus: 4
   linux:
     rootPassword: "toor"
     vagrantPassword: "vagrant"
@@ -54,8 +54,8 @@
   ip: '192.168.248.12'
   os: 'linux'
   gui: false
-  memory: 8192
-  cpus: 12
+  memory: 4096
+  cpus: 4
   linux:
     rootPassword: "toor"
     vagrantPassword: "vagrant"
