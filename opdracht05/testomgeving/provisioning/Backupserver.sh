@@ -75,30 +75,30 @@ info "Starting server specific provisioning tasks on ${HOSTNAME}"
 
 # Install LAMP server packages
 info 'Installing packages...'
-sudo yum install -y httpd mariadb-server rsync
+yum install -y httpd mariadb-server rsync
 
 # Enable firewall & disable ports for apache
 info 'Changing firewall settings...'
-sudo systemctl enable firewalld
-sudo systemctl start firewalld
-sudo firewall-cmd --permanent --add-port=80/tcp
-sudo firewall-cmd --permanent --add-port=443/tcp
-sudo firewall-cmd --reload
+systemctl enable firewalld
+systemctl start firewalld
+firewall-cmd --permanent --add-port=80/tcp
+firewall-cmd --permanent --add-port=443/tcp
+firewall-cmd --reload
 
 # Make sure that the daemons start at boot
 info 'Enabling services...'
-sudo systemctl enable httpd
-sudo systemctl enable mariadb
+systemctl enable httpd
+systemctl enable mariadb
 
 # Make sure that the daemons are started right now
 info 'Restarting services...'
-sudo systemctl restart httpd
-sudo systemctl restart mariadb
+systemctl restart httpd
+systemctl restart mariadb
 
 # Linux users setup
 info 'Changing linux user passwords...'
-echo -e "${linuxRootPassword}\n${linuxRootPassword}" | sudo passwd root
-echo -e "${linuxVagrantPassword}\n${linuxVagrantPassword}" | sudo passwd vagrant
+echo -e "${linuxRootPassword}\n${linuxRootPassword}" | passwd root
+echo -e "${linuxVagrantPassword}\n${linuxVagrantPassword}" | passwd vagrant
 
 # MariaDB setup
 info 'Changing MySQL root password'
@@ -116,12 +116,12 @@ mysql -u root -p$mariaDBRootPassword -e "FLUSH PRIVILEGES;"
 
 # Create Applicatieserver backup directory
 info 'Creating applicatieserver backup directory...'
-sudo mkdir -p /applicatieserver_backups/LedenDB/
-sudo chown -R $USER /applicatieserver_backups
+mkdir -p /applicatieserver_backups/LedenDB/
+chown -R vagrant /applicatieserver_backups
 
 # Create lesmateriaal directory
 info 'Creating lesmateriaal directory...'
-sudo mkdir -p /lesmateriaal/{wit,geel,oranje,groen,blauw,bruin,zwart}
-sudo chown -R $USER /lesmateriaal
+mkdir -p /lesmateriaal/{wit,geel,oranje,groen,blauw,bruin,zwart}
+chown -R vagrant /lesmateriaal
 
 exit 0
