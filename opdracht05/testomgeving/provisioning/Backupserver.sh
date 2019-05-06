@@ -107,19 +107,19 @@ mysqladmin -u root password "$mariaDBRootPassword"
 info 'Deleting default MySQL databases & users...'
 mysql -u root -p$mariaDBRootPassword -e "DELETE FROM mysql.user WHERE User=''; DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1'); DROP DATABASE IF EXISTS test; FLUSH PRIVILEGES;"
 
-## Vagrant DB setup
+# Vagrant DB setup
 info 'Creating MySQL database for the web application...'
 mysql -u root -p$mariaDBRootPassword -e "CREATE DATABASE ${mariaDBName} /*\!40100 DEFAULT CHARACTER SET utf8 */;"
 mysql -u root -p$mariaDBRootPassword -e "CREATE USER ${mariaDBUserName}@localhost IDENTIFIED BY '${mariaDBPassword}';"
 mysql -u root -p$mariaDBRootPassword -e "GRANT ALL PRIVILEGES ON ${mariaDBName}.* TO '${mariaDBUserName}'@'localhost';"
 mysql -u root -p$mariaDBRootPassword -e "FLUSH PRIVILEGES;"
 
-## Create Applicatieserver backup directory
+# Create Applicatieserver backup directory
 info 'Creating applicatieserver backup directory...'
 sudo mkdir -p /applicatieserver_backups/LedenDB/
 sudo chown -R $USER /applicatieserver_backups
 
-## Create lesmateriaal directory
+# Create lesmateriaal directory
 info 'Creating lesmateriaal directory...'
 sudo mkdir -p /lesmateriaal/{wit,geel,oranje,groen,blauw,bruin,zwart}
 sudo chown -R $USER /lesmateriaal
