@@ -1,7 +1,7 @@
-# Voortgangsrapport week 12
+# Voortgangsrapport week 13
 
 * Groep: 10
-* Datum voortgangsgesprek: 28/04/2019
+* Datum voortgangsgesprek: 06/05/2019
 
 | Student  | Aanw. | Opmerking |
 | :---     | :---  | :---      |
@@ -14,55 +14,54 @@
 
 ## Wat heb je deze week gerealiseerd?
 
-![Kanban-bord](week12-kanbanbord.png)
+![Kanban-bord](week13-kanbanbord.png)
 
 ### Algemeen
 
 * Offertes G24, G36, G40
 * Voorbereiden Voorstelling G24, G36, G40
 * Lastenboek opdracht 3
-* Topologie G24, G36, G40
-* Documentatie topologie G36, G40
-* Configureren topologie G24
+* Fysieke topologie G24, G40
+* G24 Packet Tracer configuratie
+* Opdracht 5 lastenboek
+* Opdracht 5 VMs
+* Opdracht 5 sync lesmateriaal naar backupserver
+* MDT autodeploy
 
-![Time-per-assignment](week12-time-per-assignment.png)
+![Time-per-assignment](week13-time-per-assignment.png)
 
 
 ### Yordi De Rijcke
 
-* Logische netwerk topologie PT: G36
-* Logische netwerk topologie PT: G40
-* Documentatie topologie G36
-* Documentatie topologie G40
+*
 
-![Time-registration-week12-YordiDeRijcke](week12-YordiDeRijcke.jpg)
+![Time-registration-week13-YordiDeRijcke](week13-YordiDeRijcke.jpg)
 
 ### Olivier De Vriese
 
-* Logische netwerk topologie PT: G36
-* Logische netwerk topologie PT: G40
-* Documentatie topologie G36
-* Documentatie topologie G40
+* 
 
-![Time-registration-week12-OlivierDeVriese](week12-OlivierDeVriese.jpg)
+![Time-registration-week13-OlivierDeVriese](week13-OlivierDeVriese.jpg)
 
 ### Nathan Cammerman
 
-* Configureren topologie G24
+* 
 
-![Time-registration-week12-NathanCammerman](week12-NathanCammerman.png)
+![Time-registration-week13-NathanCammerman](week13-NathanCammerman.png)
 
 ### Matthias Van De Velde
 
-* Opdracht 3: lastenboek aangevuld
+* 
 
-![Time-registration-week12-MatthiasVanDeVelde](week12-MatthiasVanDeVelde.png)
+![Time-registration-week13-MatthiasVanDeVelde](week13-MatthiasVanDeVelde.png)
 
 ### Jens Van Liefferinge
 
-* Offertes en Voorstelling g24,36,40
+* Offertes G24, G36, G40
+* Voorbereiden Voorstelling G24, G36, G40
+* Lastenboek opdracht 5 
 
-![Time-registration-week12-JensVanLiefferinge](week12-JensVanLiefferinge.png)
+![Time-registration-week13-JensVanLiefferinge](week13-JensVanLiefferinge.png)
 
 ## Wat plan je volgende week te doen?
 
@@ -71,6 +70,8 @@
 ### Olivier De Vriese
 ### Nathan Cammerman
 ### Matthias Van De Velde
+### Jens Van Liefferinge
+* Opdracht 5 uitbreiding
 
 ## Waar hebben jullie nog problemen mee?
 
