@@ -24,7 +24,7 @@ Set-DhcpServerv4Scope -ScopeId $scopeid -State Active
 
 
 ## Configure DHCP settings for WDS
-### TODO
+### TODO - check if these are set correct
 Write-Host("Configuring DHCP for WDS...")
 Set-DhcpServerv4OptionValue -ScopeId $scopeid -OptionId 066 -Value $internalStaticIPv4
 Set-DhcpServerv4OptionValue -ScopeId $scopeid -OptionId 067 -Value "boot\x64\wdsnbp.com"

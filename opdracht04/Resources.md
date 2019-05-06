@@ -52,3 +52,15 @@ https://gallery.technet.microsoft.com/scriptcenter/Creating-a-MDT-2013-b2b4ba23#
 
 https://4sysops.com/archives/add-and-remove-windows-with-drivers-in-mdt-with-powershell/
 
+https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/using-the-initialize-server-command
+
+https://www.it-explorations.de/how-to-konfiguration-wds-ueber-powershell/
+
+https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd353477(v=ws.10)
+
+https://forums.tomshardware.com/threads/pxe-boot-fail.1802512/
+
+https://superuser.com/questions/570130/how-to-setup-a-pxe-boot-server
+
+https://support.symantec.com/en_US/article.TECH10532.html
+
