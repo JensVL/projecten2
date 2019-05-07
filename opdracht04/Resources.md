@@ -64,3 +64,7 @@ https://superuser.com/questions/570130/how-to-setup-a-pxe-boot-server
 
 https://support.symantec.com/en_US/article.TECH10532.html
 
+https://sinjinsmith.net/?p=25
+
+https://www.youtube.com/watch?v=Y47X_H-hUf4
+

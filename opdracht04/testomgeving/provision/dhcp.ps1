@@ -1,34 +1,36 @@
 # DHCP settings
-$dhcpStartRange="192.168.248.10"
-$dhcpEndRange="192.168.248.30"
-$dhcpSubnet="255.255.255.0"
-$internalStaticIPv4="192.168.248.10"
-$scopeid="192.168.248.0"
+$DNSServerIP="192.168.248.10"
+$DHCPServerIP="192.168.248.10"
+$StartRange="192.168.248.50"
+$EndRange="192.168.248.100"
+$Subnet="255.255.255.0"
+$RouterIP="192.168.248.10"
 
-## Install DHCP
 Write-Host("Installing DHCP...")
 Install-WindowsFeature -Name "DHCP" -IncludeManagementTools
 
-## Make scope for clients
-### Note: dunno of scopid juist is, of het wel het ip van de internal adapter is
 Write-Host("Configuring DHCP scope...")
-Add-DhcpServerV4Scope -Name "DHCP Scope" -StartRange $dhcpStartRange -EndRange $dhcpEndRange -SubnetMask $dhcpSubnet
+Add-DhcpServerV4Scope -Name "DHCP Scope" -StartRange $StartRange -EndRange $EndRange -SubnetMask $Subnet
+Set-DhcpServerV4OptionValue -DnsServer $DnsServer -Router $RouterIP
+Set-DhcpServerv4Scope -ScopeId $DHCPServerIP -LeaseDuration 1.00:00:00
 
-Set-DhcpServerV4OptionValue -DnsServer $internalStaticIPv4 -Router $internalStaticIPv4
+Write-Host("Configuring DHCP for WDS...")
 
-Set-DhcpServerv4Scope -ScopeId $scopeid -LeaseDuration 1.00:00:00
+Add-DhcpServerv4OptionDefinition -ComputerName MyDHCPServer -Name PXEClient -Description "PXE Support" -OptionId 060 -Type String
+Set-DhcpServerv4OptionValue -ComputerName MyDHCPServer -ScopeId "MyScope" -OptionId 060 -Value "PXEClient"
+
+
+### volgens yt video: scopid=ip range dat de pxe info zal ontvangen, previously stond het op ip van de server
+Set-DhcpServerv4OptionValue -ScopeId $StartRange -OptionId 066 -Value $DHCPServerIP
+# for BIOS
+Set-DhcpServerv4OptionValue -ScopeId $StartRange -OptionId 067 -Value "boot\x86\wdsnbp.com"
+# for uefi
+Set-DhcpServerv4OptionValue -ScopeId $StartRange -OptionId 067 -Value " boot\x86\wdsmgfw.efi"
+# Set-DhcpServerv4OptionValue -ScopeId $DHCPServerIP -OptionId 067 -Value "smsboot\x86\wdsnbp.com"
+# Set-DhcpServerv4OptionValue -ScopeId $DHCPServerIP -OptionId 067 -Value "\smsboot\x86\wdsnbp.com"
+# Set-DhcpServerv4OptionValue -ScopeId $DHCPServerIP -OptionId 015 -Value "example.com"
+# Set-DhcpServerv4OptionValue -ScopeId $DHCPServerIP -DnsServer $DNSServerIP
 
 Restart-service dhcpserver
 
-Set-DhcpServerv4Scope -ScopeId $scopeid -State Active
-
-
-## Configure DHCP settings for WDS
-### TODO - check if these are set correct
-Write-Host("Configuring DHCP for WDS...")
-Set-DhcpServerv4OptionValue -ScopeId $scopeid -OptionId 066 -Value $internalStaticIPv4
-Set-DhcpServerv4OptionValue -ScopeId $scopeid -OptionId 067 -Value "boot\x64\wdsnbp.com"
-Set-DhcpServerv4OptionValue -ScopeId $scopeid -OptionId 015 -Value "example.com"
-Set-DhcpServerv4OptionValue -ScopeId $scopeid -DnsServer $internalStaticIPv4
-
-
+# Set-DhcpServerv4Scope -ScopeId $DHCPServerIP -State Active

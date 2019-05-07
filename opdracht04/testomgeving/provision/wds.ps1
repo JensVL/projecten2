@@ -21,7 +21,14 @@ $InstallDrive = "E:"
 
 Write-Host("Initializing WDS...")
 try {
-    wdsutil /verbose /progress /initialize-server /server:DC /remInst:"E:\remoteInstall"
+    wdsutil /verbose /progress /initialize-server /server:DC /remInst:"$InstallDrive\remoteInstall"
+
+    # $answerclients="all"
+    # $adminapprove="disabled"
+    # $bootpath="boot\x86\wdsnbp.com"
+
+    # wdsutil /set-server /answerclients:$answerclients
+    # wdsutil /set-server /autoaddpolicy$adminapprove
 } catch {
     Write-Warning "- Could not initialize the Windows Deployment Services PowerShell module"
 }
@@ -29,7 +36,7 @@ try {
 
 Write-Host("Adding Boot image WDS Server...")
 try {
-    # location of .wim file created in mdt.ps1
+    # last resort als alles ni werkt, proberen met dit te verranderen naar LiteTouchPE_x64.wim
     Import-WdsBootImage -Path "$InstallDrive\MDTProduction\Operating Systems\Windows10\sources\boot.wim"
 } catch {
     Write-Warning "- Could not initialize the Windows Deployment Services PowerShell module"
@@ -48,3 +55,24 @@ try{
 
 Write-Host("Installed WDS")
 
+#####################
+####### TODO ########
+## Look into these ##
+#####################
+# Warning: Could not find a description for a message that was meant to
+#     DC: 
+#     DC:          be displayed.
+#     DC: 
+#     DC: Message ID: 0x4104080A
+
+# An error occurred while trying to execute the command.
+#     DC: 
+#     DC: Error Code: 0x41D
+#     DC: 
+#     DC: Error Description: The service did not respond to the start or control request in a timely fashion.
+
+# ERROR: There are no more endpoints available from the endpoint mapper.t§
+
+# error in adding image copy pasten
+# error in import image copy pasten
+# make share of \\DC.example.com\REMINST
