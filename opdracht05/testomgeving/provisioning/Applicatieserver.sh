@@ -75,6 +75,7 @@ info "Starting server specific provisioning tasks on ${HOSTNAME}"
 
 # Install LAMP server packages
 info 'Installing packages...'
+yum update -y
 yum install -y httpd mariadb-server rsync
 
 # Enable firewall & disable ports for apache
@@ -133,9 +134,13 @@ yum -y install lttng-ust libcurl openssl-libs krb5-libs libicu zlib libunwind li
 
 # Install .NET Core
 info 'Installing .NET Core...'
+info 'importing'
 rpm --import https://packages.microsoft.com/keys/microsoft.asc
+info 'add package'
 sh -c 'echo -e "[packages-microsoft-com-prod]\nname=packages-microsoft-com-prod \nbaseurl=https://packages.microsoft.com/yumrepos/microsoft-rhel7.3-prod\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/dotnetdev.repo'
-yum update
-yum install libunwind libicu dotnet-sdk-2.1
+info 'update'
+yum update -y
+info 'install'
+yum install -y libunwind libicu dotnet-sdk-2.1
 
 exit 0
