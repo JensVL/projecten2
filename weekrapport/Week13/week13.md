@@ -26,7 +26,7 @@
 * Opdracht 5 lastenboek
 * Opdracht 5 VMs
 * Opdracht 5 sync lesmateriaal naar backupserver
-* MDT autodeploy
+* Fixed mdt deployment share update and application import errors
 
 ![Time-per-assignment](week13-time-per-assignment.png)
 
@@ -51,7 +51,9 @@
 
 ### Matthias Van De Velde
 
-* 
+* Fysieke topologie G24, G40
+* Fixed mdt deployment share update and application import errors
+
 
 ![Time-registration-week13-MatthiasVanDeVelde](week13-MatthiasVanDeVelde.png)
 
