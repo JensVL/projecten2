@@ -21,11 +21,12 @@
 * Offertes G24, G36, G40
 * Voorbereiden Voorstelling G24, G36, G40
 * Lastenboek opdracht 3
-* Fysieke topologie G24, G40
+* Fysieke topologie G24, G36, G40
 * G24 Packet Tracer configuratie
 * Opdracht 5 lastenboek
 * Opdracht 5 VMs
-* Opdracht 5 sync lesmateriaal naar backupserver
+* Opdracht 5 sync ledenDB naar backupserver
+* Opdracht 5 sync lesmateriaal naar applicatieserver
 * Fixed mdt deployment share update and application import errors
 
 ![Time-per-assignment](week13-time-per-assignment.png)
@@ -33,13 +34,23 @@
 
 ### Yordi De Rijcke
 
-*
+* Voorbereiden Voorstelling G24, G36, G40
+* Fysieke topologie G24, G36, G40
+* G24 Packet Tracer configuratie
+* Opdracht 5 VMs
+* Opdracht 5 sync ledenDB naar backupserver
+* Opdracht 5 sync lesmateriaal naar applicatieserver 
 
 ![Time-registration-week13-YordiDeRijcke](week13-YordiDeRijcke.jpg)
 
 ### Olivier De Vriese
 
-* 
+* Voorbereiden Voorstelling G24, G36, G40
+* Fysieke topologie G24, G36, G40
+* G24 Packet Tracer configuratie
+* Opdracht 5 VMs
+* Opdracht 5 sync ledenDB naar backupserver
+* Opdracht 5 sync lesmateriaal naar applicatieserver 
 
 ![Time-registration-week13-OlivierDeVriese](week13-OlivierDeVriese.jpg)
 
