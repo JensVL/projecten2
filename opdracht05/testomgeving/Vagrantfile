@@ -83,6 +83,7 @@ end
 # }}}
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
   hosts.each do |host|
     config.vm.define host['name'] do |node|
       node.vm.box = host['box'] ||= DEFAULT_BASE_BOX
@@ -94,6 +95,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
       # Add VM to a VirtualBox group
       node.vm.provider :virtualbox do |vb|
+	vb.name = host['name']
         vb.memory = host['memory'] if host.key? 'memory'
         vb.cpus = host['cpus'] if host.key? 'cpus'
         vb.gui = host['gui']
@@ -103,12 +105,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         vb.customize ['modifyvm', :id, '--groups', PROJECT_NAME]
       end
 
-      if host['os'] == "linux"
-	      linux	= host['linux']
-	      mariaDB	= host['mariaDB']
-        
-        config.vm.provision :shell,
-	      path: 'provisioning/' + host['name'] + '.sh',
+      linux	= host['linux']
+      mariaDB	= host['mariaDB']
+      
+      puts "Hostname=" + host['name'] 
+      config.vm.provision :shell,
+     	path: 'provisioning/' + host['name'] + '.sh',
         args: [
         "-linuxRootPassword", linux['rootPassword'],
         "-linuxVagrantPassword", linux['vagrantPassword'],
@@ -117,10 +119,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         "-mariaDBUserName",  mariaDB['username'],
         "-mariaDBPassword", mariaDB['password']
         ]
-      end
     end
   end
 end
-
 # -*- mode: ruby -*-
 # vi: ft=ruby :
