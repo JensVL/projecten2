@@ -75,44 +75,44 @@ info "Starting server specific provisioning tasks on ${HOSTNAME}"
 
 # Install LAMP server packages
 info 'Installing packages...'
-yum install -y httpd mariadb-server rsync
+yum -y install httpd mariadb-server rsync &> /dev/null
 
 # Enable firewall & disable ports for apache
 info 'Changing firewall settings...'
-systemctl enable firewalld
-systemctl start firewalld
-firewall-cmd --permanent --add-port=80/tcp
-firewall-cmd --permanent --add-port=443/tcp
-firewall-cmd --reload
+systemctl enable firewalld &> /dev/null
+systemctl start firewalld &> /dev/null
+firewall-cmd --permanent --add-port=80/tcp &> /dev/null
+firewall-cmd --permanent --add-port=443/tcp &> /dev/null
+firewall-cmd --reload &> /dev/null
 
 # Make sure that the daemons start at boot
 info 'Enabling services...'
-systemctl enable httpd
-systemctl enable mariadb
+systemctl enable httpd &> /dev/null
+systemctl enable mariadb &> /dev/null
 
 # Make sure that the daemons are started right now
 info 'Restarting services...'
-systemctl restart httpd
-systemctl restart mariadb
+systemctl restart httpd &> /dev/null
+systemctl restart mariadb &> /dev/null
 
 # Linux users setup
 info 'Changing linux user passwords...'
-echo -e "${linuxRootPassword}\n${linuxRootPassword}" | passwd root
-echo -e "${linuxVagrantPassword}\n${linuxVagrantPassword}" | passwd vagrant
+echo -e "${linuxRootPassword}\n${linuxRootPassword}" | passwd root &> /dev/null
+echo -e "${linuxVagrantPassword}\n${linuxVagrantPassword}" | passwd vagrant &> /dev/null
 
 # MariaDB setup
 info 'Changing MySQL root password'
-mysqladmin -u root password "$mariaDBRootPassword"
+mysqladmin -u root password "$mariaDBRootPassword" &> /dev/null
 
 info 'Deleting default MySQL databases & users...'
-mysql -u root -p$mariaDBRootPassword -e "DELETE FROM mysql.user WHERE User=''; DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1'); DROP DATABASE IF EXISTS test; FLUSH PRIVILEGES;"
+mysql -u root -p$mariaDBRootPassword -e "DELETE FROM mysql.user WHERE User=''; DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1'); DROP DATABASE IF EXISTS test; FLUSH PRIVILEGES;" &> /dev/null
 
 # Vagrant DB setup
 info 'Creating MySQL database for the web application...'
-mysql -u root -p$mariaDBRootPassword -e "CREATE DATABASE ${mariaDBName} /*\!40100 DEFAULT CHARACTER SET utf8 */;"
-mysql -u root -p$mariaDBRootPassword -e "CREATE USER ${mariaDBUserName}@localhost IDENTIFIED BY '${mariaDBPassword}';"
-mysql -u root -p$mariaDBRootPassword -e "GRANT ALL PRIVILEGES ON ${mariaDBName}.* TO '${mariaDBUserName}'@'localhost';"
-mysql -u root -p$mariaDBRootPassword -e "FLUSH PRIVILEGES;"
+mysql -u root -p$mariaDBRootPassword -e "CREATE DATABASE ${mariaDBName} /*\!40100 DEFAULT CHARACTER SET utf8 */;" &> /dev/null
+mysql -u root -p$mariaDBRootPassword -e "CREATE USER ${mariaDBUserName}@localhost IDENTIFIED BY '${mariaDBPassword}';" &> /dev/null
+mysql -u root -p$mariaDBRootPassword -e "GRANT ALL PRIVILEGES ON ${mariaDBName}.* TO '${mariaDBUserName}'@'localhost';" &> /dev/null
+mysql -u root -p$mariaDBRootPassword -e "FLUSH PRIVILEGES;" &> /dev/null
 
 # Create Applicatieserver backup directory
 info 'Creating applicatieserver backup directory...'

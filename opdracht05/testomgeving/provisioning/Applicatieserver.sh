@@ -75,72 +75,74 @@ info "Starting server specific provisioning tasks on ${HOSTNAME}"
 
 # Install LAMP server packages
 info 'Installing packages...'
-yum update -y
-yum install -y httpd mariadb-server rsync
+yum -y update &> /dev/null
+yum -y install httpd mariadb-server rsync &> /dev/null
 
 # Enable firewall & disable ports for apache
 info 'Changing firewall settings...'
-systemctl enable firewalld
-systemctl start firewalld
-firewall-cmd --permanent --add-port=80/tcp
-firewall-cmd --permanent --add-port=443/tcp
-firewall-cmd --reload
+systemctl enable firewalld &> /dev/null
+systemctl start firewalld &> /dev/null
+firewall-cmd --permanent --add-port=80/tcp &> /dev/null
+firewall-cmd --permanent --add-port=443/tcp &> /dev/null
+firewall-cmd --reload &> /dev/null
 
 # Make sure that the daemons start at boot
 info 'Enabling services...'
-systemctl enable httpd
-systemctl enable mariadb
+systemctl enable httpd &> /dev/null
+systemctl enable mariadb &> /dev/null
 
 # Make sure that the daemons are started right now
 info 'Restarting services...'
-systemctl restart httpd
-systemctl restart mariadb
+systemctl restart httpd &> /dev/null
+systemctl restart mariadb &> /dev/null
 
 # Linux users setup
 info 'Changing linux user passwords...'
-echo -e "${linuxRootPassword}\n${linuxRootPassword}" | passwd root
-echo -e "${linuxVagrantPassword}\n${linuxVagrantPassword}" | passwd vagrant
+echo -e "${linuxRootPassword}\n${linuxRootPassword}" | passwd root &> /dev/null
+echo -e "${linuxVagrantPassword}\n${linuxVagrantPassword}" | passwd vagrant &> /dev/null
 
 # MariaDB setup
 info 'Changing MySQL root password'
-mysqladmin -u root password "$mariaDBRootPassword"
+mysqladmin -u root password "$mariaDBRootPassword" &> /dev/null
 
 info 'Deleting default MySQL databases & users...'
-mysql -u root -p$mariaDBRootPassword -e "DELETE FROM mysql.user WHERE User=''; DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1'); DROP DATABASE IF EXISTS test; FLUSH PRIVILEGES;"
+mysql -u root -p$mariaDBRootPassword -e "DELETE FROM mysql.user WHERE User=''; DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1'); DROP DATABASE IF EXISTS test; FLUSH PRIVILEGES;" &> /dev/null
 
 # Vagrant DB setup
 info 'Creating MySQL database for the web application...'
-mysql -u root -p$mariaDBRootPassword -e "CREATE DATABASE ${mariaDBName} /*\!40100 DEFAULT CHARACTER SET utf8 */;"
-mysql -u root -p$mariaDBRootPassword -e "CREATE USER ${mariaDBUserName}@localhost IDENTIFIED BY '${mariaDBPassword}';"
-mysql -u root -p$mariaDBRootPassword -e "GRANT ALL PRIVILEGES ON ${mariaDBName}.* TO '${mariaDBUserName}'@'localhost';"
-mysql -u root -p$mariaDBRootPassword -e "FLUSH PRIVILEGES;"
+mysql -u root -p$mariaDBRootPassword -e "CREATE DATABASE ${mariaDBName} /*\!40100 DEFAULT CHARACTER SET utf8 */;" &> /dev/null
+mysql -u root -p$mariaDBRootPassword -e "CREATE USER ${mariaDBUserName}@localhost IDENTIFIED BY '${mariaDBPassword}';" &> /dev/null
+mysql -u root -p$mariaDBRootPassword -e "GRANT ALL PRIVILEGES ON ${mariaDBName}.* TO '${mariaDBUserName}'@'localhost';" &> /dev/null
+mysql -u root -p$mariaDBRootPassword -e "FLUSH PRIVILEGES;" &> /dev/null
 
 # Create backup directory
 info 'Creating backup directory...'
-mkdir -p /backups/LedenDB
-chown -R vagrant /backups
+mkdir -p /backups/LedenDB &> /dev/null
+chown -R vagrant /backups &> /dev/null
 
 # Create lesmateriaal directory
 info 'Creating lesmateriaal directory...'
-mkdir -p /var/www/lesmateriaal/{wit,geel,oranje,groen,blauw,bruin,zwart}
-chmod -R 777 /var/www/lesmateriaal
+mkdir -p /var/www/lesmateriaal/{wit,geel,oranje,groen,blauw,bruin,zwart} &> /dev/null
+chmod -R 777 /var/www/lesmateriaal &> /dev/null
 
 # Install .NET Core dependecies
+info 'Downloading yum repo...'
+wget -P /etc/yum.repos.d/ https://packages.efficios.com/repo.files/EfficiOS-RHEL7-x86-64.repo &> /dev/null
+info 'Importing microsoft package...'
+rpmkeys --import https://packages.efficios.com/rhel/repo.key &> /dev/null
+info 'Syncing yum repos...'
+yum updateinfo &> /dev/null
 info 'Installing .NET Core dependecies...'
-wget -P /etc/yum.repos.d/ https://packages.efficios.com/repo.files/EfficiOS-RHEL7-x86-64.repo
-rpmkeys --import https://packages.efficios.com/rhel/repo.key
-yum updateinfo
-yum -y install lttng-ust libcurl openssl-libs krb5-libs libicu zlib libunwind libuuid
+yum -y install lttng-ust libcurl openssl-libs krb5-libs libicu zlib libunwind libuuid &> /dev/null
 
 # Install .NET Core
+info 'Importing microsoft package...'
+rpm --import https://packages.microsoft.com/keys/microsoft.asc &> /dev/null
+info 'Adding microsoft yum repo...'
+sh -c 'echo -e "[packages-microsoft-com-prod]\nname=packages-microsoft-com-prod \nbaseurl=https://packages.microsoft.com/yumrepos/microsoft-rhel7.3-prod\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/dotnetdev.repo' &> /dev/null
+info 'Syncing yum repos...'
+yum -y update &> /dev/null
 info 'Installing .NET Core...'
-info 'importing'
-rpm --import https://packages.microsoft.com/keys/microsoft.asc
-info 'add package'
-sh -c 'echo -e "[packages-microsoft-com-prod]\nname=packages-microsoft-com-prod \nbaseurl=https://packages.microsoft.com/yumrepos/microsoft-rhel7.3-prod\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/dotnetdev.repo'
-info 'update'
-yum update -y
-info 'install'
-yum install -y libunwind libicu dotnet-sdk-2.1
+yum -y install libunwind libicu dotnet-sdk-2.1 &> /dev/null
 
 exit 0
