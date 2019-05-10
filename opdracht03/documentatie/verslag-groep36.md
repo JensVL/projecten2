@@ -30,6 +30,12 @@
 - A3 printer op netwerk
 - 2 VoIP toestellen
 - Beamer in vergaderruimte: ophangen aan plafond
+- TV scherm geschikt voor ophangen aan plafond
+- 360° Camera
+
+## Licenties
+
+- Omnicasa
 
 ## Extra informatie
 

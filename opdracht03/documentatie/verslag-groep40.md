@@ -37,7 +37,7 @@
 
 - Microsoft Windows 10 Enterprise
 - Microsoft Office pakket
-- AutoCAD
+- Teamleader CRM
 - SketchUp
 
 ## Extra informatie

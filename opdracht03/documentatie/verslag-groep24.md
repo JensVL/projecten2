@@ -40,7 +40,7 @@
 
 - Microsoft Windows 10 Enterprise
 - Microsoft Office pakket
-- CRM software nog o.t.k.
+- Teamleader CRM
 - AutoCAD
 - SketchUp
 - GIMP
