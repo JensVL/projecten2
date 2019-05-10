@@ -75,6 +75,7 @@ info "Starting server specific provisioning tasks on ${HOSTNAME}"
 
 # Install LAMP server packages
 info 'Installing packages...'
+yum update -y > /dev/0
 yum -y install httpd mariadb-server rsync &> /dev/null
 
 # Enable firewall & disable ports for apache

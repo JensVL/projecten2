@@ -7,14 +7,14 @@
 #
 # See https://github.com/bertvv/vagrant-shell-skeleton/ for details
 
+# -*- mode: ruby -*-
+# vi: ft=ruby :
+
 require 'rbconfig'
 require 'yaml'
 
-# set default LC_ALL for all BOXES
-ENV["LC_ALL"] = "en_US.UTF-8"
-
 # Set your default base box here
-DEFAULT_BASE_BOX = 'bento/centos-7.6'
+DEFAULT_BASE_BOX = 'bertvv/centos-7.6'
 
 #
 # No changes needed below this point
@@ -27,8 +27,8 @@ hosts = YAML.load_file('vagrant-hosts.yml')
 
 # {{{ Helper functions
 
-def windows_host?
-  Vagrant::Util::Platform.windows?
+def is_windows
+  RbConfig::CONFIG['host_os'] =~ /mswin|mingw|cygwin/
 end
 
 # Set options for the network interface configuration. All values are
@@ -42,40 +42,32 @@ end
 def network_options(host)
   options = {}
 
-  if host.key?('ip')
+  if host.has_key?('ip')
     options[:ip] = host['ip']
     options[:netmask] = host['netmask'] ||= '255.255.255.0'
   else
     options[:type] = 'dhcp'
   end
 
-  options[:mac] = host['mac'].gsub(/[-:]/, '') if host.key?('mac')
-  options[:auto_config] = host['auto_config'] if host.key?('auto_config')
-  options[:virtualbox__intnet] = true if host.key?('intnet') && host['intnet']
+  if host.has_key?('mac')
+    options[:mac] = host['mac'].gsub(/[-:]/, '')
+  end
+  if host.has_key?('auto_config')
+    options[:auto_config] = host['auto_config']
+  end
+  if host.has_key?('intnet') && host['intnet']
+    options[:virtualbox__intnet] = true
+  end
+
   options
 end
 
 def custom_synced_folders(vm, host)
-  return unless host.key?('synced_folders')
-  folders = host['synced_folders']
+  if host.has_key?('synced_folders')
+    folders = host['synced_folders']
 
-  folders.each do |folder|
-    vm.synced_folder folder['src'], folder['dest'], folder['options']
-  end
-end
-
-# Adds forwarded ports to your Vagrant machine
-#
-# example:
-#  forwarded_ports:
-#    - guest: 88
-#      host: 8080
-def forwarded_ports(vm, host)
-  if host.has_key?('forwarded_ports')
-    ports = host['forwarded_ports']
-
-    ports.each do |port|
-      vm.network "forwarded_port", guest: port['guest'], host: port['host']
+    folders.each do |folder|
+      vm.synced_folder folder['src'], folder['dest'], folder['options']
     end
   end
 end
@@ -83,34 +75,22 @@ end
 # }}}
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-
+  config.ssh.insert_key = false
   hosts.each do |host|
     config.vm.define host['name'] do |node|
       node.vm.box = host['box'] ||= DEFAULT_BASE_BOX
+      if(host.key? 'box_url')
+        node.vm.box_url = host['box_url']
+      end
 
       node.vm.hostname = host['name']
       node.vm.network :private_network, network_options(host)
       custom_synced_folders(node.vm, host)
-      forwarded_ports(node.vm, host)
 
-      # Add VM to a VirtualBox group
-      node.vm.provider :virtualbox do |vb|
-	vb.name = host['name']
-        vb.memory = host['memory'] if host.key? 'memory'
-        vb.cpus = host['cpus'] if host.key? 'cpus'
-        vb.gui = host['gui']
-        
-        # WARNING: if the name of the current directory is the same as the
-        # host name, this will fail.
-        vb.customize ['modifyvm', :id, '--groups', PROJECT_NAME]
-      end
-
+      # Run configuration script for the VM
       linux	= host['linux']
       mariaDB	= host['mariaDB']
-      
-      puts "Hostname=" + host['name'] 
-      config.vm.provision :shell,
-     	path: 'provisioning/' + host['name'] + '.sh',
+      node.vm.provision 'shell', path: 'provisioning/' + host['name'] + '.sh',
         args: [
         "-linuxRootPassword", linux['rootPassword'],
         "-linuxVagrantPassword", linux['vagrantPassword'],
@@ -122,5 +102,3 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 end
-# -*- mode: ruby -*-
-# vi: ft=ruby :
