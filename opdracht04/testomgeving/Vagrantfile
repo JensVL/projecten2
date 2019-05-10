@@ -136,9 +136,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         config.vm.provision "reload"
         
       elsif host['role'] == "client"
-        # node.vm.provider :virtualbox do |vb|
-        #   vb.customize ['modifyvm', :id, '--nic1', "null"]
-        # end
+        node.vm.provider :virtualbox do |vb|
+          vb.customize ['modifyvm', :id, 
+            '--nic1', "null", 
+            '--boot1', 'net',  
+            '--boot2', 'none',
+            '--boot3', 'none',
+            '--boot4', 'none']
+        end
         # config.vm.provision "windows-sysprep"
         config.vm.provision "shell", path: "provision/ps.ps1", args: "add-to-domain.ps1"
         config.vm.provision "reload"
