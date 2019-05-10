@@ -14,7 +14,7 @@ require 'rbconfig'
 require 'yaml'
 
 # Set your default base box here
-DEFAULT_BASE_BOX = 'bertvv/centos-7.6'
+DEFAULT_BASE_BOX = 'bertvv/centos-7.2'
 
 #
 # No changes needed below this point

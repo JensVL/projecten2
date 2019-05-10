@@ -31,7 +31,7 @@
 ---
 
 - name: 'Applicatieserver'
-  box: 'bento/centos-7.6'
+  box: 'bento/centos-7.2'
   ip: '192.168.248.11'
   os: 'linux'
   gui: false
@@ -50,7 +50,7 @@
       host: 8081
 
 - name: 'Backupserver'
-  box: 'bento/centos-7.6'
+  box: 'bento/centos-7.2'
   ip: '192.168.248.12'
   os: 'linux'
   gui: false
