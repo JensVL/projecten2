@@ -25,7 +25,7 @@
 
 | Student    | Geschat | Gerealiseerd |
 | :---       | ---:    | ---:         |
-| Matthias Van De Velde   |    22     |              |
+| Matthias Van De Velde   |    35     |              |
 | Nathan Cammerman   |         |              |
 | Yordi De Rijcke   |     15    |              |
 | Olivier De Vriese   |         |              |
