@@ -56,7 +56,7 @@
 
 ### Nathan Cammerman
 
-* 
+* Mdt deployment share update and application import errors
 
 ![Time-registration-week13-NathanCammerman](week13-NathanCammerman.png)
 
