@@ -115,6 +115,10 @@ mysql -u root -p$mariaDBRootPassword -e "CREATE USER ${mariaDBUserName}@localhos
 mysql -u root -p$mariaDBRootPassword -e "GRANT ALL PRIVILEGES ON ${mariaDBName}.* TO '${mariaDBUserName}'@'localhost';" &> /dev/null
 mysql -u root -p$mariaDBRootPassword -e "FLUSH PRIVILEGES;" &> /dev/null
 
+# Copy syncLesmateriaal.sh to /bin
+cp /vagrant/scripts/syncLesmateriaal.sh /bin
+chmod 755 /bin/syncLesmateriaal.sh
+
 # Create Applicatieserver backup directory
 info 'Creating applicatieserver backup directory...'
 mkdir -p /applicatieserver_backups/LedenDB/

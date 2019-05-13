@@ -125,6 +125,10 @@ info 'Creating lesmateriaal directory...'
 mkdir -p /var/www/lesmateriaal/{wit,geel,oranje,groen,blauw,bruin,zwart} &> /dev/null
 chmod -R 777 /var/www/lesmateriaal &> /dev/null
 
+# Copy createLedenDBBackup.sh to /bin
+cp /vagrant/scripts/createLedenDBBackup.sh /bin
+chmod 755 /bin/createLedenDBBackup.sh
+
 # Install .NET Core dependecies
 info 'Downloading yum repo...'
 wget -P /etc/yum.repos.d/ https://packages.efficios.com/repo.files/EfficiOS-RHEL7-x86-64.repo &> /dev/null
@@ -145,7 +149,7 @@ yum -y update &> /dev/null
 info 'Installing .NET Core...'
 yum -y install libunwind libicu dotnet-sdk-2.1 &> /dev/null
 
-## Copy .NET web application
+# Copy .NET web application
 mkdir /var/www
 cp -R /vagrant/dotnet-g12/* /var/www/
 chown -R vagrant /var/www
