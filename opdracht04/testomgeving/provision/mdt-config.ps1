@@ -131,10 +131,10 @@ if ($Applications) {
 [
     {
         "name": "Libre Office",
-        "version": "6.2.2",
-        "download": "https://mirror.dkm.cz/tdf/libreoffice/stable/6.2.2/win/x86_64/LibreOffice_6.2.2_Win_x64.msi",
-        "filename": "LibreOffice_6.2.2_Win_x64.msi",
-        "install": "msiexec /i LibreOffice_6.2.2_Win_x64.msi /qb",
+        "version": "6.2.3",
+        "download": "https://download.documentfoundation.org/libreoffice/stable/6.2.3/win/x86_64/LibreOffice_6.2.3_Win_x64.msi",
+        "filename": "LibreOffice_6.2.3_Win_x64.msi",
+        "install": "msiexec /i LibreOffice_6.2.3_Win_x64.msi /qb",
         "cookie": ""
     },
     {
