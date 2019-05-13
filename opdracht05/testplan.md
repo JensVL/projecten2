@@ -1,7 +1,22 @@
-# Testplan taak 1: (titel)
+# Testplan opdracht 5
 
-(Een testplan is een *exacte* procedure van de handelingen die je moet uitvoeren om aan te tonen dat de opdracht volledig volbracht is en dat aan alle specificaties voldaan is. Een teamlid moet aan de hand van deze procedure in staat zijn om de tests uit te voeren en erover te rapporteren (zie testrapport). Geef bij elke stap het verwachte resultaat en hoe je kan verifiëren of dat resultaat ook behaald is. Kies zelf de structuur: genummerde lijst, tabel, secties, ... Verwijder deze uitleg als het plan af is.)
+Auteur(s) testplan: Olivier De Vriese, Yordi De Rijcke
 
-Auteur(s) testplan: NAAM
+## Provisioning
+1. Gebruik ```vagrant up``` om de VMs te starten
+
+## Test Applicatieserver
+1. Gebruik ```vagrant ssh Applicatieserver```
+2. Run ```createLedenDBBackup.sh```
+3. Je zou hier geen fouten mogen bij krijgen
+4. Gebruik ```vagrant ssh Backupserver```
+5. Controleer of alle backups te vinden zijn op Backupserver (/applicatieserver_backups/LedenDB)
+
+## Test Backupserver
+1. Run ```syncLesmateriaal.sh <file1> [file2] ...```
+2. Je zou hier geen fouten mogen bij krijgen
+3. Gebruik ```vagrant ssh Applicatieserver```
+4. Controleer of al het lesmateriaal te vinden is in de correcte plaats op applicatieserver (/lesmateriaal/)
+
 
 
