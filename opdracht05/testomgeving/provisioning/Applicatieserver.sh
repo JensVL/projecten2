@@ -154,8 +154,4 @@ info '.NET Demo app kopiëren...'
 cp -R /vagrant/dotnet-g12/* /var/www/
 chown -R vagrant /var/www
 
-# Start .NET web application
-info '.NET Demo app runnen...'
-runuser -l vagrant -c 'cd /var/www/Taijitan_Yoshin_Ryu_vzw && dotnet run' &> /dev/null
-
 exit 0

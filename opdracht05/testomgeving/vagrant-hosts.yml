@@ -36,7 +36,7 @@
   os: 'linux'
   gui: false
   memory: 4096
-  cpus: 4
+  cpus: 2
   linux:
     rootPassword: "toor"
     vagrantPassword: "vagrant"
@@ -55,7 +55,7 @@
   os: 'linux'
   gui: false
   memory: 4096
-  cpus: 4
+  cpus: 2
   linux:
     rootPassword: "toor"
     vagrantPassword: "vagrant"
