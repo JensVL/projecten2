@@ -152,6 +152,9 @@ yum -y install libunwind libicu dotnet-sdk-2.1 &> /dev/null
 # Copy .NET web application
 mkdir /var/www
 cp -R /vagrant/dotnet-g12/* /var/www/
-chown -R vagrant /var/www
+
+# Start .NET web application
+cd /var/www
+runuser -l vagrant -c 'dotnet run'
 
 exit 0
