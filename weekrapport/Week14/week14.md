@@ -24,7 +24,7 @@
 * Added DNS provisioning to MDT
 * Altered provisioning of backup sync
 * Altered provisioning of teaching materials sync
-* Fixed minor proivisioning issues
+* Fixed minor provisioning issues
 * Rerolled to Centos-7.2 to fix issue of folders not being created during provisioning
 
 ![Time-per-assignment](week14-time-per-assignment.png)
@@ -34,7 +34,7 @@
 * Altered provisioning of backup sync
 * Altered provisioning of teaching materials sync
 * Eindvoorstelling voor vastgoedstudenten
-* Fixed minor proivisioning issues
+* Fixed minor provisioning issues
 
 ![Time-registration-week14-YordiDeRijcke](week14-YordiDeRijcke.png)
 
@@ -42,7 +42,7 @@
 * Eindvoorstelling voor vastgoedstudenten
 * Altered provisioning of backup sync
 * Altered provisioning of teaching materials sync
-* Fixed minor proivisioning issues
+* Fixed minor provisioning issues
 
 ![Time-registration-week14-OlivierDeVriese](week14-OlivierDeVriese.png)
 
@@ -50,7 +50,7 @@
 * Eindvoorstelling voor vastgoedstudenten
 * Rerolled to Centos-7.2 to fix issue of folders not being created during provisioning
 * Opdracht 5: fixed double provisioning issue in Vagrantfile
-* Fixed minor proivisioning issues
+* Fixed minor provisioning issues
 
 ![Time-registration-week14-NathanCammerman](week14-CammermanNathan.png)
 
@@ -62,8 +62,9 @@
 ![Time-registration-week14-MatthiasVanDeVelde](week14-MatthiasVanDeVelde.png)
 
 ### Jens Van Liefferinge
+* Eindvoorstelling voor vastgoedstudenten
 * Offertes G36, G40 aangepast
-* Opdracht 4: testrapport bijgewerkt
+* Opdracht 4: testrapport
 * Opdracht 5: provisioning debuggen
 
 ![Time-registration-week14-JensVanLiefferinge](week14-JensVanLiefferinge.png)
