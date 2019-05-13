@@ -35,25 +35,35 @@ Ran ```vagrant destroy -f && vagrant up DC```.
 No errors shown, everything succesful.
 
 ## DNS
-Uncomment **dns.ps1**.
-Run ```vagrant destroy -f && vagrant up DC```. If you see no errors, everything was successful.
+Uncommented **dns.ps1**.
+Ran ```vagrant destroy -f && vagrant up DC```.
+No errors shown, everything succesful.
 
 ## DHCP
-Uncomment **dhcp.ps1** and the **reload** right after **dhcp.ps1**.
-Run ```vagrant destroy -f && vagrant up DC```. If you see no errors, everything was successful.
+Uncommented **dhcp.ps1** and the **reload** right after **dhcp.ps1**.
+Ran ```vagrant destroy -f && vagrant up DC```.
+No errors shown, everything succesful.
 
 ## MDT installation
-Uncomment **mdt-install.ps1** and the **reload** right after **mdt-install**. Run ```vagrant destroy -f && vagrant up DC```. If you see no errors, everything was successful.
-
+Uncommented **mdt-install.ps1** and the **reload** right after **mdt-install**.
+Ran ```vagrant destroy -f && vagrant up DC```.
+No errors shown, everything succesful.
 
 ## MDT upgrade
-Uncomment **mdt-upgrade.ps1** and the **reload** right after **mdt-upgrade.ps1**. Run ```vagrant destroy -f && vagrant up DC```. If you see no errors, everything was successful.
+Uncommented **mdt-upgrade.ps1** and the **reload** right after **mdt-upgrade.ps1**.
+Ran ```vagrant destroy -f && vagrant up DC```.
+No errors shown, everything succesful.
 
 ## MDT configuration
-Uncomment **mdt-config.ps1** and the **reload** right after **mdt-config.ps1**. Run ```vagrant destroy -f && vagrant up DC```. If you see no errors, everything was successful.
+Uncommented **mdt-config.ps1** and the **reload** right after **mdt-config.ps1**.
+Ran ```vagrant destroy -f && vagrant up DC```.
+No errors shown, everything succesful.
 
 ## WDS
-Uncomment **wds.ps1** and the reload right after **wds.ps1**. Run ```vagrant destroy -f && vagrant up DC```. If you see no errors, everything was successful.
+Uncommented **wds.ps1** and the reload right after **wds.ps1**.
+Ran ```vagrant destroy -f && vagrant up DC```.
+No errors shown, everything succesful.
 
 ## Client
-Run ```vagrant destroy -f && vagrant up```. If you see no errors, everything was successful. 
+Ran ```vagrant destroy -f && vagrant up```.
+No errors shown, everything succesful.
