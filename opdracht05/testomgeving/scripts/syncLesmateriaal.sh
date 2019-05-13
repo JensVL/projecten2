@@ -5,6 +5,8 @@
 ## Check parameter amount ##
 if [ $# -eq 0 ]; then
   echo 'At least one file is needed.'
+  echo 'Example usage: syncLesmateriaal.sh oranje/file1.txt'
+  echo 'This will sync file /lesmateriaal/oranje/file1.txt to Applicatieserver:/var/www/lesmateriaal/oranje/file1.txt'
   exit 1
 fi
 
@@ -15,6 +17,8 @@ while [ $# -gt 0 ]; do
   # Check parameter existance #
   if [ ! -f "/lesmateriaal/$1" ]; then
     echo "File '/lesmateriaal/$1' doesn't exist. Skipping this file..."
+    echo 'Example usage: syncLesmateriaal.sh oranje/file1.txt'
+    echo 'This will sync file /lesmateriaal/oranje/file1.txt to Applicatieserver:/var/www/lesmateriaal/oranje/file1.txt'
     shift;
     continue;
   fi
