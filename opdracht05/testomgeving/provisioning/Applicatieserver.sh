@@ -145,4 +145,9 @@ yum -y update &> /dev/null
 info 'Installing .NET Core...'
 yum -y install libunwind libicu dotnet-sdk-2.1 &> /dev/null
 
+## Copy .NET web application
+mkdir /var/www
+cp -R /vagrant/dotnet-g12/* /var/www/
+chown -R vagrant /var/www
+
 exit 0
