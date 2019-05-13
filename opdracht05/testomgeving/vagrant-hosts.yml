@@ -42,7 +42,7 @@
     vagrantPassword: "vagrant"
   mariaDB:
     rootPassword: "toor"
-    dbName: "vagrant"
+    dbName: "LedenDB"
     username: "vagrant"
     password: "vagrant"
   forwarded_ports:
@@ -61,7 +61,7 @@
     vagrantPassword: "vagrant"
   mariaDB:
     rootPassword: "toor"
-    dbName: "vagrant"
+    dbName: "LedenDB"
     username: "vagrant"
     password: "vagrant"
   forwarded_ports:
