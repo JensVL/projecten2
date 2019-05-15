@@ -24,16 +24,12 @@
 
 ## Gebruikte tools
 
-(voeg hier links toe naar de tools die jullie gebruiken voor tijdregistratie onderlinge afspraken, communicatie (vb. Slack), ...)
-
 * Trello: <https://trello.com/b/IWmaVq2C/p2sb1819g10>
 * Plus for Trello <https://chrome.google.com/webstore/detail/plus-for-trello-time-trac/gjjpophepkbhejnglcmkdnncmaanojkf?hl=nl>
 * Discord: <https://discordapp.com/>
 * Messenger: <https://www.messenger.com/>
 
 ## Afspraken ivm communicatie, gebruik tools
-
-(beschrijf hier of in een apart document al wat jullie onderling of met jullie begeleiders afgesproken hebben ivm samenwerken: werkwijze gebruik versiebeheer, kanbanbord en tijdregistratie, voorbereiden weekrapporten, enz.)
 
 Als versiebeheersysteem maken we gebruik van Github, de tijdsregistratie en verdeling van de taken gebeuren aan de hand van Trello en de weekrapporten worden opgesteld in Google Docs.
 
